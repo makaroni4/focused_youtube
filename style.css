@@ -1,0 +1,20 @@
+.ytd-thumbnail,
+#video-title,
+#contents,
+.ytd-two-column-browse-results-renderer {
+  display: none !important;
+}
+
+.focused-youtube {
+  height: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+
+  background-color: #F1F6F4;
+
+  font-size: 48px;
+  line-height: 60px;
+}

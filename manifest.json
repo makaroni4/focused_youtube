@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "Focused Youtube: hide all elements that might drag your attention",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "jquery-3.3.1.slim.min.js",
+        "content.js"
+      ],
+      "css": [
+        "style.css"
+      ]
+    }
+  ],
+  "permissions": [
+    "https://www.youtube.com/"
+  ]
+}

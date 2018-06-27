@@ -1,4 +1,6 @@
 (function() {
+  document.body.style.display = "block";
+
   if(window.location.pathname !== "/") {
     return;
   }

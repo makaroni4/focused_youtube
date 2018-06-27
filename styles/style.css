@@ -1,0 +1,76 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf");
+}
+
+body {
+  display: none;
+}
+
+.focused-youtube {
+  height: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  position: relative;
+
+  background-color: #F1F6F4;
+}
+
+.focused-youtube__logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 22px;
+
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.focused-youtube__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-form__text-input {
+  min-width: 300px;
+  padding: 8px 12px;
+
+  border: 1px solid #ded7d7;
+  border-right: none;
+  border-radius: 0 0 2px 2px;
+  outline: none;
+
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.search-form__submit {
+  display: block;
+  width: 70px;
+  height: 42px;
+
+  border: 1px solid #ded7d7;
+  border-radius: 2px 2px 0 0;
+  outline: none;
+
+  background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon.svg');
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+}

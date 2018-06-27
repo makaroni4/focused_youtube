@@ -15,7 +15,6 @@
   var app = new Vue({
     el: "#mega-app",
     data: {
-      header: "Search Youtube",
       searchQuery: ""
     },
     methods: {
@@ -27,14 +26,13 @@
     },
     template: `
       <div class="focused-youtube">
-        <div class="focused-youtube__body">
-          <div class="focused-youtube__header">
-            {{ header }}
-          </div>
+        <div class="focused-youtube__logo">
+        </div>
 
-          <form class="focused-youtube__form" action="#" v-on:submit="search">
-            <input type="text" v-model="searchQuery" />
-            <input type="submit" value="Search" />
+        <div class="focused-youtube__body">
+          <form class="focused-youtube__form search-form" action="#" v-on:submit="search">
+            <input class="search-form__text-input" type="text" v-model="searchQuery" placeholder="Search" />
+            <button class="search-form__submit"></button>
           </form>
         </div>
       </div>

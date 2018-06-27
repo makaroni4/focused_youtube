@@ -12,12 +12,18 @@
         "content.js"
       ],
       "css": [
-        "style.css"
+        "styles/style.css"
       ],
       "run_at": "document_end"
     }
   ],
   "permissions": [
     "https://www.youtube.com/"
+  ],
+  "web_accessible_resources": [
+    "fonts/Roboto-Regular.ttf",
+    "styles/style.css",
+    "images/search_icon.svg",
+    "images/youtube_logo.png"
   ]
 }

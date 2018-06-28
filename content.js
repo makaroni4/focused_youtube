@@ -3,14 +3,28 @@
 
   var currentUrl = window.location.href;
 
+  var cleanUpFYClasses = function() {
+    document.body.classList.forEach(className => {
+      if(className.startsWith("fy-")) {
+        document.body.classList.remove(className);
+      }
+    });
+  }
+
   var initFY = function() {
-    console.log("--> initFY");
+    cleanUpFYClasses();
 
     if(window.location.pathname === "/") {
       initHomePage();
     } else if(window.location.pathname === "/results") {
       initResultsPage();
+    } else if(window.location.pathname === "/watch") {
+      initWatchPage();
     }
+  }
+
+  var initWatchPage = function() {
+    document.body.classList.add("fy-watch-page");
   }
 
   var initResultsPage = function() {
@@ -82,6 +96,4 @@
       initFY();
     }
   });
-
-  console.log("--> Loading Focused Youtube Extension");
 })();

@@ -88,3 +88,14 @@ body.fy-results-page #dismissable.ytd-video-renderer {
   max-width: 800px;
   margin: 0 auto;
 }
+
+body.fy-watch-page #guide-button,
+body.fy-watch-page #guide-content,
+body.fy-watch-page #end,
+body.fy-watch-page #sub-menu,
+body.fy-watch-page #items,
+body.fy-watch-page #related,
+body.fy-watch-page #subscribe-button,
+body.fy-watch-page #comments {
+  display: none;
+}

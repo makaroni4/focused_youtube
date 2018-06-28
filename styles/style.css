@@ -74,3 +74,17 @@ body {
 
   cursor: pointer;
 }
+
+body.fy-results-page #guide-button,
+body.fy-results-page #guide-content,
+body.fy-results-page #end,
+body.fy-results-page #sub-menu,
+body.fy-results-page ytd-horizontal-card-list-renderer,
+body.fy-results-page ytd-channel-renderer {
+  display: none;
+}
+
+body.fy-results-page #dismissable.ytd-video-renderer {
+  max-width: 800px;
+  margin: 0 auto;
+}

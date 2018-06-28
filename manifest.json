@@ -1,7 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Focused Youtube: hide all elements that might drag your attention",
+  "name": "Focused Youtube",
+  "description": "This extension restyles Youtube search & watch pages (removes comments, recommendations), as long as the homepage. It's an open source project: https://github.com/makaroni4/focused_youtube",
   "version": "0.1",
+  "author": "Anatoli Makarevich",
   "content_scripts": [
     {
       "matches": [

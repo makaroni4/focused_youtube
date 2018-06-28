@@ -8,8 +8,8 @@
         "https://www.youtube.com/*"
       ],
       "js": [
-        "vue.js",
-        "content.js"
+        "js/vue.js",
+        "js/app.js"
       ],
       "css": [
         "styles/style.css"

@@ -80,7 +80,10 @@ body.fy-results-page #guide-content,
 body.fy-results-page #end,
 body.fy-results-page #sub-menu,
 body.fy-results-page ytd-horizontal-card-list-renderer,
-body.fy-results-page ytd-channel-renderer {
+body.fy-results-page ytd-channel-renderer,
+body.fy-results-page ytd-playlist-renderer,
+body.fy-results-page ytd-radio-renderer,
+body.fy-results-page yt-showing-results-for-renderer {
   display: none;
 }
 
@@ -96,6 +99,13 @@ body.fy-watch-page #sub-menu,
 body.fy-watch-page #items,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
-body.fy-watch-page #comments {
+body.fy-watch-page #comments,
+body.fy-watch-page ytd-button-renderer,
+body.fy-watch-page yt-icon-button.dropdown-trigger:first-of-type,
+body.fy-watch-page ytd-sentiment-bar-renderer {
   display: none;
+}
+
+body.fy-watch-page ytd-video-secondary-info-renderer {
+  border: 0;
 }

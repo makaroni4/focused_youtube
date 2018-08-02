@@ -1,9 +1,12 @@
 {
   "manifest_version": 2,
   "name": "Focused Youtube",
-  "description": "This extension restyles Youtube search & watch pages (removes comments, recommendations), as long as the homepage. It's an open source project: https://github.com/makaroni4/focused_youtube",
+  "description": "Open source extension that removes comments/recommendations from Youtube: https://github.com/makaroni4/focused_youtube",
   "version": "0.1",
   "author": "Anatoli Makarevich",
+  "icons": {
+    "128": "extension_icon.png"
+  },
   "content_scripts": [
     {
       "matches": [

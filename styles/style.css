@@ -81,15 +81,15 @@ body.fy-results-page #end,
 body.fy-results-page #sub-menu,
 body.fy-results-page ytd-horizontal-card-list-renderer,
 body.fy-results-page ytd-channel-renderer,
-body.fy-results-page ytd-playlist-renderer,
-body.fy-results-page ytd-radio-renderer,
 body.fy-results-page yt-showing-results-for-renderer {
   display: none;
 }
 
-body.fy-results-page #dismissable.ytd-video-renderer {
+body.fy-results-page #dismissable.ytd-video-renderer,
+body.fy-results-page .ytd-item-section-renderer {
   max-width: 800px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body.fy-watch-page #guide-button,

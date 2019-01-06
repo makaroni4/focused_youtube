@@ -102,10 +102,21 @@ body.fy-watch-page #subscribe-button,
 body.fy-watch-page #comments,
 body.fy-watch-page ytd-button-renderer,
 body.fy-watch-page yt-icon-button.dropdown-trigger:first-of-type,
-body.fy-watch-page ytd-sentiment-bar-renderer {
+body.fy-watch-page ytd-sentiment-bar-renderer,
+.ytd-browse .app-header {
   display: none;
 }
 
 body.fy-watch-page ytd-video-secondary-info-renderer {
   border: 0;
+}
+
+/* Hides "Subscribe" to channel button from videos page */
+ytd-browse[page-subtype='channels'] .app-header {
+  display: none;
+}
+
+/* Hides notification bell-icon from header menu */
+ytd-notification-topbar-button-renderer.notification-button-style-type-default {
+  display: none !important;
 }

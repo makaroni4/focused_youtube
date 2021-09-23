@@ -32,6 +32,12 @@
   }
 
   var initHomePage = function() {
+	function search(event) {
+	  event.preventDefault();
+
+	  window.location.href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(anchor.querySelector('.search-form__text-input').value);
+	}
+	  
     document.body.classList.add("fy-home-page");
 
     const body = document.querySelector("body");
@@ -40,33 +46,20 @@
 
     body.innerHTML = "";
     document.body.appendChild(anchor);
-
-    var app = new Vue({
-      el: "#mega-app",
-      data: {
-        searchQuery: ""
-      },
-      methods: {
-        search: function (event) {
-          event.preventDefault();
-
-          window.location.href = "https://www.youtube.com/results?search_query=" + encodeURI(this.searchQuery);
-        }
-      },
-      template: `
+	anchor.innerHTML = `
         <div class="focused-youtube">
           <div class="focused-youtube__logo">
           </div>
 
           <div class="focused-youtube__body">
-            <form class="focused-youtube__form search-form" action="#" v-on:submit="search">
-              <input class="search-form__text-input" type="text" v-model="searchQuery" placeholder="Search" />
+            <form class="focused-youtube__form search-form" action="#">
+              <input class="search-form__text-input" type="text" placeholder="Search" />
               <button class="search-form__submit"></button>
             </form>
           </div>
         </div>
-      `
-    });
+      `;
+	  anchor.querySelector('.search-form').onsubmit = search;
   }
 
   var observeDOM = (function() {

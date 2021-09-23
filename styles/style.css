@@ -116,6 +116,13 @@ ytd-browse[page-subtype='channels'] .app-header {
   display: none;
 }
 
+/* Styles specific to /watch */
+.ytd-watch-flexy#secondary,  /* Remove reccomended sidebar, give video more space */
+.html5-endscreen  /* Remove suggested video endscreen */
+{
+	display: none;
+}
+
 /* Hides notification bell-icon from header menu */
 ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;

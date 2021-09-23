@@ -1,0 +1,1 @@
+Check out on [Chrome Web Store](https://chrome.google.com/webstore/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn)

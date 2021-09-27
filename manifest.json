@@ -25,13 +25,13 @@
     "https://www.youtube.com/*"
   ],
   "web_accessible_resources": [
-	{
+	  {
       "resources": [
-		"fonts/Roboto-Regular.ttf",
-		"styles/style.css",
-		"images/search_icon.svg",
-		"images/youtube_logo.png"
-	],
+        "fonts/Roboto-Regular.ttf",
+        "styles/style.css",
+        "images/search_icon.svg",
+        "images/youtube_logo.png"
+      ],
       "matches": [ "https://www.youtube.com/*" ]
     }
   ]

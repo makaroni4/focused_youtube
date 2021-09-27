@@ -81,7 +81,8 @@ body.fy-results-page #end,
 body.fy-results-page #sub-menu,
 body.fy-results-page ytd-horizontal-card-list-renderer,
 body.fy-results-page ytd-channel-renderer,
-body.fy-results-page yt-showing-results-for-renderer {
+body.fy-results-page yt-showing-results-for-renderer,
+body.fy-results-page #secondary {
   display: none;
 }
 

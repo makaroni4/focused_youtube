@@ -18,6 +18,10 @@
 
 <img width="800" alt="video_page" src="https://user-images.githubusercontent.com/768070/134961989-6673499b-311f-4334-825b-815b66446fd1.png">
 
+### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings).
+
+<img width="800" alt="search_page" src="https://user-images.githubusercontent.com/99250816/202904369-6acb1b97-66da-4aa2-8035-1790184584ae.png">
+
 ## Development
 
 Clone FY's repo to your computer.

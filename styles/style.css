@@ -18,7 +18,7 @@ body {
   flex-grow: 1;
   position: relative;
 
-  background-color: #F1F6F4;
+  background-color: #0F0F0F;
 }
 
 .focused-youtube__logo {
@@ -28,7 +28,7 @@ body {
   width: 100px;
   height: 22px;
 
-  background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo.png");
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -47,15 +47,23 @@ body {
   min-width: 300px;
   padding: 8px 12px;
 
-  border: 1px solid #ded7d7;
+  border: 1px solid hsl(0, 0%, 18.82%);
+  ;
   border-right: none;
   border-radius: 0 0 2px 2px;
   outline: none;
+  background-color: #121212;
 
   font-family: Roboto;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+  color: #E2E2E2;
+}
+
+::placeholder {
+  color: #E2E2E2;
+  opacity: 0.5;
 }
 
 .search-form__submit {
@@ -63,15 +71,16 @@ body {
   width: 70px;
   height: 42px;
 
-  border: 1px solid #ded7d7;
+  border: 1px solid hsl(0, 0%, 18.82%);
+  ;
   border-radius: 2px 2px 0 0;
   outline: none;
 
-  background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon.svg');
+  background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon_dark.svg');
   background-size: 24px 24px;
   background-repeat: no-repeat;
   background-position: center;
-
+  background-color: #222222;
   cursor: pointer;
 }
 
@@ -118,10 +127,13 @@ ytd-browse[page-subtype='channels'] .app-header {
 }
 
 /* Styles specific to /watch */
-.ytd-watch-flexy#secondary,  /* Remove reccomended sidebar, give video more space */
-.html5-endscreen  /* Remove suggested video endscreen */
-{
-	display: none;
+.ytd-watch-flexy#secondary,
+/* Remove reccomended sidebar, give video more space */
+.html5-endscreen
+
+/* Remove suggested video endscreen */
+  {
+  display: none;
 }
 
 /* Hides notification bell-icon from header menu */

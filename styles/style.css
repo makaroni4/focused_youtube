@@ -127,13 +127,42 @@ ytd-live-chat-frame  /* Hide live chat and chat replay */
   display: none !important;
 }
 
-.ytd-watch-flexy#secondary {  /* Remove reccomended sidebar, give video more space unless there it is a playlist */
-  width: auto !important;
-  min-width: 0 !important;
-  max-width: var(--ytd-watch-flexy-sidebar-width);
+.ytd-watch-flexy#secondary, /* Remove reccomended sidebar, give video more space */
+.html5-endscreen { /* Remove suggested video endscreen */  
+  display: none;
 }
 
 /* Hides notification bell-icon from header menu */
 ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;
+}
+
+/* Setting for darkmode */
+@media (prefers-color-scheme: dark) {
+  .focused-youtube {
+    background-color: #0F0F0F;
+  }
+
+  .focused-youtube__logo {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark.png");
+  }
+
+  .search-form__text-input {
+    border: 1px solid hsl(0, 0%, 18.82%);
+    ;
+    background-color: #121212;
+    color: #E2E2E2;
+  }
+
+  ::placeholder {
+    color: #E2E2E2;
+    opacity: 0.5;
+  }
+
+  .search-form__submit {
+    border: 1px solid hsl(0, 0%, 18.82%);
+    ;
+    background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon_dark.svg');
+    background-color: #222222;
+  }
 }

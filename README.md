@@ -1,12 +1,12 @@
-# Focused Youtube <a href="https://chrome.google.com/webstore/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn"><img width="124" alt="Add to Chrome" src="https://user-images.githubusercontent.com/768070/113516074-a1513500-9578-11eb-9eb9-06326003cf66.png"></a>
+# Focused YouTube <a href="https://chrome.google.com/webstore/detail/focused-YouTube/nfghbmabdoakhobmimnjkamfdnpfammn"><img width="124" alt="Add to Chrome" src="https://user-images.githubusercontent.com/768070/113516074-a1513500-9578-11eb-9eb9-06326003cf66.png"></a>
 
-:mag: **Focused Youtube** (FY) is a Chrome Extension that helps you stay focused by blocking recommendations and other elements on Youtube.
+:mag: **Focused YouTube** (FY) is a Chrome Extension that helps you stay focused by blocking recommendations and other elements on YouTube.
 
-:heart: FY **does not track any user data**. It's a simple Vanilla JS application made with only one purpose – to help you avoid Youtube's rabbit hole.
+:heart: FY **does not track any user data**. It's a simple Vanilla JS application made with only one purpose – to help you avoid YouTube's rabbit hole.
 
 ## Screenshots
 
-### 🏠 Distraction-free Youtube homepage.
+### 🏠 Distraction-free YouTube homepage.
 
 <img width="800" alt="home_page" src="https://user-images.githubusercontent.com/768070/134961830-40a6ec9d-9593-4447-b3d7-fa02462d6a19.png">
 
@@ -17,6 +17,10 @@
 ### 📺 Noise-free video page.
 
 <img width="800" alt="video_page" src="https://user-images.githubusercontent.com/768070/134961989-6673499b-311f-4334-825b-815b66446fd1.png">
+
+### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings).
+
+<img width="800" alt="search_page" src="https://user-images.githubusercontent.com/99250816/202904369-6acb1b97-66da-4aa2-8035-1790184584ae.png">
 
 ## Development
 

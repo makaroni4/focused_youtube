@@ -97,7 +97,6 @@ body.fy-watch-page #guide-button,
 body.fy-watch-page #guide-content,
 body.fy-watch-page #end,
 body.fy-watch-page #sub-menu,
-body.fy-watch-page #items,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
 body.fy-watch-page #comments,
@@ -118,12 +117,18 @@ ytd-browse[page-subtype='channels'] .app-header {
 }
 
 /* Styles specific to /watch */
-.ytd-watch-flexy#secondary,
-/* Remove reccomended sidebar, give video more space */
-.html5-endscreen
+.html5-endscreen,  /* Remove suggested video endscreen */
+.ytp-ce-element,  /* Remove end-video subscribe and author reccomendations */
+.ytd-popup-container,  /* Remove YT premium/TV nudges */
+.ytp-pause-overlay,  /* hide suggest video popup when embedded videos paused */
+.ytp-next-button,  /* Remove play next button */
+ytd-live-chat-frame  /* Hide live chat and chat replay */
+{
+  display: none !important;
+}
 
-/* Remove suggested video endscreen */
-  {
+.ytd-watch-flexy#secondary, /* Remove reccomended sidebar, give video more space */
+.html5-endscreen { /* Remove suggested video endscreen */  
   display: none;
 }
 

@@ -137,7 +137,7 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;
 }
 
-/* Setting for darkmode */
+/* Settings for Dark Mode */
 @media (prefers-color-scheme: dark) {
   .focused-youtube {
     background-color: #0F0F0F;

@@ -31,3 +31,11 @@ Load the repo to [chrome://extensions/](chrome://extensions/) via "Load unpacked
 <img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
 
 :mag: You'll need to update extension :point_up: every time you changed CSS/JS files.
+
+### Dark Mode
+
+Big shout out to @Kubot11 for introducing Dark Mode! :raised_hands:
+
+Make sure to enable Dark Mode in your Chrome before testing it:
+
+https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop

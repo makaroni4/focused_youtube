@@ -48,8 +48,8 @@ body {
   padding: 8px 12px;
 
   border: 1px solid #ded7d7;
-  border-right: none;
-  border-radius: 0 0 2px 2px;
+  border-right: 0;
+  border-radius: 2px 0 0 2px;
   outline: none;
 
   font-family: Roboto;
@@ -64,7 +64,7 @@ body {
   height: 42px;
 
   border: 1px solid #ded7d7;
-  border-radius: 2px 2px 0 0;
+  border-radius: 0 2px 2px 0;
   outline: none;
 
   background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon.svg');
@@ -128,7 +128,7 @@ ytd-live-chat-frame  /* Hide live chat and chat replay */
 }
 
 .ytd-watch-flexy#secondary, /* Remove reccomended sidebar, give video more space */
-.html5-endscreen { /* Remove suggested video endscreen */  
+.html5-endscreen { /* Remove suggested video endscreen */
   display: none;
 }
 
@@ -149,8 +149,11 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 
   .search-form__text-input {
     border: 1px solid hsl(0, 0%, 18.82%);
-    ;
+    border-right: 0;
+    border-radius: 2px 0 0 2px;
+
     background-color: #121212;
+
     color: #E2E2E2;
   }
 
@@ -161,7 +164,8 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 
   .search-form__submit {
     border: 1px solid hsl(0, 0%, 18.82%);
-    ;
+    border-radius: 0 2px 2px 0;
+
     background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon_dark.svg');
     background-color: #222222;
   }

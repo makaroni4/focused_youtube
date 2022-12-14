@@ -75,6 +75,9 @@ body {
   cursor: pointer;
 }
 
+/* Do not delete the ".ytd-popup-container" class to avoid losing
++ the dropdown menu on the top rigth side of the video block */
+
 body.fy-results-page #guide-button,
 body.fy-results-page #guide-content,
 body.fy-results-page #end,
@@ -101,10 +104,15 @@ body.fy-watch-page #sub-menu,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
 body.fy-watch-page #comments,
-body.fy-watch-page ytd-button-renderer,
 body.fy-watch-page yt-icon-button.dropdown-trigger:first-of-type,
 body.fy-watch-page ytd-sentiment-bar-renderer,
-.ytd-browse .app-header {
+body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */
+body.fy-watch-page .ytp-ce-element, /* Remove end-video subscribe and author recommendations */
+body.fy-watch-page .ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this, /* Remove YT premium/TV nudges */
+body.fy-watch-page .ytp-pause-overlay, /* hide suggest video popup when embedded videos paused */
+body.fy-watch-page .ytp-next-button, /* Remove play next button */
+body.fy-watch-page ytd-live-chat-frame /* Hide live chat and chat replay */
+body.fy-watch-page .ytd-browse .app-header {
   display: none;
 }
 
@@ -115,17 +123,6 @@ body.fy-watch-page ytd-video-secondary-info-renderer {
 /* Hides "Subscribe" to channel button from videos page */
 ytd-browse[page-subtype='channels'] .app-header {
   display: none;
-}
-
-/* Styles specific to /watch */
-.html5-endscreen,  /* Remove suggested video endscreen */
-.ytp-ce-element,  /* Remove end-video subscribe and author reccomendations */
-.ytd-popup-container,  /* Remove YT premium/TV nudges */
-.ytp-pause-overlay,  /* hide suggest video popup when embedded videos paused */
-.ytp-next-button,  /* Remove play next button */
-ytd-live-chat-frame  /* Hide live chat and chat replay */
-{
-  display: none !important;
 }
 
 .ytd-watch-flexy#secondary, /* Remove reccomended sidebar, give video more space */

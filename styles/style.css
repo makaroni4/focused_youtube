@@ -86,7 +86,7 @@ body.fy-results-page ytd-horizontal-card-list-renderer,
 body.fy-results-page ytd-channel-renderer,
 body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
-body.fy-results-page #secondary {
+body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer {
   display: none;
 }
 
@@ -111,9 +111,10 @@ body.fy-watch-page .ytp-ce-element, /* Remove end-video subscribe and author rec
 body.fy-watch-page .ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this, /* Remove YT premium/TV nudges */
 body.fy-watch-page .ytp-pause-overlay, /* hide suggest video popup when embedded videos paused */
 body.fy-watch-page .ytp-next-button, /* Remove play next button */
+body.fy-watch-page .html5-endscreen /* Remove suggested video endscreen */
 body.fy-watch-page ytd-live-chat-frame /* Hide live chat and chat replay */
 body.fy-watch-page .ytd-browse .app-header {
-  display: none;
+  display: none !important;
 }
 
 body.fy-watch-page ytd-video-secondary-info-renderer {
@@ -125,15 +126,69 @@ ytd-browse[page-subtype='channels'] .app-header {
   display: none;
 }
 
-.ytd-watch-flexy#secondary, /* Remove reccomended sidebar, give video more space */
-.html5-endscreen { /* Remove suggested video endscreen */
-  display: none;
-}
-
 /* Hides notification bell-icon from header menu */
 ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;
 }
+
+/* Settings for toddle switsch button */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
 
 /* Settings for Dark Mode */
 @media (prefers-color-scheme: dark) {

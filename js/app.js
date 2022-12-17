@@ -98,12 +98,12 @@
     }
   });
 
-  const $container = document.querySelector("#center.ytd-masthead");
+  const $container = document.querySelector("#start.ytd-masthead");
 
   if ($container) {
     let label = document.createElement("label");
     label.classList.add("switch");
-    $container.prepend(label);
+    $container.appendChild(label);
 
     let input = document.createElement("input");
     input.classList.add("checkbox");

@@ -171,16 +171,17 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-image: url('chrome-extension://__MSG_@@extension_id__/images/extension_icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
-
-  
+  background-color: #2196F3;  
 }
 
 input:focus + .slider {

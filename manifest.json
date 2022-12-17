@@ -33,7 +33,8 @@
         "images/search_icon.svg",
         "images/youtube_logo.png",
         "images/search_icon_dark.svg",
-        "images/youtube_logo_dark.png"
+        "images/youtube_logo_dark.png",
+        "images/extension_icon.png"
 
       ],
       "matches": [ "https://www.youtube.com/*" ]

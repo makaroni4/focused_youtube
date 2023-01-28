@@ -1,11 +1,11 @@
-(function() {
+(function () {
   document.body.style.display = "block";
 
   let currentUrl = window.location.href;
 
   let cleanUpFYClasses = () => {
     document.body.classList.forEach(className => {
-      if(className.startsWith("fy-")) {
+      if (className.startsWith("fy-")) {
         document.body.classList.remove(className);
       }
     });
@@ -14,11 +14,11 @@
   const initFY = () => {
     cleanUpFYClasses();
 
-    if(window.location.pathname === "/") {
+    if (window.location.pathname === "/") {
       initHomePage();
-    } else if(window.location.pathname === "/results") {
+    } else if (window.location.pathname === "/results") {
       initResultsPage();
-    } else if(window.location.pathname === "/watch") {
+    } else if (window.location.pathname === "/watch") {
       initWatchPage();
     }
   }
@@ -65,14 +65,14 @@
     anchor.querySelector(".search-form").onsubmit = search;
   }
 
-  const observeDOM = (function() {
+  const observeDOM = (function () {
     const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
     const eventListenerSupported = window.addEventListener;
 
-    return function(obj, callback) {
-      if(MutationObserver) {
-        let obs = new MutationObserver(function(mutations, observer) {
-          if(mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+    return function (obj, callback) {
+      if (MutationObserver) {
+        let obs = new MutationObserver(function (mutations, observer) {
+          if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
             callback();
           }
         });
@@ -81,7 +81,7 @@
           childList: true,
           subtree: true
         });
-      } else if(eventListenerSupported) {
+      } else if (eventListenerSupported) {
         obj.addEventListener("DOMNodeInserted", callback, false);
         obj.addEventListener("DOMNodeRemoved", callback, false);
       }
@@ -90,11 +90,40 @@
 
   initFY();
 
-  observeDOM(document.body, function(){
-    if(currentUrl !== window.location.href) {
+  observeDOM(document.body, function () {
+    if (currentUrl !== window.location.href) {
       currentUrl = window.location.href;
 
       initFY();
     }
   });
+
+  const $container = document.querySelector("#start.ytd-masthead");
+
+  if ($container) {
+    let label = document.createElement("label");
+    label.classList.add("switch");
+    $container.appendChild(label);
+
+    let input = document.createElement("input");
+    input.classList.add("checkbox");
+    input.type = "checkbox";
+    input.checked = true;
+    label.appendChild(input);
+
+    let span = document.createElement("span");
+    span.classList.add("slider");
+    label.appendChild(span);
+
+    input.addEventListener('change', function () {
+      if (this.checked) {
+        initFY();
+      } else {
+        cleanUpFYClasses();
+      }
+    });
+  }
+
+
+
 })();

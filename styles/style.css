@@ -9,7 +9,7 @@ body {
   display: none;
 }
 
-.focused-youtube {
+.fy-home-page {
   height: 100vw;
   height: 100vh;
   display: flex;
@@ -21,7 +21,7 @@ body {
   background-color: #F1F6F4;
 }
 
-.focused-youtube__logo {
+.fy-home-page__logo {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -33,7 +33,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.focused-youtube__form {
+.fy-home-page__form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,11 +195,11 @@ input:checked + .fy-slider:before {
 
 /* Settings for Dark Mode */
 @media (prefers-color-scheme: dark) {
-  .focused-youtube {
+  .fy-home-page {
     background-color: #0F0F0F;
   }
 
-  .focused-youtube__logo {
+  .fy-home-page__logo {
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark.png");
   }
 

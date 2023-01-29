@@ -49,12 +49,12 @@
     document.body.appendChild(anchor);
 
     anchor.innerHTML = `
-      <div class="focused-youtube">
-        <div class="focused-youtube__logo">
+      <div class="fy-home-page">
+        <div class="fy-home-page__logo">
         </div>
 
-        <div class="focused-youtube__body">
-          <form class="focused-youtube__form fy-search-form" action="#">
+        <div class="fy-home-page__body">
+          <form class="fy-home-page__form fy-search-form" action="#">
             <input class="fy-search-form__text-input" type="text" placeholder="Search" />
             <button class="fy-search-form__submit"></button>
           </form>

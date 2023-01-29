@@ -21,6 +21,8 @@
     } else if (window.location.pathname === "/watch") {
       initWatchPage();
     }
+
+    insertToggleSwitch();
   }
 
   const initWatchPage = () => {
@@ -88,30 +90,28 @@
     };
   })();
 
-  initFY();
+  const insertToggleSwitch = () => {
+    const container = document.querySelector("#start.ytd-masthead");
 
-  observeDOM(document.body, function () {
-    if (currentUrl !== window.location.href) {
-      currentUrl = window.location.href;
-
-      initFY();
+    if (!container) {
+      return;
     }
-  });
 
-  const $container = document.querySelector("#start.ytd-masthead");
+    if (document.querySelector(".fy-switch")) {
+      return;
+    }
 
-  if ($container) {
-    let label = document.createElement("label");
+    const label = document.createElement("label");
     label.classList.add("fy-switch");
-    $container.appendChild(label);
+    container.appendChild(label);
 
-    let input = document.createElement("input");
+    const input = document.createElement("input");
     input.classList.add("checkbox");
     input.type = "checkbox";
     input.checked = true;
     label.appendChild(input);
 
-    let span = document.createElement("span");
+    const span = document.createElement("span");
     span.classList.add("fy-slider");
     label.appendChild(span);
 
@@ -124,6 +124,13 @@
     });
   }
 
+  initFY();
 
+  observeDOM(document.body, function () {
+    if (currentUrl !== window.location.href) {
+      currentUrl = window.location.href;
 
+      initFY();
+    }
+  });
 })();

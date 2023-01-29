@@ -106,7 +106,6 @@
     container.appendChild(label);
 
     const input = document.createElement("input");
-    input.classList.add("checkbox");
     input.type = "checkbox";
     input.checked = true;
     label.appendChild(input);

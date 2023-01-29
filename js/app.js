@@ -13,6 +13,7 @@
 
   const initFY = () => {
     cleanUpFYClasses();
+    initToggleSwitch();
 
     if (window.location.pathname === "/") {
       initHomePage();
@@ -21,8 +22,6 @@
     } else if (window.location.pathname === "/watch") {
       initWatchPage();
     }
-
-    insertToggleSwitch();
   }
 
   const initWatchPage = () => {
@@ -90,14 +89,20 @@
     };
   })();
 
-  const insertToggleSwitch = () => {
+  const initToggleSwitch = () => {
     const container = document.querySelector("#start.ytd-masthead");
 
     if (!container) {
       return;
     }
 
-    if (document.querySelector(".fy-switch")) {
+    const toggleSwitch = document.querySelector(".fy-switch");
+
+    if (toggleSwitch) {
+      // This is desired UX: turn switch ON on every page load.
+      const input = toggleSwitch.querySelector("input");
+      input.checked = true;
+
       return;
     }
 
@@ -111,7 +116,7 @@
     label.appendChild(input);
 
     const span = document.createElement("span");
-    span.classList.add("fy-slider");
+    span.classList.add("fy-switch__slider");
     label.appendChild(span);
 
     input.addEventListener("change", function () {

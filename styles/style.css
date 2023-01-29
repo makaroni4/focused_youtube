@@ -155,7 +155,7 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 }
 
 /* The slider */
-.fy-slider {
+.fy-switch__slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -169,7 +169,7 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   box-shadow: 0 0 1px #555;
 }
 
-.fy-slider:before {
+.fy-switch__slider:before {
   position: absolute;
   content: "";
   height: 14px;
@@ -185,11 +185,11 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   border-radius: 50%;
 }
 
-input:checked + .fy-slider {
+input:checked + .fy-switch__slider {
   background-color: #FFF;
 }
 
-input:checked + .fy-slider:before {
+input:checked + .fy-switch__slider:before {
   transform: translateX(14px);
 }
 

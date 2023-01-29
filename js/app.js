@@ -35,7 +35,7 @@
     const search = (event) => {
       event.preventDefault();
 
-      const query = anchor.querySelector(".search-form__text-input").value;
+      const query = anchor.querySelector(".fy-search-form__text-input").value;
       window.location.href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query);
     }
 
@@ -54,15 +54,15 @@
         </div>
 
         <div class="focused-youtube__body">
-          <form class="focused-youtube__form search-form" action="#">
-            <input class="search-form__text-input" type="text" placeholder="Search" />
-            <button class="search-form__submit"></button>
+          <form class="focused-youtube__form fy-search-form" action="#">
+            <input class="fy-search-form__text-input" type="text" placeholder="Search" />
+            <button class="fy-search-form__submit"></button>
           </form>
         </div>
       </div>
     `;
 
-    anchor.querySelector(".search-form").onsubmit = search;
+    anchor.querySelector(".fy-search-form").onsubmit = search;
   }
 
   const observeDOM = (function () {
@@ -102,7 +102,7 @@
 
   if ($container) {
     let label = document.createElement("label");
-    label.classList.add("switch");
+    label.classList.add("fy-switch");
     $container.appendChild(label);
 
     let input = document.createElement("input");
@@ -112,10 +112,10 @@
     label.appendChild(input);
 
     let span = document.createElement("span");
-    span.classList.add("slider");
+    span.classList.add("fy-slider");
     label.appendChild(span);
 
-    input.addEventListener('change', function () {
+    input.addEventListener("change", function () {
       if (this.checked) {
         initFY();
       } else {

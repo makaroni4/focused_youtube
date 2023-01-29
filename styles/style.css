@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf");
@@ -39,11 +39,11 @@ body {
   justify-content: center;
 }
 
-.search-form {
+.fy-search-form {
   display: flex;
 }
 
-.search-form__text-input {
+.fy-search-form__text-input {
   min-width: 300px;
   padding: 8px 12px;
 
@@ -58,7 +58,7 @@ body {
   font-weight: 400;
 }
 
-.search-form__submit {
+.fy-search-form__submit {
   display: block;
   width: 70px;
   height: 42px;
@@ -135,11 +135,11 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 
 /* Settings for toddle switsch button */
 
-#logo.ytd-masthead{ 
+#logo.ytd-masthead{
   margin-right: 16px;
 }
 
-.switch {
+.fy-switch {
   position: relative;
   display: inline-block;
   width: 32px;
@@ -147,14 +147,14 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 }
 
 /* Hide default HTML checkbox */
-.switch input {
+.fy-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
 /* The slider */
-.slider {
+.fy-slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -165,10 +165,10 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 18px;
-
+  box-shadow: 0 0 1px #555;
 }
 
-.slider:before {
+.fy-slider:before {
   position: absolute;
   content: "";
   height: 14px;
@@ -184,17 +184,11 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   border-radius: 50%;
 }
 
-input:checked + .slider {
-  background-color: #2196F3;  
+input:checked + .fy-slider {
+  background-color: #FFF;
 }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(14px);
-  -ms-transform: translateX(14px);
+input:checked + .fy-slider:before {
   transform: translateX(14px);
 }
 
@@ -209,7 +203,7 @@ input:checked + .slider:before {
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark.png");
   }
 
-  .search-form__text-input {
+  .fy-search-form__text-input {
     border: 1px solid hsl(0, 0%, 18.82%);
     border-right: 0;
     border-radius: 2px 0 0 2px;
@@ -224,7 +218,7 @@ input:checked + .slider:before {
     opacity: 0.5;
   }
 
-  .search-form__submit {
+  .fy-search-form__submit {
     border: 1px solid hsl(0, 0%, 18.82%);
     border-radius: 0 2px 2px 0;
 

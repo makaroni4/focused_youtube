@@ -5,6 +5,7 @@
   src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf");
 }
 
+/* Hide the whole page by default to prevent blinking when extension is being loaded. */
 body {
   display: none;
 }
@@ -76,7 +77,7 @@ body {
 }
 
 /* Do not delete the ".ytd-popup-container" class to avoid losing
-+ the dropdown menu on the top rigth side of the video block */
++ the dropdown menu on the top rigth side of the video block. */
 
 body.fy-results-page #guide-icon.ytd-masthead,
 body.fy-watch-page .button.yt-icon-button,
@@ -88,7 +89,7 @@ body.fy-results-page ytd-channel-renderer,
 body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
 body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer {
-  display: none;
+  display: none !important;
 }
 
 body.fy-results-page #dismissable.ytd-video-renderer,

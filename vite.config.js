@@ -11,7 +11,9 @@ export default defineConfig({
         extension: "src/extension.js"
       },
       output: {
-        entryFileNames: "[name].js"
+        entryFileNames: "assets/[name].js",
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`
       }
     }
   }

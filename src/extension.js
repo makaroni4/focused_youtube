@@ -1,3 +1,5 @@
+import './style-overrides.css'
+
 (function () {
   document.body.style.display = "block";
 

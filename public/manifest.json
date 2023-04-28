@@ -13,10 +13,12 @@
         "https://www.youtube.com/*"
       ],
       "js": [
-        "js/app.js"
+        "assets/extension.js",
+        "assets/popup.js"
       ],
       "css": [
-        "styles/style.css"
+        "assets/extension.css",
+        "assets/popup.css"
       ],
       "run_at": "document_end",
       "all_frames": true

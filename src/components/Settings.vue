@@ -1,13 +1,28 @@
-<script setup>
-import { ref } from 'vue'
+<script>
+import VueToggle from "vue-toggle-component";
 
-defineProps({
-})
+export default {
+  components: {
+    VueToggle
+  },
+  methods: {
+    handleCommentsToggle(val) {
+      window.console.log(`--> val: `, val);
+    }
+  }
+};
 </script>
 
 <template>
   <div class="focused-youtube-settings">
     <h1>Settings</h1>
+
+    <div>
+      <VueToggle
+        title="Comments section"
+        name="Comments section"
+        @toggle="handleCommentsToggle" />
+    </div>
 
     <div class="focused-youtube-settings__menu">
       <a

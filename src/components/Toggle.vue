@@ -20,15 +20,18 @@
       class="m-toggle__input"
       type="checkbox"
     />
-    <span
-      :aria-checked="toggleState"
-      :aria-labelledby="`${id}-label`"
-      class="m-toggle__content"
-      role="checkbox"
-      @click="toggle"
-    >
-      <div class="m-toggle__knob"></div>
-    </span>
+
+    <div class="m-toggle__wrapper">
+      <span
+        :aria-checked="toggleState"
+        :aria-labelledby="`${id}-label`"
+        class="m-toggle__content"
+        role="checkbox"
+        @click="toggle"
+      >
+        <div class="m-toggle__knob"></div>
+      </span>
+    </div>
   </section>
 </template>
 
@@ -88,35 +91,51 @@ export default {
 
   &__content {
     background: #B5B9BE;
-    border-radius: 2em;
+    border-radius: 8px;
     box-sizing: border-box;
-    height: 2em;
     outline: 0;
     overflow: hidden;
     padding: $toggle-spacing;
     transition: background-color .4s ease;
-    width: 4em;
     will-change: background-color;
+    width: 100%;
+    height: 12px;
+  }
+
+  &__wrapper {
+    display: flex;
+    position: relative;
+    width: 32px;
   }
 
   &__knob {
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .4);
-    display: block;
+    background-color: #B5B9BE;
     height: 100%;
-    left: 0;
-    position: relative;
-    transition: left .2s ease;
-    width: calc(50% - #{$toggle-spacing});
-    will-change: left;
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      transition: all .2s ease;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: white;
+      content: "";
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .4);
+    }
   }
 
   &--active {
     #{$self}__knob {
-      left: calc(50% + #{$toggle-spacing});
+      background-color: #8AB4F0;
 
-      background-color: #166AE2;
+      &:after {
+        left: 100%;
+        transform: translateX(-100%) translateY(-50%);
+        background-color: #166AE2;
+      }
     }
 
     #{$self}__content {

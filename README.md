@@ -22,6 +22,14 @@
 
 <img width="800" alt="search_page" src="https://user-images.githubusercontent.com/99250816/202904369-6acb1b97-66da-4aa2-8035-1790184584ae.png">
 
+### 💬 An option to show/hide the comments section.
+
+## Contributing
+
+You're more than welcome to contribute. In fact, I'm really looking forward to it! :rocket:
+
+Just make sure to check out the [contribution guidelines](https://github.com/makaroni4/focused_youtube/blob/main/CONTRIBUTING.md). :pray:
+
 ## Development
 
 Clone FY's repo to your computer.
@@ -30,7 +38,13 @@ Load the repo to [chrome://extensions/](chrome://extensions/) via "Load unpacked
 
 <img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
 
-:mag: You'll need to update extension :point_up: every time you changed CSS/JS files.
+Install dependencies and run a command to re-build the extension on any file change. :warning: Note, that you'll need to update the extension (by clicking on the update icon) :point_up: every time you want to test the latest version.
+
+```
+npm install
+
+npm run mon
+```
 
 ### Dark Mode
 

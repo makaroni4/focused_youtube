@@ -8,21 +8,23 @@
 
 ### 🏠 Distraction-free YouTube homepage.
 
-<img width="800" alt="home_page" src="https://user-images.githubusercontent.com/768070/134961830-40a6ec9d-9593-4447-b3d7-fa02462d6a19.png">
+<img width="800" alt="home_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page.png">
 
 ### 🔍 Clean search page.
 
-<img width="800" alt="search_page" src="https://user-images.githubusercontent.com/768070/134962066-06f61683-dc34-41ec-8684-08056a7891d4.png">
+<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/search_page.png">
 
 ### 📺 Noise-free video page.
 
-<img width="800" alt="video_page" src="https://user-images.githubusercontent.com/768070/134961989-6673499b-311f-4334-825b-815b66446fd1.png">
+<img width="800" alt="video_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/video_page.png">
 
 ### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings).
 
-<img width="800" alt="search_page" src="https://user-images.githubusercontent.com/99250816/202904369-6acb1b97-66da-4aa2-8035-1790184584ae.png">
+<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark_mode.png">
 
 ### 💬 An option to show/hide the comments section.
+
+<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/popup.png">
 
 ## Contributing
 

@@ -36,11 +36,7 @@ export default {
 
 <template>
   <div class="focused-youtube-settings">
-    <h1>Settings</h1>
-
-    <div>
-      {{ commentsSectionEnabled }}
-
+    <div class="focused-youtube-settings__toggles">
       <VueToggle
         v-if="showCommentsToggle"
         title="Comments section"
@@ -49,7 +45,7 @@ export default {
         :toggled="commentsSectionEnabled" />
     </div>
 
-    <div class="focused-youtube-settings__menu">
+    <footer class="focused-youtube-settings__footer">
       <a
         class="font-small"
         target="_blank"
@@ -77,15 +73,21 @@ export default {
         href="https://github.com/makaroni4/focused_youtube">
         <strong>Source code</strong>
       </a>
-    </div>
+    </footer>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .focused-youtube-settings {
-  &__menu {
+  &__toggles {
     display: flex;
     flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
   }
 }
 </style>

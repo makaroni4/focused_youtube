@@ -41,9 +41,9 @@ const initWatchPage = () => {
     const $body = document.querySelector("body");
 
     if(value) {
-      $body.classList.add("fy-comments-active");
+      $body.classList.add("fy-watch-page--comments-visible");
     } else {
-      $body.classList.remove("fy-comments-active");
+      $body.classList.remove("fy-watch-page--comments-visible");
     }
   });
 }

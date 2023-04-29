@@ -12,11 +12,9 @@ export default {
 <div class="focused-youtube-popup">
   <header class="focused-youtube-popup__header">
     <img
-      src="./assets/icon.svg"
+      src="./assets/logo_with_name.svg"
       class="focused-youtube-popup__logo"
       alt="Focused Youtube logo" />
-
-      <div class="focused-youtube-popup__extension-name">Focused Youtube</div>
   </header>
 
   <div class="focused-youtube-popup__settings">
@@ -36,15 +34,7 @@ export default {
   }
 
   &__logo {
-    width: 48px;
-    height: 48px;
-
-    margin-right: 16px;
-  }
-
-  &__extension-name {
-    font-size: 24px;
-    line-height: 1;
+    width: 100%;
   }
 }
 </style>

@@ -138,12 +138,6 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;
 }
 
-/* Settings for toddle switsch button */
-
-#logo.ytd-masthead{
-  margin-right: 16px;
-}
-
 /* Settings for Dark Mode */
 @media (prefers-color-scheme: dark) {
   .fy-home-page {

@@ -1,9 +1,11 @@
 <script>
 import Settings from "@components/Settings.vue"
+import PopupFooter from "@components/PopupFooter.vue"
 
 export default {
   components: {
-    Settings
+    Settings,
+    PopupFooter
   }
 }
 </script>
@@ -20,6 +22,12 @@ export default {
   <div class="focused-youtube-popup__settings">
     <Settings />
   </div>
+
+  <hr class="focused-youtube-popup__hr">
+
+  <div class="focused-youtube-popup__footer">
+    <PopupFooter />
+  </div>
 </div>
 </template>
 
@@ -35,6 +43,13 @@ export default {
 
   &__logo {
     height: 25px;
+  }
+
+  &__hr {
+    margin: 16px 0;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 0;
   }
 }
 </style>

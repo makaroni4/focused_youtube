@@ -1,12 +1,10 @@
 <script>
 import Toggle from "@components/Toggle.vue"
-import PopupFooter from "@components/PopupFooter.vue"
 import { SETTINGS_COMMENTS_KEY, writeStorageData, readStorageData } from "@js/chrome-storage"
 
 export default {
   components: {
-    Toggle,
-    PopupFooter
+    Toggle
   },
   data() {
     return {
@@ -45,10 +43,6 @@ export default {
         :toggled="commentsSectionEnabled"
         @toggle="handleCommentsToggle" />
     </div>
-
-    <hr class="focused-youtube-settings__hr">
-
-    <PopupFooter />
   </div>
 </template>
 
@@ -58,13 +52,6 @@ export default {
     display: flex;
     flex-direction: column;
     margin-bottom: 36px;
-  }
-
-  &__hr {
-    margin: 16px 0;
-
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 0;
   }
 }
 </style>

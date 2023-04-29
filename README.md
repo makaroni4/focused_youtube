@@ -20,7 +20,7 @@
 
 ### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings).
 
-<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark_mode.png">
+<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark.png">
 
 ### 💬 An option to show/hide the comments section.
 

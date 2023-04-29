@@ -120,7 +120,7 @@ body.fy-watch-page #comments {
   display: none !important;
 }
 
-body.fy-watch-page.fy-comments-active #comments {
+body.fy-watch-page.fy-watch-page--comments-visible #comments {
   display: block !important;
 }
 

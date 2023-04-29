@@ -120,14 +120,14 @@ observeDOM(document.body, function () {
 });
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
-  for (let [key, { oldValue, newValue }] of Object.entries(changes)) {
+  for (let [key, { newValue }] of Object.entries(changes)) {
     if(key === SETTINGS_COMMENTS_KEY) {
       const $body = document.querySelector("body");
 
       if(newValue) {
-        $body.classList.add("fy-comments-active");
+        $body.classList.add("fy-watch-page--comments-visible");
       } else {
-        $body.classList.remove("fy-comments-active");
+        $body.classList.remove("fy-watch-page--comments-visible");
       }
     }
   }

@@ -2,7 +2,9 @@
 <!-- https://github.com/niels-bosman/vue-toggle-component/blob/main/src/components/VueToggle.vue -->
 
 <template>
-  <section class="m-toggle">
+  <section
+    class="m-toggle"
+    :class="{'m-toggle--active': toggleState}">
     <label
       :id="`${id}-label`"
       :for="id"
@@ -22,10 +24,11 @@
       :aria-checked="toggleState"
       :aria-labelledby="`${id}-label`"
       class="m-toggle__content"
-      :class="{'m-toggle__content--active': toggleState}"
       role="checkbox"
       @click="toggle"
-    />
+    >
+      <div class="m-toggle__knob"></div>
+    </span>
   </section>
 </template>
 
@@ -81,16 +84,6 @@ export default {
 
   &__input {
     display: none;
-
-    &:checked {
-      & + #{$self}__content {
-        &:after {
-          left: calc(50% + #{$toggle-spacing});
-
-          background: #166AE2;
-        }
-      }
-    }
   }
 
   &__content {
@@ -104,23 +97,30 @@ export default {
     transition: background-color .4s ease;
     width: 4em;
     will-change: background-color;
+  }
 
-    &--active {
-      background-color: #8AB4F0;
+  &__knob {
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .4);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: relative;
+    transition: left .2s ease;
+    width: calc(50% - #{$toggle-spacing});
+    will-change: left;
+  }
+
+  &--active {
+    #{$self}__knob {
+      left: calc(50% + #{$toggle-spacing});
+
+      background-color: #166AE2;
     }
 
-    &:after {
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .4);
-      display: block;
-      height: 100%;
-      left: 0;
-      position: relative;
-      transition: left .2s ease;
-      width: calc(50% - #{$toggle-spacing});
-      will-change: left;
-      content: "";
+    #{$self}__content {
+      background-color: #8AB4F0;
     }
   }
 }

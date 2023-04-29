@@ -1,12 +1,12 @@
 <script>
-import VueToggle from "vue-toggle-component";
+import Toggle from "./Toggle.vue";
 import { writeStorageData, readStorageData } from "../js/chrome-storage";
 
 const SETTINGS_COMMENTS_KEY = "settings:comments";
 
 export default {
   components: {
-    VueToggle
+    Toggle
   },
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
 <template>
   <div class="focused-youtube-settings">
     <div class="focused-youtube-settings__toggles">
-      <VueToggle
+      <Toggle
         v-if="showCommentsToggle"
         title="Comments section"
         name="Comments section"
@@ -47,28 +47,28 @@ export default {
 
     <footer class="focused-youtube-settings__footer">
       <a
-        class="font-small"
+        class="focused-youtube-settings__link"
         target="_blank"
         href="https://chrome.google.com/webstore/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn?hl=en">
         <strong>Rate it</strong>
       </a>
 
       <a
-        class="font-small"
+        class="focused-youtube-settings__link"
         target="_blank"
         href="https://twitter.com/makaroni4">
         <strong>Say hi</strong>
       </a>
 
       <a
-        class="font-small"
+        class="focused-youtube-settings__link"
         target="_blank"
         href="https://github.com/makaroni4/focused_youtube/issues">
         <strong>Feedback</strong>
       </a>
 
       <a
-        class="font-small"
+        class="focused-youtube-settings__link"
         target="_blank"
         href="https://github.com/makaroni4/focused_youtube">
         <strong>Source code</strong>
@@ -88,6 +88,10 @@ export default {
   &__footer {
     display: flex;
     justify-content: space-between;
+  }
+
+  &__link {
+    color: #282828;
   }
 }
 </style>

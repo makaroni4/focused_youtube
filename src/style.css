@@ -1,3 +1,7 @@
+body {
+  font-family: Roboto, system-ui, sans-serif;
+}
+
 .focused-youtube-popup-page {
   width: 300px;
 }

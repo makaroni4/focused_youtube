@@ -1,0 +1,23 @@
+{
+  "name": "focused-youtube",
+  "version": "2.0.0",
+  "scripts": {
+    "build": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
+    "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier .  --write"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.1.0",
+    "eslint": "^8.39.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "nodemon": "^2.0.22",
+    "sass": "^1.62.1",
+    "vite": "^4.3.2",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}

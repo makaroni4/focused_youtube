@@ -106,7 +106,6 @@ body.fy-watch-page #buttons.ytd-masthead,
 body.fy-watch-page #sub-menu,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
-body.fy-watch-page #comments,
 body.fy-watch-page yt-icon-button.dropdown-trigger:first-of-type,
 body.fy-watch-page ytd-sentiment-bar-renderer,
 body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */
@@ -116,8 +115,13 @@ body.fy-watch-page .ytp-pause-overlay, /* hide suggest video popup when embedded
 body.fy-watch-page .ytp-next-button, /* Remove play next button */
 body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */
 body.fy-watch-page ytd-live-chat-frame, /* Hide live chat and chat replay */
-body.fy-watch-page .ytd-browse .app-header {
+body.fy-watch-page .ytd-browse .app-header,
+body.fy-watch-page #comments {
   display: none !important;
+}
+
+body.fy-watch-page.fy-watch-page--comments-visible #comments {
+  display: block !important;
 }
 
 body.fy-watch-page ytd-video-secondary-info-renderer {
@@ -133,66 +137,6 @@ ytd-browse[page-subtype='channels'] .app-header {
 ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;
 }
-
-/* Settings for toddle switsch button */
-
-#logo.ytd-masthead{
-  margin-right: 16px;
-}
-
-.fy-switch {
-  position: relative;
-  display: inline-block;
-  width: 32px;
-  height: 18px;
-}
-
-/* Hide default HTML checkbox */
-.fy-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* The slider */
-.fy-switch__slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 18px;
-  box-shadow: 0 0 1px #555;
-}
-
-.fy-switch__slider:before {
-  position: absolute;
-  content: "";
-  height: 14px;
-  width: 14px;
-  left: 2px;
-  bottom: 2px;
-  background-image: url('chrome-extension://__MSG_@@extension_id__/images/extension_icon.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
-}
-
-input:checked + .fy-switch__slider {
-  background-color: #FFF;
-}
-
-input:checked + .fy-switch__slider:before {
-  transform: translateX(14px);
-}
-
 
 /* Settings for Dark Mode */
 @media (prefers-color-scheme: dark) {

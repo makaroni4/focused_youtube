@@ -31,8 +31,6 @@ const initWatchPage = () => {
 
   const readStorageData = (storageKey, callback) => {
     chrome.storage.local.get([storageKey], function(result) {
-      console.log(`${storageKey} read as: `, result);
-
       const value = result[storageKey];
 
       callback(value);
@@ -40,8 +38,6 @@ const initWatchPage = () => {
   };
 
   readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
-    console.log("READ: ", value, typeof(value))
-
     const $body = document.querySelector("body");
 
     if(value) {
@@ -134,9 +130,5 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
         $body.classList.remove("fy-comments-active");
       }
     }
-    console.log(
-      `Storage key "${key}" in namespace "${namespace}" changed.`,
-      `Old value was "${oldValue}", new value is "${newValue}".`
-    );
   }
 });

@@ -3,12 +3,12 @@
 
 <template>
   <section
-    class="m-toggle"
-    :class="{'m-toggle--active': toggleState}">
+    class="toggle"
+    :class="{'toggle--active': toggleState}">
     <label
       :id="`${id}-label`"
       :for="id"
-      class="m-toggle__label"
+      class="toggle__label"
     >
       {{ title }}
     </label>
@@ -17,19 +17,19 @@
       :id="id"
       v-model="toggleState"
       :name="name"
-      class="m-toggle__input"
+      class="toggle__input"
       type="checkbox"
     />
 
-    <div class="m-toggle__wrapper">
+    <div class="toggle__wrapper">
       <span
         :aria-checked="toggleState"
         :aria-labelledby="`${id}-label`"
-        class="m-toggle__content"
+        class="toggle__content"
         role="checkbox"
         @click="toggle"
       >
-        <div class="m-toggle__knob"></div>
+        <div class="toggle__knob"></div>
       </span>
     </div>
   </section>
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.m-toggle {
+.toggle {
   $self: &;
   $toggle-spacing: 2px;
   align-items: center;

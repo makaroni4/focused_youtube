@@ -44,7 +44,9 @@
         "images/extension_icon.png"
 
       ],
-      "matches": [ "https://www.youtube.com/*" ]
+      "matches": [
+        "https://www.youtube.com/*"
+      ]
     }
   ]
 }

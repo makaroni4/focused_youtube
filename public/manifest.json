@@ -14,7 +14,8 @@
       ],
       "js": [
         "assets/extension.js",
-        "assets/popup.js"
+        "assets/popup.js",
+        "assets/chrome-storage.js"
       ],
       "css": [
         "assets/extension.css",

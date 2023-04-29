@@ -1,8 +1,7 @@
+import { SETTINGS_COMMENTS_KEY, readStorageData } from "./js/chrome-storage"
 import "./style-overrides.css"
 
 document.body.style.display = "block"
-
-const SETTINGS_COMMENTS_KEY = "settings:comments"
 
 let currentUrl = window.location.href
 
@@ -28,14 +27,6 @@ const initFY = () => {
 
 const initWatchPage = () => {
   document.body.classList.add("fy-watch-page")
-
-  const readStorageData = (storageKey, callback) => {
-    chrome.storage.local.get([storageKey], function(result) {
-      const value = result[storageKey]
-
-      callback(value)
-    })
-  }
 
   readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
     const $body = document.querySelector("body")

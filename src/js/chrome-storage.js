@@ -1,3 +1,5 @@
+export const SETTINGS_COMMENTS_KEY = "settings:comments"
+
 export const writeStorageData = (storageKey, value, callback) => {
   chrome.storage.local.set({ [storageKey]: value }, () => {
     if(callback) {

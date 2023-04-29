@@ -1,9 +1,7 @@
 <script>
 import Toggle from "./Toggle.vue"
 import PopupFooter from "./PopupFooter.vue"
-import { writeStorageData, readStorageData } from "../js/chrome-storage"
-
-const SETTINGS_COMMENTS_KEY = "settings:comments"
+import { SETTINGS_COMMENTS_KEY, writeStorageData, readStorageData } from "../js/chrome-storage"
 
 export default {
   components: {

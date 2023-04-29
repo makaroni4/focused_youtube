@@ -1,6 +1,6 @@
 <script>
 import Toggle from "./Toggle.vue";
-import Footer from "./Footer.vue";
+import PopupFooter from "./PopupFooter.vue";
 import { writeStorageData, readStorageData } from "../js/chrome-storage";
 
 const SETTINGS_COMMENTS_KEY = "settings:comments";
@@ -8,19 +8,12 @@ const SETTINGS_COMMENTS_KEY = "settings:comments";
 export default {
   components: {
     Toggle,
-    Footer
+    PopupFooter
   },
   data() {
     return {
       showCommentsToggle: false,
       commentsSectionEnabled: false
-    }
-  },
-  methods: {
-    handleCommentsToggle(val) {
-      writeStorageData(SETTINGS_COMMENTS_KEY, val, () => {
-        this.commentsSectionEnabled = val;
-      });
     }
   },
   mounted() {
@@ -33,6 +26,13 @@ export default {
 
       this.showCommentsToggle = true;
     });
+  },
+  methods: {
+    handleCommentsToggle(val) {
+      writeStorageData(SETTINGS_COMMENTS_KEY, val, () => {
+        this.commentsSectionEnabled = val;
+      });
+    }
   }
 };
 </script>
@@ -44,13 +44,13 @@ export default {
         v-if="showCommentsToggle"
         title="Show video comments"
         name="Comments section"
-        @toggle="handleCommentsToggle"
-        :toggled="commentsSectionEnabled" />
+        :toggled="commentsSectionEnabled"
+        @toggle="handleCommentsToggle" />
     </div>
 
     <hr class="focused-youtube-settings__hr">
 
-    <Footer />
+    <PopupFooter />
   </div>
 </template>
 

@@ -45,21 +45,24 @@ export default {
     toggled:     { type: Boolean, default: false },
   },
 
+  emits: ["toggle"],
+
   data() {
     return { toggleState: this.toggled };
-  },
-
-  methods: {
-    toggle() {
-      this.toggleState = !this.toggleState;
-      this.$emit('toggle', this.toggleState);
-    }
   },
 
   computed: {
     id() {
       return this.name.replace(/ /g, '').toLowerCase();
     },
+  },
+
+  methods: {
+    toggle() {
+      this.toggleState = !this.toggleState;
+
+      this.$emit("toggle", this.toggleState);
+    }
   },
 };
 </script>

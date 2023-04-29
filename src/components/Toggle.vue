@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  name: 'Toggle',
+  name: "Toggle",
 
   props: {
     name:        { type: String, required: true },
@@ -53,7 +53,7 @@ export default {
 
   computed: {
     id() {
-      return this.name.replace(/ /g, '').toLowerCase();
+      return this.name.replace(/ /g, "").toLowerCase();
     },
   },
 

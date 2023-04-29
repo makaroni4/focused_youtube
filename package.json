@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'"
   },
   "dependencies": {
     "vue": "^3.2.47",
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
+    "nodemon": "^2.0.22",
     "sass": "^1.62.1",
     "vite": "^4.3.2"
   }

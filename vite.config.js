@@ -1,9 +1,11 @@
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
+import eslint from "vite-plugin-eslint"
 
 export default defineConfig({
   plugins: [
-    vue()
+    vue(),
+    eslint()
   ],
   build: {
     rollupOptions: {
@@ -17,5 +19,5 @@ export default defineConfig({
         assetFileNames: `assets/[name].[ext]`
       }
     }
-  },
+  }
 })

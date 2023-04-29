@@ -1,4 +1,4 @@
-import './style-overrides.css'
+import "./style-overrides.css"
 
 document.body.style.display = "block";
 
@@ -92,7 +92,7 @@ const observeDOM = (function () {
 
   return function (obj, callback) {
     if (MutationObserver) {
-      let obs = new MutationObserver(function (mutations, observer) {
+      let obs = new MutationObserver(function (mutations) {
         if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
           callback();
         }
@@ -119,7 +119,7 @@ observeDOM(document.body, function () {
   }
 });
 
-chrome.storage.onChanged.addListener((changes, namespace) => {
+chrome.storage.onChanged.addListener((changes) => {
   for (let [key, { newValue }] of Object.entries(changes)) {
     if(key === SETTINGS_COMMENTS_KEY) {
       const $body = document.querySelector("body");

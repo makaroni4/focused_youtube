@@ -45,6 +45,8 @@ export default {
         :toggled="commentsSectionEnabled" />
     </div>
 
+    <hr class="focused-youtube-settings__hr">
+
     <footer class="focused-youtube-settings__footer">
       <a
         class="focused-youtube-settings__link"
@@ -82,7 +84,7 @@ export default {
   &__toggles {
     display: flex;
     flex-direction: column;
-    margin-bottom: 32px;
+    margin-bottom: 36px;
   }
 
   &__footer {
@@ -92,6 +94,13 @@ export default {
 
   &__link {
     color: #282828;
+  }
+
+  &__hr {
+    margin: 16px 0;
+
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 0;
   }
 }
 </style>

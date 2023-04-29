@@ -31,14 +31,9 @@
 
 <script>
 export default {
-  name: 'VueToggle',
+  name: 'Toggle',
 
   props: {
-    activeColor: { type: String, default: '#9FD6AE' },
-    darkTheme:   { type: Boolean, default: false },
-    disabled:    { type: Boolean, default: false },
-    fontSize:    { type: String, default: '16px' },
-    fontWeight:  { type: String, default: 'normal' },
     name:        { type: String, required: true },
     title:       { type: String, required: true },
     toggled:     { type: Boolean, default: false },
@@ -50,7 +45,6 @@ export default {
 
   methods: {
     toggle() {
-      if (this.disabled) return;
       this.toggleState = !this.toggleState;
       this.$emit('toggle', this.toggleState);
     }
@@ -71,6 +65,8 @@ export default {
   align-items: center;
   display: flex;
   margin: 0 -5px;
+  display: flex;
+  justify-content: space-between;
 
   > * {
     cursor: pointer;
@@ -79,6 +75,8 @@ export default {
 
   &__label {
     user-select: none;
+    font-size: 16px;
+    color: #282828;
   }
 
   &__input {
@@ -88,13 +86,15 @@ export default {
       & + #{$self}__content {
         &:after {
           left: calc(50% + #{$toggle-spacing});
+
+          background: #166AE2;
         }
       }
     }
   }
 
   &__content {
-    background: #F0F0F0;
+    background: #B5B9BE;
     border-radius: 2em;
     box-sizing: border-box;
     height: 2em;
@@ -106,14 +106,13 @@ export default {
     will-change: background-color;
 
     &--active {
-      background-color: v-bind(activeColor);
+      background-color: #8AB4F0;
     }
 
     &:after {
       background: white;
       border-radius: 50%;
-      box-shadow: 0 0 5px 0 rgba(0, 0, 0, .05);
-      content: '';
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .4);
       display: block;
       height: 100%;
       left: 0;
@@ -121,15 +120,7 @@ export default {
       transition: left .2s ease;
       width: calc(50% - #{$toggle-spacing});
       will-change: left;
-    }
-
-    #{$self}--is-disabled & {
-      cursor: not-allowed;
-      opacity: 50%;
-    }
-
-    #{$self}--is-dark & {
-      background: #374151;
+      content: "";
     }
   }
 }

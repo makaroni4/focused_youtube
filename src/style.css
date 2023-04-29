@@ -1,10 +1,8 @@
 body {
-  font-family: Roboto, system-ui, sans-serif;
-  color: #282828;
+  width: 300px;
 
   background-color: #FFF;
-}
 
-.focused-youtube-popup-page {
-  width: 300px;
+  font-family: Roboto, system-ui, sans-serif;
+  color: #282828;
 }

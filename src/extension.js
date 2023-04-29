@@ -1,4 +1,4 @@
-import { SETTINGS_COMMENTS_KEY, readStorageData } from "./js/chrome-storage"
+import { SETTINGS_COMMENTS_KEY, readStorageData } from "@js/chrome-storage"
 import "./style-overrides.css"
 
 document.body.style.display = "block"

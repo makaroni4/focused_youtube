@@ -43,8 +43,6 @@
     {
       "resources": [
         "fonts/Roboto-Regular.ttf",
-        "assets/extension.css",
-        "assets/popup.css",
         "images/search_icon.svg",
         "images/youtube_logo.png",
         "images/search_icon_dark.svg",

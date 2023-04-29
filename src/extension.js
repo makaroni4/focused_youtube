@@ -1,18 +1,4 @@
-// import { SETTINGS_COMMENTS_KEY, readStorageData } from "@js/chrome-storage"
-
-// I can't import SETTINGS_COMMENTS_KEY and readStorageData since
-// it'll produce a dist/chrome-storage.js file that can't be imported
-// when the dist/extension.js is injected into a page. It fails with
-// an error "Can't use import statement outside a module".
-
-const readStorageData = (storageKey, callback) => {
-  chrome.storage.local.get([storageKey], function(result) {
-    const value = result[storageKey]
-
-    callback(value)
-  })
-}
-const SETTINGS_COMMENTS_KEY = "settings:comments"
+import { SETTINGS_COMMENTS_KEY, readStorageData } from "@js/chrome-storage"
 
 import "./style-overrides.css"
 

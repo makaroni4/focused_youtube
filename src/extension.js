@@ -1,7 +1,8 @@
-// import { readStorageData } from "./js/chrome-storage";
 import './style-overrides.css'
 
 document.body.style.display = "block";
+
+const SETTINGS_COMMENTS_KEY = "settings:comments";
 
 let currentUrl = window.location.href;
 
@@ -78,6 +79,28 @@ const initToggleSwitch = () => {
 const initWatchPage = () => {
   document.body.classList.add("fy-watch-page");
 
+  const readStorageData = (storageKey, callback) => {
+    chrome.storage.local.get([storageKey], function(result) {
+      console.log(`${storageKey} read as: `, result);
+
+      const value = result[storageKey];
+
+      callback(value);
+    });
+  };
+
+  readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
+    console.log("READ: ", value, typeof(value))
+
+    const $body = document.querySelector("body");
+
+    if(value) {
+      $body.classList.add("fy-comments-active");
+    } else {
+      $body.classList.remove("fy-comments-active");
+    }
+  });
+
   initToggleSwitch();
 }
 
@@ -153,18 +176,6 @@ observeDOM(document.body, function () {
     initFY();
   }
 });
-
-const SETTINGS_COMMENTS_KEY = "settings:comments";
-
-// readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
-//   console.log("READ: ", value, typeof(value))
-
-//   if(value) {
-//     $body.classList.add("fy-comments-active");
-//   } else {
-//     $body.classList.remove("fy-comments-active");
-//   }
-// });
 
 chrome.storage.onChanged.addListener((changes, namespace) => {
   for (let [key, { oldValue, newValue }] of Object.entries(changes)) {

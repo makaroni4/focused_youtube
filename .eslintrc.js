@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: true
+    "browser": true
   },
   extends: [
     "eslint:recommended",
@@ -9,10 +9,11 @@ module.exports = {
   ],
   rules: {
     "vue/multi-word-component-names": "off",
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "semi": ["error", "never"]
   },
   globals: {
-    chrome: true,
-    observer: true
+    "chrome": true,
+    "observer": true
   }
 }

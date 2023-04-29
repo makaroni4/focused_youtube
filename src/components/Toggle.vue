@@ -48,23 +48,23 @@ export default {
   emits: ["toggle"],
 
   data() {
-    return { toggleState: this.toggled };
+    return { toggleState: this.toggled }
   },
 
   computed: {
     id() {
-      return this.name.replace(/ /g, "").toLowerCase();
+      return this.name.replace(/ /g, "").toLowerCase()
     },
   },
 
   methods: {
     toggle() {
-      this.toggleState = !this.toggleState;
+      this.toggleState = !this.toggleState
 
-      this.$emit("toggle", this.toggleState);
+      this.$emit("toggle", this.toggleState)
     }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

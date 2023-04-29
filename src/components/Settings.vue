@@ -1,9 +1,9 @@
 <script>
-import Toggle from "./Toggle.vue";
-import PopupFooter from "./PopupFooter.vue";
-import { writeStorageData, readStorageData } from "../js/chrome-storage";
+import Toggle from "./Toggle.vue"
+import PopupFooter from "./PopupFooter.vue"
+import { writeStorageData, readStorageData } from "../js/chrome-storage"
 
-const SETTINGS_COMMENTS_KEY = "settings:comments";
+const SETTINGS_COMMENTS_KEY = "settings:comments"
 
 export default {
   components: {
@@ -19,22 +19,22 @@ export default {
   mounted() {
     readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
       if(typeof(value) === "undefined") {
-        this.commentsSectionEnabled = false;
+        this.commentsSectionEnabled = false
       } else {
-        this.commentsSectionEnabled = value;
+        this.commentsSectionEnabled = value
       }
 
-      this.showCommentsToggle = true;
-    });
+      this.showCommentsToggle = true
+    })
   },
   methods: {
     handleCommentsToggle(val) {
       writeStorageData(SETTINGS_COMMENTS_KEY, val, () => {
-        this.commentsSectionEnabled = val;
-      });
+        this.commentsSectionEnabled = val
+      })
     }
   }
-};
+}
 </script>
 
 <template>

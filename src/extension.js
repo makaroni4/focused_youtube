@@ -37,6 +37,8 @@ const initFY = () => {
     initResultsPage()
   } else if (window.location.pathname === "/watch") {
     initWatchPage()
+  } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
+    initChannelPage()
   }
 }
 
@@ -56,6 +58,10 @@ const initWatchPage = () => {
 
 const initResultsPage = () => {
   document.body.classList.add("fy-results-page")
+}
+
+const initChannelPage = () => {
+  document.body.classList.add("fy-channel-page")
 }
 
 const initHomePage = () => {

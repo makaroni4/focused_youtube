@@ -128,6 +128,14 @@ body.fy-watch-page ytd-video-secondary-info-renderer {
   border: 0;
 }
 
+body.fy-channel-page #guide-icon.ytd-masthead,
+body.fy-channel-page .button.yt-icon-button,
+body.fy-channel-page #guide-content,
+body.fy-channel-page #buttons.ytd-masthead,
+body.fy-channel-page #guide-button.ytd-masthead,
+body.fy-channel-page .ytd-mini-guide-entry-renderer,
+body.fy-channel-page #sub-menu,
+
 /* Hides "Subscribe" to channel button from videos page */
 ytd-browse[page-subtype='channels'] .app-header {
   display: none;

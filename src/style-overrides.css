@@ -179,3 +179,42 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
     background-color: #222222;
   }
 }
+
+/* Settings for Mobile Phone */
+@media screen and (max-width: 768px) {
+  
+  .fy-home-page {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .fy-home-page__logo {
+    position: static;
+    display: block;
+    width: 10rem;
+    height: 2rem;
+  }
+
+  .fy-search-form__text-input {
+    min-width: 16rem;
+  }
+
+  .fy-search-form__submit {
+    width: 4rem;
+  }
+
+  body.fy-watch-page ytm-item-section-renderer[section-identifier="related-items"],   /* Hides recommendation video */
+  body.fy-watch-page ytm-item-section-renderer[section-identifier="comments-entry-point"] {
+    display: none !important;
+  }
+
+  body.fy-watch-page.fy-watch-page--comments-visible ytm-item-section-renderer[section-identifier="comments-entry-point"] {
+    display: block !important;
+  }
+
+  body.fy-results-page ytm-reel-shelf-renderer, /* Hides unrelated short reel */
+  body.fy-results-page ytm-video-with-context-renderer:has(.ytm-badge-and-byline-item-badge) /* Hides unrelated badge video */ {
+    display: none !important;
+  }
+}
+

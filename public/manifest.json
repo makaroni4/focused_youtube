@@ -10,7 +10,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.youtube.com/*"
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
       ],
       "js": [
         "assets/extension.js"
@@ -45,7 +46,8 @@
 
       ],
       "matches": [
-        "https://www.youtube.com/*"
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
       ]
     }
   ]

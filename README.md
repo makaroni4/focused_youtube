@@ -22,9 +22,21 @@
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark.png">
 
+Big shout out to @Kubot11 for introducing Dark Mode! :raised_hands:
+
+Make sure to enable Dark Mode in your Chrome before testing it:
+
+https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop
+
 ### 💬 An option to show/hide the comments section.
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/popup.png">
+
+### 📱 Works in mobile browser as well
+
+<img width="800" alt="mobile_version" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/mobile_version.png">
+
+Big shout out to @fauzanabrar for making Focused Youtube work in mobile browsers! :raised_hands:
 
 ## Contributing
 
@@ -47,11 +59,3 @@ npm install
 
 npm run mon
 ```
-
-### Dark Mode
-
-Big shout out to @Kubot11 for introducing Dark Mode! :raised_hands:
-
-Make sure to enable Dark Mode in your Chrome before testing it:
-
-https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop

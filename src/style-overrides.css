@@ -88,7 +88,9 @@ body.fy-results-page ytd-horizontal-card-list-renderer,
 body.fy-results-page ytd-channel-renderer,
 body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
-body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer {
+body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer,
+body.fy-results-page ytd-reel-shelf-renderer /* Hide "Shorts" sections */,
+body.fy-results-page #header .ytd-search /* Hide header bar with tags All, Shorts, etc */ {
   display: none !important;
 }
 

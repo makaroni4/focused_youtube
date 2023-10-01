@@ -182,17 +182,18 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 
 /* Settings for Mobile Phone */
 @media screen and (max-width: 768px) {
-  
+
   .fy-home-page {
     flex-direction: column;
     gap: 0.8rem;
   }
 
   .fy-home-page__logo {
-    position: static;
     display: block;
     width: 10rem;
     height: 2rem;
+    top: 1rem;
+    left: 1rem;
   }
 
   .fy-search-form__text-input {
@@ -203,7 +204,7 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
     width: 4rem;
   }
 
-  body.fy-watch-page ytm-item-section-renderer[section-identifier="related-items"],   /* Hides recommendation video */
+  body.fy-watch-page ytm-item-section-renderer[section-identifier="related-items"], /* Hides recommendation video */
   body.fy-watch-page ytm-item-section-renderer[section-identifier="comments-entry-point"] {
     display: none !important;
   }
@@ -213,8 +214,10 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   }
 
   body.fy-results-page ytm-reel-shelf-renderer, /* Hides unrelated short reel */
-  body.fy-results-page ytm-video-with-context-renderer:has(.ytm-badge-and-byline-item-badge) /* Hides unrelated badge video */ {
+  body.fy-results-page ytm-video-with-context-renderer:has(.ytm-badge-and-byline-item-badge), /* Hides unrelated badge video */
+  body.fy-results-page ytm-compact-channel-renderer, /* Hides "Subscribe" channel widget */
+  body.fy-results-page ytm-pivot-bar-renderer[role="tablist"], /* Hides bottom menu with Home/Shorts/Library icons */
+  body.fy-results-page .ytm-info-panel-content-wrapper /* Hides "About these results" block on top of the search page */ {
     display: none !important;
   }
 }
-

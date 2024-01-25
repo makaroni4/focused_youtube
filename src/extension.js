@@ -28,8 +28,19 @@ let cleanUpFYClasses = () => {
   })
 }
 
+// Since we're removing sidebar recommendations, let's make a video occupy full width
+const enableTheaterMode = () => {
+  const oneYearFromNow = new Date()
+  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1)
+
+  document.cookie = "wide=; Max-Age=0; path=/; domain=.youtube.com"
+  document.cookie = "wide=1; expires="+oneYearFromNow.toUTCString()+"; path=/; domain=.youtube.com"
+}
+
 const initFY = () => {
   cleanUpFYClasses()
+
+  enableTheaterMode()
 
   if (window.location.pathname === "/") {
     initHomePage()

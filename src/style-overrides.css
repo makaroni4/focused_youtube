@@ -88,6 +88,7 @@ body.fy-results-page ytd-horizontal-card-list-renderer,
 body.fy-results-page ytd-channel-renderer,
 body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
+body.fy-results-page ytd-continuation-item-renderer, /* Remove infinite scroll */
 body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer,
 body.fy-results-page ytd-reel-shelf-renderer /* Hide "Shorts" sections */,
 body.fy-results-page #header .ytd-search /* Hide header bar with tags All, Shorts, etc */,
@@ -116,7 +117,6 @@ body.fy-watch-page .ytp-ce-element, /* Remove end-video subscribe and author rec
 body.fy-watch-page .ytp-ce-element.ytp-ce-channel.ytp-ce-channel-this, /* Remove YT premium/TV nudges */
 body.fy-watch-page .ytp-pause-overlay, /* hide suggest video popup when embedded videos paused */
 body.fy-watch-page .ytp-next-button, /* Remove play next button */
-body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */
 body.fy-watch-page ytd-live-chat-frame, /* Hide live chat and chat replay */
 body.fy-watch-page .ytd-browse .app-header,
 body.fy-watch-page #comments {

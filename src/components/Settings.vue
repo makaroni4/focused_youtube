@@ -55,7 +55,7 @@ export default {
     <div class="focused-youtube-settings__toggles">
       <Toggle
         v-if="showCommentsToggle"
-        title="Show video comments"
+        title="Show comments"
         name="Comments section"
         class="focused-youtube-settings__toggle"
         :toggled="commentsSectionEnabled"

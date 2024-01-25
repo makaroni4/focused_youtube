@@ -123,10 +123,12 @@ const observeDOM = (function () {
   const MutationObserver = window.MutationObserver || window.WebKitMutationObserver
   const eventListenerSupported = window.addEventListener
 
-  return function (obj, callback) {
+  return function (obj, selector, callback) {
     if (MutationObserver) {
       let obs = new MutationObserver(function (mutations) {
-        if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+        if(mutations[0].addedNodes.length &&
+          Array.from(mutations[0].addedNodes).some(node => node && (node.matches(selector) || node.querySelector(selector)))) {
+
           callback()
         }
       })
@@ -144,12 +146,36 @@ const observeDOM = (function () {
 
 initFY()
 
-observeDOM(document.body, function () {
+observeDOM(document.body, "*", function () {
   if (currentUrl !== window.location.href) {
     currentUrl = window.location.href
 
     initFY()
   }
+})
+
+const hideSectionByTitle = (titleText) => {
+  const sections = document.querySelectorAll("ytd-shelf-renderer.style-scope.ytd-item-section-renderer")
+  const section = Array.from(sections).find(section => {
+    const title = section.querySelector("#title")
+
+    if (title) {
+      return title.innerText.includes(titleText)
+    } else {
+      return false
+    }
+  })
+
+  if (section) {
+    section.classList.add("fy-invisible")
+  }
+}
+
+observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-renderer", function () {
+  hideSectionByTitle("For you")
+  hideSectionByTitle("Latest posts from")
+  hideSectionByTitle("Latest from")
+  hideSectionByTitle("Popular today")
 })
 
 chrome.storage.onChanged.addListener((changes) => {

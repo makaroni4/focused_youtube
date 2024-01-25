@@ -96,6 +96,10 @@ body.fy-results-page .ytd-ad-slot-renderer /* Hide "Sponsored" search results */
   display: none !important;
 }
 
+.fy-invisible {
+  display: none !important;
+}
+
 body.fy-results-page #dismissable.ytd-video-renderer,
 body.fy-results-page .ytd-item-section-renderer {
   max-width: 800px;

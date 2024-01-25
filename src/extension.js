@@ -109,7 +109,7 @@ const initHomePage = () => {
 
       <div class="fy-home-page__body">
         <form class="fy-home-page__form fy-search-form" action="#">
-          <input class="fy-search-form__text-input" type="text" placeholder="Search" />
+          <input class="fy-search-form__text-input" type="text" placeholder="Search" autofocus />
           <button class="fy-search-form__submit"></button>
         </form>
       </div>

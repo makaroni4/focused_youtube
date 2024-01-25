@@ -59,3 +59,9 @@ npm install
 
 npm run mon
 ```
+
+## Releasing
+
+```
+npm run build
+```

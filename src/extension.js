@@ -1,18 +1,18 @@
-// import { SETTINGS_COMMENTS_KEY, readStorageData } from "@js/chrome-storage"
+// import { SETTINGS_COMMENTS_KEY, readStorageKey } from "@js/chrome-storage"
 
-// I can't import SETTINGS_COMMENTS_KEY and readStorageData since
+// I can't import SETTINGS_COMMENTS_KEY and readStorageKey since
 // it'll produce a dist/chrome-storage.js file that can't be imported
 // when the dist/extension.js is injected into a page. It fails with
 // an error "Can't use import statement outside a module".
 
-const readStorageData = (storageKey, callback) => {
-  chrome.storage.local.get([storageKey], function(result) {
-    const value = result[storageKey]
-
-    callback(value)
+const readStorageKeys = (storageKeys, callback) => {
+  chrome.storage.local.get(storageKeys, function(result) {
+    callback(result)
   })
 }
+
 const SETTINGS_COMMENTS_KEY = "settings:comments"
+const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
 
 import "./style-overrides.css"
 
@@ -45,10 +45,10 @@ const initFY = () => {
 const initWatchPage = () => {
   document.body.classList.add("fy-watch-page")
 
-  readStorageData(SETTINGS_COMMENTS_KEY, (value) => {
+  readStorageKeys([SETTINGS_COMMENTS_KEY], (config) => {
     const $body = document.querySelector("body")
 
-    if(value) {
+    if(config[SETTINGS_COMMENTS_KEY]) {
       $body.classList.add("fy-watch-page--comments-visible")
     } else {
       $body.classList.remove("fy-watch-page--comments-visible")
@@ -58,6 +58,16 @@ const initWatchPage = () => {
 
 const initResultsPage = () => {
   document.body.classList.add("fy-results-page")
+
+  readStorageKeys([INFINITE_SCROLL_KEY], (config) => {
+    const $body = document.querySelector("body")
+
+    if(config[INFINITE_SCROLL_KEY]) {
+      $body.classList.add("fy-results-page--infinite-scroll-enabled")
+    } else {
+      $body.classList.remove("fy-results-page--infinite-scroll-enabled")
+    }
+  })
 }
 
 const initChannelPage = () => {
@@ -140,6 +150,16 @@ chrome.storage.onChanged.addListener((changes) => {
         $body.classList.add("fy-watch-page--comments-visible")
       } else {
         $body.classList.remove("fy-watch-page--comments-visible")
+      }
+    }
+
+    if(key === INFINITE_SCROLL_KEY) {
+      const $body = document.querySelector("body")
+
+      if(newValue) {
+        $body.classList.add("fy-results-page--infinite-scroll-enabled")
+      } else {
+        $body.classList.remove("fy-results-page--infinite-scroll-enabled")
       }
     }
   }

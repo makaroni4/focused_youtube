@@ -103,6 +103,10 @@ body.fy-results-page .ytd-item-section-renderer {
   margin-right: auto;
 }
 
+body.fy-results-page.fy-results-page--infinite-scroll-enabled ytd-continuation-item-renderer {
+  display: block !important;
+}
+
 body.fy-watch-page #guide-icon.ytd-masthead,
 body.fy-watch-page .button.yt-icon-button,
 body.fy-watch-page #guide-content,

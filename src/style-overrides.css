@@ -89,7 +89,10 @@ body.fy-results-page ytd-channel-renderer,
 body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
 body.fy-results-page ytd-continuation-item-renderer, /* Remove infinite scroll */
-body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer {
+body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer,
+body.fy-results-page ytd-reel-shelf-renderer /* Hide "Shorts" sections */,
+body.fy-results-page #header .ytd-search /* Hide header bar with tags All, Shorts, etc */,
+body.fy-results-page .ytd-ad-slot-renderer /* Hide "Sponsored" search results */ {
   display: none !important;
 }
 
@@ -177,5 +180,47 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
 
     background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon_dark.svg');
     background-color: #222222;
+  }
+}
+
+/* Settings for Mobile Phone */
+@media screen and (max-width: 768px) {
+
+  .fy-home-page {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .fy-home-page__logo {
+    display: block;
+    width: 10rem;
+    height: 2rem;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .fy-search-form__text-input {
+    min-width: 16rem;
+  }
+
+  .fy-search-form__submit {
+    width: 4rem;
+  }
+
+  body.fy-watch-page ytm-item-section-renderer[section-identifier="related-items"], /* Hides recommendation video */
+  body.fy-watch-page ytm-item-section-renderer[section-identifier="comments-entry-point"] {
+    display: none !important;
+  }
+
+  body.fy-watch-page.fy-watch-page--comments-visible ytm-item-section-renderer[section-identifier="comments-entry-point"] {
+    display: block !important;
+  }
+
+  body.fy-results-page ytm-reel-shelf-renderer, /* Hides unrelated short reel */
+  body.fy-results-page ytm-video-with-context-renderer:has(.ytm-badge-and-byline-item-badge), /* Hides unrelated badge video */
+  body.fy-results-page ytm-compact-channel-renderer, /* Hides "Subscribe" channel widget */
+  body.fy-results-page ytm-pivot-bar-renderer[role="tablist"], /* Hides bottom menu with Home/Shorts/Library icons */
+  body.fy-results-page .ytm-info-panel-content-wrapper /* Hides "About these results" block on top of the search page */ {
+    display: none !important;
   }
 }

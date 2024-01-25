@@ -119,6 +119,20 @@ const initHomePage = () => {
   anchor.querySelector(".fy-search-form").onsubmit = search
 }
 
+const nodeMatchesSelector = (node, selector) => {
+  if (!node) return false
+
+  if (node.matches && node.matches(selector)) {
+    return true
+  }
+
+  if (node.querySelector && node.querySelector(selector)) {
+    return true
+  }
+
+  return false
+}
+
 const observeDOM = (function () {
   const MutationObserver = window.MutationObserver || window.WebKitMutationObserver
   const eventListenerSupported = window.addEventListener
@@ -127,7 +141,7 @@ const observeDOM = (function () {
     if (MutationObserver) {
       let obs = new MutationObserver(function (mutations) {
         if(mutations[0].addedNodes.length &&
-          Array.from(mutations[0].addedNodes).some(node => node && (node.matches(selector) || node.querySelector(selector)))) {
+          Array.from(mutations[0].addedNodes).some(node => nodeMatchesSelector(node, selector))) {
 
           callback()
         }

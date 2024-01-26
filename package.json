@@ -1,6 +1,6 @@
 {
   "name": "focused-youtube",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "scripts": {
     "build": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
     "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",

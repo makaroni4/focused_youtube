@@ -50,6 +50,13 @@ const initFY = () => {
     initWatchPage()
   } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
+  } else if (window.location.pathname.startsWith("/shorts")) {
+    // redirect shorts view to "watch" view
+    const watch_url = window.location.href.replace("/shorts/","/watch?v=")
+    window.location.replace(watch_url)
+  } else {
+    // redirect to home page, block paths like /feed/trending, /gaming, ...
+    window.location.replace("/")
   }
 }
 

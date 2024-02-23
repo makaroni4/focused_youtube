@@ -42,15 +42,19 @@ const initFY = () => {
 
   enableTheaterMode()
 
-  if (window.location.pathname === "/") {
+  const pathname = window.location.pathname
+
+  if (pathname === "/") {
     initHomePage()
-  } else if (window.location.pathname === "/results") {
+  } else if (pathname === "/results") {
     initResultsPage()
-  } else if (window.location.pathname === "/watch") {
+  } else if (pathname === "/watch") {
     initWatchPage()
-  } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
+  } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
-  } else if (window.location.pathname.startsWith("/shorts")) {
+  } else if (pathname.startsWith("/playlist")) {
+    initChannelPage() // temporarily using the channel page to hide the side bar
+  } else if (pathname.startsWith("/shorts")) {
     // redirect shorts view to "watch" view
     const watch_url = window.location.href.replace("/shorts/","/watch?v=")
     window.location.replace(watch_url)

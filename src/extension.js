@@ -37,19 +37,45 @@ const enableTheaterMode = () => {
   document.cookie = "wide=1; expires="+oneYearFromNow.toUTCString()+"; path=/; domain=.youtube.com"
 }
 
+const pathBlacklist = [
+  "/feed",
+  "/gaming",
+  "/reporthistory",
+]
+const isBlacklistedPath = (path) => {
+  for (const blacklistedPath of pathBlacklist) {
+    if (path.startsWith(blacklistedPath)) {
+      return true
+    }
+  }
+  return false
+}
+
 const initFY = () => {
   cleanUpFYClasses()
 
   enableTheaterMode()
 
-  if (window.location.pathname === "/") {
+  const pathname = window.location.pathname
+
+  if (pathname === "/") {
     initHomePage()
-  } else if (window.location.pathname === "/results") {
+  } else if (pathname === "/results") {
     initResultsPage()
-  } else if (window.location.pathname === "/watch") {
+  } else if (pathname === "/watch") {
     initWatchPage()
-  } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
+  } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
+  } else if (pathname === "/playlist") {
+    // temporarily using the channel page to hide the side bar
+    initChannelPage()
+  } else if (pathname.startsWith("/shorts")) {
+    // redirect shorts view to "watch" view
+    const watch_url = window.location.href.replace("/shorts/","/watch?v=")
+    window.location.replace(watch_url)
+  } else if (isBlacklistedPath(pathname)) {
+    // redirect to home page
+    window.location.replace("/")
   }
 }
 

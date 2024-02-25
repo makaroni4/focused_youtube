@@ -37,6 +37,20 @@ const enableTheaterMode = () => {
   document.cookie = "wide=1; expires="+oneYearFromNow.toUTCString()+"; path=/; domain=.youtube.com"
 }
 
+const pathBlacklist = [
+  "/feed",
+  "/gaming",
+  "/reporthistory",
+]
+const isBlacklistedPath = (path) => {
+  for (const blacklistedPath of pathBlacklist) {
+    if (path.startsWith(blacklistedPath)) {
+      return true
+    }
+  }
+  return false
+}
+
 const initFY = () => {
   cleanUpFYClasses()
 
@@ -55,14 +69,12 @@ const initFY = () => {
   } else if (pathname === "/playlist") {
     // temporarily using the channel page to hide the side bar
     initChannelPage()
-  } else if (pathname === "/redirect") {
-    // do nothing
   } else if (pathname.startsWith("/shorts")) {
     // redirect shorts view to "watch" view
     const watch_url = window.location.href.replace("/shorts/","/watch?v=")
     window.location.replace(watch_url)
-  } else {
-    // redirect to home page, block paths like /feed/trending, /gaming, ...
+  } else if (isBlacklistedPath(pathname)) {
+    // redirect to home page
     window.location.replace("/")
   }
 }

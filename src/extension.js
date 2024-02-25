@@ -52,8 +52,11 @@ const initFY = () => {
     initWatchPage()
   } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
-  } else if (pathname.startsWith("/playlist")) {
-    initChannelPage() // temporarily using the channel page to hide the side bar
+  } else if (pathname === "/playlist") {
+    // temporarily using the channel page to hide the side bar
+    initChannelPage()
+  } else if (pathname === "/redirect") {
+    // do nothing
   } else if (pathname.startsWith("/shorts")) {
     // redirect shorts view to "watch" view
     const watch_url = window.location.href.replace("/shorts/","/watch?v=")

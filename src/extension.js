@@ -46,6 +46,8 @@ const initFY = () => {
     initHomePage()
   } else if (window.location.pathname === "/results") {
     initResultsPage()
+  } else if (window.location.pathname === "/playlist") {
+    initResultsPage()
   } else if (window.location.pathname === "/watch") {
     initWatchPage()
   } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel

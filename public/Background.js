@@ -36,5 +36,6 @@ chrome.storage.local.get([EXTENSION_ENABLED_KEY], (result) => {
 chrome.storage.onChanged.addListener((changes) => {
   if (changes[EXTENSION_ENABLED_KEY]) {
     updateContentScript(changes[EXTENSION_ENABLED_KEY].newValue !== false)
+    chrome.tabs.reload()
   }
 })

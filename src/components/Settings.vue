@@ -22,18 +22,17 @@ export default {
       this.showExtensionToggle = true
       if (this.extensionEnabled) {
         this.enableOtherSettings()
-      }else {
+      } else {
         this.disbleOtherSettings()
       }
     })
   },
   methods: {
-    disbleOtherSettings(){
+    disbleOtherSettings() {
       this.commentsSectionEnabled = false
       this.infiniteScrollEnabled = false
       this.showCommentsToggle = false
       this.showInfiniteScrollToggle = false
-      
     },
     enableOtherSettings() {
       readStorageKey(SETTINGS_COMMENTS_KEY, (value) => {

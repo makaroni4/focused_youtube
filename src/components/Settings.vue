@@ -1,6 +1,6 @@
 <script>
 import Toggle from "@components/Toggle.vue"
-import { INFINITE_SCROLL_KEY, SETTINGS_COMMENTS_KEY, writeStorageData, readStorageKey } from "@js/chrome-storage"
+import { EXTENSION_ENABLED_KEY, INFINITE_SCROLL_KEY, SETTINGS_COMMENTS_KEY, writeStorageData, readStorageKey } from "@js/chrome-storage"
 
 export default {
   components: {
@@ -8,34 +8,55 @@ export default {
   },
   data() {
     return {
+      showExtensionToggle: false,
       showCommentsToggle: false,
+      showInfiniteScrollToggle: false,
+      extensionEnabled: false,
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
-      showInfiniteScrollToggle: false
     }
   },
   mounted() {
-    readStorageKey(SETTINGS_COMMENTS_KEY, (value) => {
-      if(typeof(value) === "undefined") {
-        this.commentsSectionEnabled = false
-      } else {
-        this.commentsSectionEnabled = value
+    readStorageKey(EXTENSION_ENABLED_KEY, (value) => {
+      this.extensionEnabled = value !== undefined ? value : false
+      this.showExtensionToggle = true
+      if (this.extensionEnabled) {
+        this.enableOtherSettings()
+      }else {
+        this.disbleOtherSettings()
       }
-
-      this.showCommentsToggle = true
-    })
-
-    readStorageKey(INFINITE_SCROLL_KEY, (value) => {
-      if(typeof(value) === "undefined") {
-        this.infiniteScrollEnabled = false
-      } else {
-        this.infiniteScrollEnabled = value
-      }
-
-      this.showInfiniteScrollToggle = true
     })
   },
   methods: {
+    disbleOtherSettings(){
+      this.commentsSectionEnabled = false
+      this.infiniteScrollEnabled = false
+      this.showCommentsToggle = false
+      this.showInfiniteScrollToggle = false
+
+      
+    },
+    enableOtherSettings() {
+      readStorageKey(SETTINGS_COMMENTS_KEY, (value) => {
+        this.commentsSectionEnabled = value !== undefined ? value : false
+        this.showCommentsToggle = true
+      })
+
+      readStorageKey(INFINITE_SCROLL_KEY, (value) => {
+        this.infiniteScrollEnabled = value !== undefined ? value : false
+        this.showInfiniteScrollToggle = true
+      })
+    },
+    handleExtensionToggle(val) {
+      writeStorageData(EXTENSION_ENABLED_KEY, val, () => {
+        this.extensionEnabled = val
+        if (val) {
+          this.enableOtherSettings()
+        } else {
+          this.disbleOtherSettings()
+        }
+      })
+    },
     handleCommentsToggle(val) {
       writeStorageData(SETTINGS_COMMENTS_KEY, val, () => {
         this.commentsSectionEnabled = val
@@ -45,7 +66,7 @@ export default {
       writeStorageData(INFINITE_SCROLL_KEY, val, () => {
         this.infiniteScrollEnabled = val
       })
-    }
+    },
   }
 }
 </script>
@@ -54,12 +75,21 @@ export default {
   <div class="focused-youtube-settings">
     <div class="focused-youtube-settings__toggles">
       <Toggle
+        v-if="showExtensionToggle"
+        title="Enable Extension"
+        name="Extension status"
+        class="focused-youtube-settings__toggle"
+        :toggled="extensionEnabled"
+        @toggle="handleExtensionToggle" />
+
+      <Toggle
         v-if="showCommentsToggle"
         title="Show comments"
         name="Comments section"
         class="focused-youtube-settings__toggle"
         :toggled="commentsSectionEnabled"
-        @toggle="handleCommentsToggle" />
+        @toggle="handleCommentsToggle"
+      />
 
       <Toggle
         v-if="showInfiniteScrollToggle"
@@ -67,7 +97,8 @@ export default {
         name="Infinite scroll"
         class="focused-youtube-settings__toggle"
         :toggled="infiniteScrollEnabled"
-        @toggle="handleInfiniteScrollToggle" />
+        @toggle="handleInfiniteScrollToggle"
+      />
     </div>
   </div>
 </template>

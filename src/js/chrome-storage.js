@@ -5,6 +5,7 @@
 
 export const SETTINGS_COMMENTS_KEY = "settings:comments"
 export const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
+export const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 
 export const writeStorageData = (storageKey, value, callback) => {
   chrome.storage.local.set({ [storageKey]: value }, () => {

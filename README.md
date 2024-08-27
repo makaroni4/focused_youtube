@@ -4,6 +4,14 @@
 
 ## Development
 
+### Requirements
+
+* [Vue.js](https://vuejs.org/) >= 3
+* [Node](https://nodejs.org/en) >= 18
+
+
+### Steps
+
 1. Clone the repository to your computer.
 2. Enable developer mode on Chrome
 3. Install the dependencies with `npm install`

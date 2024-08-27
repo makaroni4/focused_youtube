@@ -2,8 +2,9 @@
   "name": "focused-youtube",
   "version": "2.1.0",
   "scripts": {
-    "build": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
-    "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",
+    "build": "vite build && del \"dist\\index.html\"",
+    "oldBuild": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
+    "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch \"src/**\" --watch \"public/**\" --exec \"npm run build\"",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier .  --write"
   },

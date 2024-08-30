@@ -10,6 +10,48 @@ body {
   display: none;
 }
 
+.fy-logo-menu {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999999999;
+  padding: 16px 32px;
+  min-width: 144px;
+  transform: translateY(100%);
+
+  border-radius: 8px;
+
+  background-color: white;
+}
+
+.fy-logo-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#logo:hover .fy-logo-menu {
+  display: block;
+}
+
+.fy-logo-menu:hover {
+  display: block;
+}
+
+.fy-logo-menu__link {
+  padding: 12px;
+
+  border-radius: 4px;
+
+  font-size: 14px;
+  color: #0F0F0F;
+}
+
+.fy-logo-menu__link:hover {
+  background-color: #F1F6F4;
+}
+
 .fy-home-page {
   height: 100vw;
   height: 100vh;
@@ -156,12 +198,20 @@ ytd-browse[page-subtype='channels'] .app-header {
 
 body.fy-history-page #guide-button.ytd-masthead,
 body.fy-history-page ytd-mini-guide-renderer,
-body.fy-history-page #voice-search-button {
+body.fy-history-page #voice-search-button,
+body.fy-history-page #end #buttons {
   display: none !important;
 }
 
 body.fy-history-page #page-header {
   padding-left: 0;
+}
+
+body.fy-playlist-page #guide-button.ytd-masthead,
+body.fy-playlist-page ytd-mini-guide-renderer,
+body.fy-playlist-page #voice-search-button,
+body.fy-playlist-page #end #buttons {
+  display: none !important;
 }
 
 /* Hides notification bell-icon from header menu */

@@ -50,9 +50,41 @@ const initFY = () => {
     initWatchPage()
   } else if (window.location.pathname === "/feed/history") {
     initHistoryPage()
+  } else if (window.location.pathname === "/playlist") {
+    initPlaylistPage()
   } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }
+}
+
+const mountLogoMenu = () => {
+  const logoMenu = document.querySelector("#fy-logo-menu")
+
+  if (logoMenu) {
+    return
+  }
+
+  const logo = document.querySelector("#logo")
+
+  if (!logo) {
+    return
+  }
+
+  const menu = document.createElement("div")
+  menu.classList = "fy-logo-menu"
+
+  menu.innerHTML = `
+    <div class="fy-logo-menu__links">
+      <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
+
+      <a href="/playlist?list=WL" class="fy-logo-menu__link">Watch later</a>
+
+      <a href="/playlist?list=LL" class="fy-logo-menu__link">Liked videos</a>
+
+      <a href="/account" class="fy-logo-menu__link">Account</a>
+    </div>
+  `
+  logo.appendChild(menu)
 }
 
 const initWatchPage = () => {
@@ -71,6 +103,10 @@ const initWatchPage = () => {
 
 const initHistoryPage = () => {
   document.body.classList.add("fy-history-page")
+}
+
+const initPlaylistPage = () => {
+  document.body.classList.add("fy-playlist-page")
 }
 
 const initResultsPage = () => {
@@ -166,6 +202,8 @@ const observeDOM = (function () {
 
 initFY()
 
+mountLogoMenu()
+
 observeDOM(document.body, "*", function () {
   if (currentUrl !== window.location.href) {
     currentUrl = window.location.href
@@ -196,6 +234,10 @@ observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-rende
   hideSectionByTitle("Latest posts from")
   hideSectionByTitle("Latest from")
   hideSectionByTitle("Popular today")
+})
+
+observeDOM(document.body, "ytd-topbar-logo-renderer#logo", function () {
+  mountLogoMenu()
 })
 
 chrome.storage.onChanged.addListener((changes) => {

@@ -84,7 +84,7 @@ const mountLogoMenu = () => {
       <a href="/account" class="fy-logo-menu__link">Account</a>
     </div>
   `
-  logo.insertAdjacentElement("afterend", menu)
+  logo.appendChild(menu)
 }
 
 const initWatchPage = () => {

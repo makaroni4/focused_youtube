@@ -55,6 +55,44 @@ const initFY = () => {
   }
 }
 
+const mountLogoMenu = () => {
+  const logoMenu = document.querySelector("#fy-logo-menu")
+
+  if (logoMenu) {
+    return
+  }
+
+  const logo = document.querySelector("#logo")
+
+  if (!logo) {
+    return
+  }
+
+  const menu = document.createElement("div")
+  menu.classList = "fy-logo-menu"
+
+  menu.innerHTML = `
+    <div class="fy-logo-menu__links">
+      <div class="fy-logo-menu__link-item">
+        <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
+      </div>
+
+      <div class="fy-logo-menu__link-item">
+        <a href="/playlist?list=WL" class="fy-logo-menu__link">Watch later</a>
+      </div>
+
+      <div class="fy-logo-menu__link-item">
+        <a href="playlist?list=LL" class="fy-logo-menu__link">Liked videos</a>
+      </div>
+
+      <div class="fy-logo-menu__link-item">
+        <a href="/account" class="fy-logo-menu__link">Account</a>
+      </div>
+    </div>
+  `
+  logo.insertAdjacentElement("afterend", menu)
+}
+
 const initWatchPage = () => {
   document.body.classList.add("fy-watch-page")
 
@@ -166,6 +204,8 @@ const observeDOM = (function () {
 
 initFY()
 
+mountLogoMenu()
+
 observeDOM(document.body, "*", function () {
   if (currentUrl !== window.location.href) {
     currentUrl = window.location.href
@@ -196,6 +236,10 @@ observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-rende
   hideSectionByTitle("Latest posts from")
   hideSectionByTitle("Latest from")
   hideSectionByTitle("Popular today")
+})
+
+observeDOM(document.body, "ytd-topbar-logo-renderer#logo", function () {
+  mountLogoMenu()
 })
 
 chrome.storage.onChanged.addListener((changes) => {

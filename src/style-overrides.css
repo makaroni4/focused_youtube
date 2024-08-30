@@ -27,7 +27,7 @@ body {
 .fy-logo-menu__links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 4px;
 }
 
 #logo:hover + .fy-logo-menu {
@@ -36,6 +36,16 @@ body {
 
 .fy-logo-menu:hover {
   display: block;
+}
+
+.fy-logo-menu__link {
+  padding: 8px;
+
+  border-radius: 4px;
+}
+
+.fy-logo-menu__link:hover {
+  background-color: #F1F6F4;
 }
 
 .fy-home-page {

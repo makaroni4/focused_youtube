@@ -73,21 +73,13 @@ const mountLogoMenu = () => {
 
   menu.innerHTML = `
     <div class="fy-logo-menu__links">
-      <div class="fy-logo-menu__link-item">
-        <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
-      </div>
+      <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
 
-      <div class="fy-logo-menu__link-item">
-        <a href="/playlist?list=WL" class="fy-logo-menu__link">Watch later</a>
-      </div>
+      <a href="/playlist?list=WL" class="fy-logo-menu__link">Watch later</a>
 
-      <div class="fy-logo-menu__link-item">
-        <a href="playlist?list=LL" class="fy-logo-menu__link">Liked videos</a>
-      </div>
+      <a href="/playlist?list=LL" class="fy-logo-menu__link">Liked videos</a>
 
-      <div class="fy-logo-menu__link-item">
-        <a href="/account" class="fy-logo-menu__link">Account</a>
-      </div>
+      <a href="/account" class="fy-logo-menu__link">Account</a>
     </div>
   `
   logo.insertAdjacentElement("afterend", menu)

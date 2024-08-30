@@ -48,6 +48,8 @@ const initFY = () => {
     initResultsPage()
   } else if (window.location.pathname === "/watch") {
     initWatchPage()
+  } else if (window.location.pathname === "/feed/history") {
+    initHistoryPage()
   } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }
@@ -65,6 +67,10 @@ const initWatchPage = () => {
       $body.classList.remove("fy-watch-page--comments-visible")
     }
   })
+}
+
+const initHistoryPage = () => {
+  document.body.classList.add("fy-history-page")
 }
 
 const initResultsPage = () => {

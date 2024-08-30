@@ -154,6 +154,16 @@ ytd-browse[page-subtype='channels'] .app-header {
   display: none;
 }
 
+body.fy-history-page #guide-button.ytd-masthead,
+body.fy-history-page ytd-mini-guide-renderer,
+body.fy-history-page #voice-search-button {
+  display: none !important;
+}
+
+body.fy-history-page #page-header {
+  padding-left: 0;
+}
+
 /* Hides notification bell-icon from header menu */
 ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   display: none !important;

@@ -50,6 +50,8 @@ const initFY = () => {
     initWatchPage()
   } else if (window.location.pathname === "/feed/history") {
     initHistoryPage()
+  } else if (window.location.pathname === "/playlist") {
+    initPlaylistPage()
   } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }
@@ -101,6 +103,10 @@ const initWatchPage = () => {
 
 const initHistoryPage = () => {
   document.body.classList.add("fy-history-page")
+}
+
+const initPlaylistPage = () => {
+  document.body.classList.add("fy-playlist-page")
 }
 
 const initResultsPage = () => {

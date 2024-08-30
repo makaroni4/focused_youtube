@@ -194,12 +194,20 @@ ytd-browse[page-subtype='channels'] .app-header {
 
 body.fy-history-page #guide-button.ytd-masthead,
 body.fy-history-page ytd-mini-guide-renderer,
-body.fy-history-page #voice-search-button {
+body.fy-history-page #voice-search-button,
+body.fy-history-page #end #buttons {
   display: none !important;
 }
 
 body.fy-history-page #page-header {
   padding-left: 0;
+}
+
+body.fy-playlist-page #guide-button.ytd-masthead,
+body.fy-playlist-page ytd-mini-guide-renderer,
+body.fy-playlist-page #voice-search-button,
+body.fy-playlist-page #end #buttons {
+  display: none !important;
 }
 
 /* Hides notification bell-icon from header menu */

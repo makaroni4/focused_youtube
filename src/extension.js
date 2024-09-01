@@ -13,6 +13,7 @@ const readStorageKeys = (storageKeys, callback) => {
 
 const SETTINGS_COMMENTS_KEY = "settings:comments"
 const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
+const SETTINGS_DESCRIPTION_KEY = "settings:description"
 
 import "./style-overrides.css"
 
@@ -90,13 +91,19 @@ const mountLogoMenu = () => {
 const initWatchPage = () => {
   document.body.classList.add("fy-watch-page")
 
-  readStorageKeys([SETTINGS_COMMENTS_KEY], (config) => {
+  readStorageKeys([SETTINGS_COMMENTS_KEY, SETTINGS_DESCRIPTION_KEY], (config) => {
     const $body = document.querySelector("body")
 
     if(config[SETTINGS_COMMENTS_KEY]) {
       $body.classList.add("fy-watch-page--comments-visible")
     } else {
       $body.classList.remove("fy-watch-page--comments-visible")
+    }
+
+    if(config[SETTINGS_DESCRIPTION_KEY]) {
+      $body.classList.add("fy-watch-page--description-visible")
+    } else {
+      $body.classList.remove("fy-watch-page--description-visible")
     }
   })
 }
@@ -249,6 +256,16 @@ chrome.storage.onChanged.addListener((changes) => {
         $body.classList.add("fy-watch-page--comments-visible")
       } else {
         $body.classList.remove("fy-watch-page--comments-visible")
+      }
+    }
+
+    if(key === SETTINGS_DESCRIPTION_KEY) {
+      const $body = document.querySelector("body")
+
+      if(newValue) {
+        $body.classList.add("fy-watch-page--description-visible")
+      } else {
+        $body.classList.remove("fy-watch-page--description-visible")
       }
     }
 

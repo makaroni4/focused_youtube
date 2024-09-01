@@ -1,6 +1,12 @@
 <script>
 import Toggle from "@components/Toggle.vue"
-import { INFINITE_SCROLL_KEY, SETTINGS_COMMENTS_KEY, writeStorageData, readStorageKey } from "@js/chrome-storage"
+import {
+  INFINITE_SCROLL_KEY,
+  SETTINGS_COMMENTS_KEY,
+  SETTINGS_DESCRIPTION_KEY,
+  writeStorageData,
+  readStorageKey
+} from "@js/chrome-storage"
 
 export default {
   components: {
@@ -11,7 +17,9 @@ export default {
       showCommentsToggle: false,
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
-      showInfiniteScrollToggle: false
+      showInfiniteScrollToggle: false,
+      showVideoDescriptionToggle: false,
+      videoDescriptionEnabled: false
     }
   },
   mounted() {
@@ -23,6 +31,16 @@ export default {
       }
 
       this.showCommentsToggle = true
+    })
+
+    readStorageKey(SETTINGS_DESCRIPTION_KEY, (value) => {
+      if(typeof(value) === "undefined") {
+        this.videoDescriptionEnabled = false
+      } else {
+        this.videoDescriptionEnabled = value
+      }
+
+      this.showVideoDescriptionToggle = true
     })
 
     readStorageKey(INFINITE_SCROLL_KEY, (value) => {
@@ -45,6 +63,11 @@ export default {
       writeStorageData(INFINITE_SCROLL_KEY, val, () => {
         this.infiniteScrollEnabled = val
       })
+    },
+    handleVideoDescriptionToggle(val) {
+      writeStorageData(SETTINGS_DESCRIPTION_KEY, val, () => {
+        this.videoDescriptionEnabled = val
+      })
     }
   }
 }
@@ -55,15 +78,23 @@ export default {
     <div class="focused-youtube-settings__toggles">
       <Toggle
         v-if="showCommentsToggle"
-        title="Show comments"
-        name="Comments section"
+        title="Comments"
+        name="Comments"
         class="focused-youtube-settings__toggle"
         :toggled="commentsSectionEnabled"
         @toggle="handleCommentsToggle" />
 
       <Toggle
+        v-if="showVideoDescriptionToggle"
+        title="Description"
+        name="Description"
+        class="focused-youtube-settings__toggle"
+        :toggled="videoDescriptionEnabled"
+        @toggle="handleVideoDescriptionToggle" />
+
+      <Toggle
         v-if="showInfiniteScrollToggle"
-        title="Enable infinite scroll"
+        title="Infinite scroll"
         name="Infinite scroll"
         class="focused-youtube-settings__toggle"
         :toggled="infiniteScrollEnabled"

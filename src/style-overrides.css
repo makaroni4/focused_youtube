@@ -171,11 +171,16 @@ body.fy-watch-page .ytp-pause-overlay, /* hide suggest video popup when embedded
 body.fy-watch-page .ytp-next-button, /* Remove play next button */
 body.fy-watch-page ytd-live-chat-frame, /* Hide live chat and chat replay */
 body.fy-watch-page .ytd-browse .app-header,
-body.fy-watch-page #comments {
+body.fy-watch-page #comments,
+body.fy-watch-page #description {
   display: none !important;
 }
 
 body.fy-watch-page.fy-watch-page--comments-visible #comments {
+  display: block !important;
+}
+
+body.fy-watch-page.fy-watch-page--description-visible #description {
   display: block !important;
 }
 

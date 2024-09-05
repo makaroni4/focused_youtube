@@ -6,7 +6,7 @@ import {
   EXTENSION_ENABLED_KEY,
   SETTINGS_DESCRIPTION_KEY,
   writeStorageData,
-  readStorageKey
+  readStorageKeys
 } from "@js/chrome-storage"
 
 export default {
@@ -15,78 +15,45 @@ export default {
   },
   data() {
     return {
-      showExtensionToggle: false,
-      showCommentsToggle: false,
-      showInfiniteScrollToggle: false,
       extensionEnabled: false,
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
-      showInfiniteScrollToggle: false,
-      showVideoDescriptionToggle: false,
       videoDescriptionEnabled: false
     }
   },
   mounted() {
-    readStorageKey(EXTENSION_ENABLED_KEY, (value) => {
-      this.extensionEnabled = value !== undefined ? value : false
-      this.showExtensionToggle = true
-      if (this.extensionEnabled) {
-        this.enableOtherSettings()
-      }else {
-        this.disbleOtherSettings()
-      }
+    readStorageKeys([
+      EXTENSION_ENABLED_KEY,
+      SETTINGS_DESCRIPTION_KEY,
+      SETTINGS_COMMENTS_KEY,
+      INFINITE_SCROLL_KEY
+    ], (keys) => {
+      console.log(keys)
 
-      this.showCommentsToggle = true
-    })
+      this.extensionEnabled = keys[EXTENSION_ENABLED_KEY] !== undefined ?
+        keys[EXTENSION_ENABLED_KEY] : true
 
-    readStorageKey(SETTINGS_DESCRIPTION_KEY, (value) => {
-      if(typeof(value) === "undefined") {
-        this.videoDescriptionEnabled = false
-      } else {
-        this.videoDescriptionEnabled = value
-      }
+      console.log("--> Settings", this.extensionEnabled)
 
-      this.showVideoDescriptionToggle = true
-    })
+      this.videoDescriptionEnabled = keys[SETTINGS_DESCRIPTION_KEY] !== undefined ?
+        keys[SETTINGS_DESCRIPTION_KEY] : true
 
-    readStorageKey(INFINITE_SCROLL_KEY, (value) => {
-      if(typeof(value) === "undefined") {
-        this.infiniteScrollEnabled = false
-      } else {
-        this.infiniteScrollEnabled = value
-      }
+      this.commentsSectionEnabled = keys[SETTINGS_COMMENTS_KEY] !== undefined ?
+        keys[SETTINGS_COMMENTS_KEY] : true
 
-      this.showInfiniteScrollToggle = true
+      this.infiniteScrollEnabled = keys[INFINITE_SCROLL_KEY] !== undefined ?
+        keys[INFINITE_SCROLL_KEY] : true
     })
   },
   methods: {
-    disbleOtherSettings(){
-      this.commentsSectionEnabled = false
-      this.infiniteScrollEnabled = false
-      this.showCommentsToggle = false
-      this.showInfiniteScrollToggle = false
-
-      
-    },
-    enableOtherSettings() {
-      readStorageKey(SETTINGS_COMMENTS_KEY, (value) => {
-        this.commentsSectionEnabled = value !== undefined ? value : false
-        this.showCommentsToggle = true
-      })
-
-      readStorageKey(INFINITE_SCROLL_KEY, (value) => {
-        this.infiniteScrollEnabled = value !== undefined ? value : false
-        this.showInfiniteScrollToggle = true
-      })
-    },
     handleExtensionToggle(val) {
       writeStorageData(EXTENSION_ENABLED_KEY, val, () => {
         this.extensionEnabled = val
-        if (val) {
-          this.enableOtherSettings()
-        } else {
-          this.disbleOtherSettings()
-        }
+
+        // IMPORTANT
+        // The YouTube page is reloaded in the extension.js file.
+        // Here we reloading the Popup page.
+        window.location.reload()
       })
     },
     handleCommentsToggle(val) {
@@ -112,16 +79,13 @@ export default {
   <div class="focused-youtube-settings">
     <div class="focused-youtube-settings__toggles">
       <Toggle
-        v-if="showExtensionToggle"
-        title="Enable Extension"
-        name="Extension status"
+        name="Extension enabled"
         class="focused-youtube-settings__toggle"
         :toggled="extensionEnabled"
         @toggle="handleExtensionToggle" />
 
       <Toggle
-        v-if="showCommentsToggle"
-        title="Comments"
+        v-if="extensionEnabled"
         name="Comments"
         class="focused-youtube-settings__toggle"
         :toggled="commentsSectionEnabled"
@@ -129,16 +93,14 @@ export default {
       />
 
       <Toggle
-        v-if="showVideoDescriptionToggle"
-        title="Description"
+        v-if="extensionEnabled"
         name="Description"
         class="focused-youtube-settings__toggle"
         :toggled="videoDescriptionEnabled"
         @toggle="handleVideoDescriptionToggle" />
 
       <Toggle
-        v-if="showInfiniteScrollToggle"
-        title="Infinite scroll"
+        v-if="extensionEnabled"
         name="Infinite scroll"
         class="focused-youtube-settings__toggle"
         :toggled="infiniteScrollEnabled"

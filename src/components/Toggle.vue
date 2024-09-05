@@ -4,13 +4,13 @@
 <template>
   <section
     class="toggle"
-    :class="{'toggle--active': toggleState}">
+    :class="{'toggle--active': toggled}">
     <label
       :id="`${id}-label`"
       :for="id"
       class="toggle__label"
     >
-      {{ title }}
+      {{ name }}
     </label>
 
     <input
@@ -23,7 +23,7 @@
 
     <div class="toggle__wrapper">
       <span
-        :aria-checked="toggleState"
+        :aria-checked="toggled"
         :aria-labelledby="`${id}-label`"
         class="toggle__content"
         role="checkbox"
@@ -40,16 +40,11 @@ export default {
   name: "Toggle",
 
   props: {
-    name:        { type: String, required: true },
-    title:       { type: String, required: true },
-    toggled:     { type: Boolean, default: false },
+    name:    { type: String, required: true },
+    toggled: { type: Boolean, default: false },
   },
 
   emits: ["toggle"],
-
-  data() {
-    return { toggleState: this.toggled }
-  },
 
   computed: {
     id() {
@@ -59,11 +54,9 @@ export default {
 
   methods: {
     toggle() {
-      this.toggleState = !this.toggleState
-
-      this.$emit("toggle", this.toggleState)
+      this.$emit("toggle", !this.toggled)
     }
-  },
+  }
 }
 </script>
 

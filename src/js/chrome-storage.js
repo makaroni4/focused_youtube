@@ -3,9 +3,9 @@
 // with an import statement fails with It fails with "Can't use import
 // statement outside a module".
 
+export const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 export const SETTINGS_COMMENTS_KEY = "settings:comments"
 export const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
-export const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 export const SETTINGS_DESCRIPTION_KEY = "settings:description"
 
 export const writeStorageData = (storageKey, value, callback) => {

@@ -11,6 +11,7 @@ const readStorageKeys = (storageKeys, callback) => {
   })
 }
 
+const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 const SETTINGS_COMMENTS_KEY = "settings:comments"
 const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
 const SETTINGS_DESCRIPTION_KEY = "settings:description"
@@ -207,18 +208,6 @@ const observeDOM = (function () {
   }
 })()
 
-initFY()
-
-mountLogoMenu()
-
-observeDOM(document.body, "*", function () {
-  if (currentUrl !== window.location.href) {
-    currentUrl = window.location.href
-
-    initFY()
-  }
-})
-
 const hideSectionByTitle = (titleText) => {
   const sections = document.querySelectorAll("ytd-shelf-renderer.style-scope.ytd-item-section-renderer")
   const section = Array.from(sections).find(section => {
@@ -235,17 +224,6 @@ const hideSectionByTitle = (titleText) => {
     section.classList.add("fy-invisible")
   }
 }
-
-observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-renderer", function () {
-  hideSectionByTitle("For you")
-  hideSectionByTitle("Latest posts from")
-  hideSectionByTitle("Latest from")
-  hideSectionByTitle("Popular today")
-})
-
-observeDOM(document.body, "ytd-topbar-logo-renderer#logo", function () {
-  mountLogoMenu()
-})
 
 chrome.storage.onChanged.addListener((changes) => {
   for (let [key, { newValue }] of Object.entries(changes)) {
@@ -278,5 +256,36 @@ chrome.storage.onChanged.addListener((changes) => {
         $body.classList.remove("fy-results-page--infinite-scroll-enabled")
       }
     }
+
+    if(key === EXTENSION_ENABLED_KEY) {
+      window.location.reload()
+    }
+  }
+})
+
+readStorageKeys([EXTENSION_ENABLED_KEY], (config) => {
+  if(config[EXTENSION_ENABLED_KEY] || typeof(config[EXTENSION_ENABLED_KEY]) === "undefined") {
+    initFY()
+
+    mountLogoMenu()
+
+    observeDOM(document.body, "*", function () {
+      if (currentUrl !== window.location.href) {
+        currentUrl = window.location.href
+
+        initFY()
+      }
+    })
+
+    observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-renderer", function () {
+      hideSectionByTitle("For you")
+      hideSectionByTitle("Latest posts from")
+      hideSectionByTitle("Latest from")
+      hideSectionByTitle("Popular today")
+    })
+
+    observeDOM(document.body, "ytd-topbar-logo-renderer#logo", function () {
+      mountLogoMenu()
+    })
   }
 })

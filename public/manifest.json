@@ -7,9 +7,22 @@
   "icons": {
     "128": "extension_icon.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "assets/extension.js"
+      ],
+      "css": [
+        "assets/extension.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
   "action": {
     "default_popup": "popup.html"
   },
@@ -18,9 +31,7 @@
     "https://m.youtube.com/*"
   ],
   "permissions": [
-    "storage",
-    "scripting",
-    "activeTab"
+    "storage"
   ],
   "web_accessible_resources": [
     {

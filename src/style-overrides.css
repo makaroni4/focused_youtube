@@ -12,13 +12,19 @@ body {
 
 .fy-logo-menu {
   display: none;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   z-index: 999999999;
-  padding: 16px 32px;
   min-width: 144px;
   transform: translateY(100%);
+  padding-top: 8px;
+
+  background-color: transparent;
+}
+
+.fy-logo-menu__body {
+  padding: 16px;
 
   border-radius: 8px;
 
@@ -29,6 +35,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.fy-home-page__logo:hover .fy-logo-menu {
+  display: block;
 }
 
 #logo:hover .fy-logo-menu {

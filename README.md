@@ -28,9 +28,11 @@ Make sure to enable Dark Mode in your Chrome before testing it:
 
 https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop
 
-### 💬 Options to show/hide comments or description
+### 💬 Options to show/hide comments/description
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/popup.png">
+
+Big thank you to [@KParthSingh](https://github.com/KParthSingh) and [@Ohnoimded](https://github.com/Ohnoimded) for adding an option to temporarily disable the extension! :raised_hands:
 
 ### 🔗 Hover over YouTube logo to see the navigation menu
 

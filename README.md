@@ -6,19 +6,19 @@
 
 ## Screenshots
 
-### 🏠 Distraction-free YouTube homepage.
+### 🏠 Distraction-free YouTube homepage
 
 <img width="800" alt="home_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page.png">
 
-### 🔍 Clean search page.
+### 🔍 Clean search page
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/search_page.png">
 
-### 📺 Noise-free video page.
+### 📺 Noise-free video page
 
 <img width="800" alt="video_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/video_page.png">
 
-### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings).
+### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings)
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark.png">
 
@@ -28,9 +28,13 @@ Make sure to enable Dark Mode in your Chrome before testing it:
 
 https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop
 
-### 💬 An option to show/hide the comments section.
+### 💬 Options to show/hide comments or description
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/popup.png">
+
+### 🔗 Hover over YouTube logo to see the navigation menu
+
+<img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/hover_menu.png">
 
 ### 📱 Works in mobile browser as well
 

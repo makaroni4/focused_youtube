@@ -266,6 +266,18 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
     background-image: url('chrome-extension://__MSG_@@extension_id__/images/search_icon_dark.svg');
     background-color: #222222;
   }
+
+  .fy-logo-menu__body {  
+    background-color: hsl(0, 0%, 13%);
+  }
+
+  .fy-logo-menu__link:hover {
+    background-color: hsl(0, 0%, 16%);
+  }
+
+  .fy-logo-menu__link {
+    color: rgba(255, 255, 255, 0.918);
+  }
 }
 
 /* Settings for Mobile Phone */

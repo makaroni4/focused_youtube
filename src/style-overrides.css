@@ -182,8 +182,15 @@ body.fy-watch-page .ytp-next-button, /* Remove play next button */
 body.fy-watch-page ytd-live-chat-frame, /* Hide live chat and chat replay */
 body.fy-watch-page .ytd-browse .app-header,
 body.fy-watch-page #comments,
-body.fy-watch-page #description {
+body.fy-watch-page #description,
+body.fy-watch-page #panels-full-bleed-container {
   display: none !important;
+}
+
+/* This override removes blank space from videos with playlist like this one:
+https://www.youtube.com/watch?v=EMPjgL2LNSU&list=PL2xF3HCNxGM-u96iJBHtwY733QgthoGu-&index=12 */
+body.fy-watch-page #columns.ytd-watch-flexy {
+  padding-right: 0 !important;
 }
 
 body.fy-watch-page.fy-watch-page--comments-visible #comments {
@@ -267,7 +274,7 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
     background-color: #222222;
   }
 
-  .fy-logo-menu__body {  
+  .fy-logo-menu__body {
     background-color: hsl(0, 0%, 13%);
   }
 

@@ -128,6 +128,16 @@ body {
   cursor: pointer;
 }
 
+.fy-review-reminder {
+  position: fixed;
+  z-index: 99999999;
+  top: 24px;
+  right: 24px;
+  padding: 24px;
+
+  background-color: #FFF;
+}
+
 /* Do not delete the ".ytd-popup-container" class to avoid losing
 + the dropdown menu on the top rigth side of the video block. */
 

@@ -48,6 +48,8 @@ const enableTheaterMode = () => {
 const initFY = () => {
   console.log("--> Sending message")
 
+  mountReviewReminder()
+
   setTimeout(3000, () => {
     chrome.runtime.sendMessage(chrome.runtime.id, {
       id: chrome.runtime.id,
@@ -113,6 +115,20 @@ const mountLogoMenu = () => {
   `
 
   logo.appendChild(menu)
+}
+
+const mountReviewReminder = () => {
+  const menu = document.createElement("div")
+  menu.classList = "fy-review-reminder"
+
+  menu.innerHTML = `
+    <div class="fy-review-reminder__body">
+      LEAVE A REVIEW PLEASE
+    </div>
+  `
+
+  const $body = document.querySelector("body")
+  $body.appendChild(menu)
 }
 
 const initWatchPage = () => {
@@ -195,6 +211,8 @@ const initHomePage = () => {
   anchor.querySelector(".fy-search-form").onsubmit = search
 
   mountLogoMenu()
+
+  mountReviewReminder()
 }
 
 const nodeMatchesSelector = (node, selector) => {

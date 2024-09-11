@@ -1,5 +1,45 @@
+<template>
+  <div class="focused-youtube-settings">
+    <div class="focused-youtube-settings__toggles">
+      <Toggle
+        name="Extension enabled"
+        class="focused-youtube-settings__toggle"
+        :toggled="extensionEnabled"
+        @toggle="handleExtensionToggle" />
+
+      <Toggle
+        v-if="extensionEnabled"
+        name="Comments"
+        class="focused-youtube-settings__toggle"
+        :toggled="commentsSectionEnabled"
+        @toggle="handleCommentsToggle"
+      />
+
+      <Toggle
+        v-if="extensionEnabled"
+        name="Description"
+        class="focused-youtube-settings__toggle"
+        :toggled="videoDescriptionEnabled"
+        @toggle="handleVideoDescriptionToggle" />
+
+      <Toggle
+        v-if="extensionEnabled"
+        name="Infinite scroll"
+        class="focused-youtube-settings__toggle"
+        :toggled="infiniteScrollEnabled"
+        @toggle="handleInfiniteScrollToggle"
+      />
+    </div>
+
+    <div class="focused-youtube-settings__rating-reminder">
+      <RatingReminder />
+    </div>
+  </div>
+</template>
+
 <script>
 import Toggle from "@components/Toggle.vue"
+import RatingReminder from "@components/RatingReminder.vue"
 import {
   INFINITE_SCROLL_KEY,
   SETTINGS_COMMENTS_KEY,
@@ -11,7 +51,8 @@ import {
 
 export default {
   components: {
-    Toggle
+    Toggle,
+    RatingReminder
   },
   data() {
     return {
@@ -28,12 +69,8 @@ export default {
       SETTINGS_COMMENTS_KEY,
       INFINITE_SCROLL_KEY
     ], (keys) => {
-      console.log(keys)
-
       this.extensionEnabled = keys[EXTENSION_ENABLED_KEY] !== undefined ?
         keys[EXTENSION_ENABLED_KEY] : true
-
-      console.log("--> Settings", this.extensionEnabled)
 
       this.videoDescriptionEnabled = keys[SETTINGS_DESCRIPTION_KEY] !== undefined ?
         keys[SETTINGS_DESCRIPTION_KEY] : true
@@ -74,41 +111,6 @@ export default {
   }
 }
 </script>
-
-<template>
-  <div class="focused-youtube-settings">
-    <div class="focused-youtube-settings__toggles">
-      <Toggle
-        name="Extension enabled"
-        class="focused-youtube-settings__toggle"
-        :toggled="extensionEnabled"
-        @toggle="handleExtensionToggle" />
-
-      <Toggle
-        v-if="extensionEnabled"
-        name="Comments"
-        class="focused-youtube-settings__toggle"
-        :toggled="commentsSectionEnabled"
-        @toggle="handleCommentsToggle"
-      />
-
-      <Toggle
-        v-if="extensionEnabled"
-        name="Description"
-        class="focused-youtube-settings__toggle"
-        :toggled="videoDescriptionEnabled"
-        @toggle="handleVideoDescriptionToggle" />
-
-      <Toggle
-        v-if="extensionEnabled"
-        name="Infinite scroll"
-        class="focused-youtube-settings__toggle"
-        :toggled="infiniteScrollEnabled"
-        @toggle="handleInfiniteScrollToggle"
-      />
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .focused-youtube-settings {

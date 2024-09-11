@@ -50,17 +50,19 @@ const initFY = () => {
 
   enableTheaterMode()
 
-  if (window.location.pathname === "/") {
+  const pathname = window.location.pathname
+
+  if (pathname === "/") {
     initHomePage()
-  } else if (window.location.pathname === "/results") {
+  } else if (pathname === "/results") {
     initResultsPage()
-  } else if (window.location.pathname === "/watch") {
+  } else if (pathname === "/watch" || pathname.match(/\/live\/[\w-]+/)) {
     initWatchPage()
-  } else if (window.location.pathname === "/feed/history") {
+  } else if (pathname === "/feed/history") {
     initHistoryPage()
-  } else if (window.location.pathname === "/playlist") {
+  } else if (pathname === "/playlist") {
     initPlaylistPage()
-  } else if (window.location.pathname.startsWith("/@") || window.location.pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
+  } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }
 }

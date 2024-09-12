@@ -50,13 +50,6 @@ const initFY = () => {
 
   mountReviewReminder()
 
-  setTimeout(3000, () => {
-    chrome.runtime.sendMessage(chrome.runtime.id, {
-      id: chrome.runtime.id,
-      action: "rating-reminder"
-    })
-  })
-
   cleanUpFYClasses()
 
   enableTheaterMode()

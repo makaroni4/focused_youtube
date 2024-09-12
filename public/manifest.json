@@ -7,9 +7,6 @@
   "icons": {
     "128": "extension_icon.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
       "matches": [

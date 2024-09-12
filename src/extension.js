@@ -190,7 +190,7 @@ const mountReviewReminder = () => {
       e.preventDefault()
 
       writeStorageData(SETTINGS_RATING_LINK_CLICKED, 1, () => {
-        window.location.href = "https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn?hl=en"
+        window.location.href = "https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn/reviews?hl=en"
       })
     })
   })

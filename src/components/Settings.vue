@@ -30,16 +30,11 @@
         @toggle="handleInfiniteScrollToggle"
       />
     </div>
-
-    <div class="focused-youtube-settings__rating-reminder">
-      <RatingReminder />
-    </div>
   </div>
 </template>
 
 <script>
 import Toggle from "@components/Toggle.vue"
-import RatingReminder from "@components/RatingReminder.vue"
 import {
   INFINITE_SCROLL_KEY,
   SETTINGS_COMMENTS_KEY,
@@ -51,8 +46,7 @@ import {
 
 export default {
   components: {
-    Toggle,
-    RatingReminder
+    Toggle
   },
   data() {
     return {

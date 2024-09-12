@@ -198,8 +198,6 @@ const mountReviewReminder = () => {
       const now = Math.floor(new Date().getTime() / 1000)
 
       writeStorageData(SETTINGS_RATING_REMINDER_DISMISSED_AT, now, () => {
-        console.log("--> Set SETTINGS_RATING_REMINDER_DISMISSED_AT")
-
         menu.remove()
       })
     })
@@ -209,8 +207,6 @@ const mountReviewReminder = () => {
       e.preventDefault()
 
       writeStorageData(SETTINGS_RATING_LINK_CLICKED, 1, () => {
-        console.log("--> Set SETTINGS_RATING_LINK_CLICKED")
-
         window.location.href = "https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn?hl=en"
       })
     })

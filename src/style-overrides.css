@@ -155,11 +155,31 @@ body {
   position: absolute;
   top: 8px;
   right: 8px;
+  z-index: 99999999;
+
+  cursor: pointer;
 }
 
 .fy-review-reminder__copy {
+  margin-bottom: 24px;
+
   font-size: 16px;
   line-height: 24px;
+}
+
+.fy-review-reminder__cta {
+  display: block;
+  padding: 8px 16px;
+  position: relative;
+  z-index: 99999999;
+
+  border-radius: 4px;
+
+  background-color: aqua;
+
+  text-align: center;
+
+  cursor: pointer;
 }
 
 /* Do not delete the ".ytd-popup-container" class to avoid losing

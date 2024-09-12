@@ -29,6 +29,18 @@ const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
 
 import "./style-overrides.css"
 
+readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
+  if (config[EXTENSION_INSTALLED_AT]) {
+    return
+  } else {
+    const now = Math.floor(new Date().getTime() / 1000)
+
+    writeStorageData(EXTENSION_INSTALLED_AT, now, () => {
+      console.log("--> Set EXTENSION_INSTALLED_AT")
+    })
+  }
+})
+
 document.body.style.display = "block"
 
 let currentUrl = window.location.href
@@ -57,18 +69,6 @@ const enableTheaterMode = () => {
 
 
 const initFY = () => {
-  readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
-    if (config[EXTENSION_INSTALLED_AT]) {
-      return
-    } else {
-      const now = Math.floor(new Date().getTime() / 1000)
-
-      writeStorageData(EXTENSION_INSTALLED_AT, now, () => {
-        console.log("--> Set EXTENSION_INSTALLED_AT")
-      })
-    }
-  })
-
   mountReviewReminder()
 
   cleanUpFYClasses()
@@ -132,6 +132,10 @@ const mountLogoMenu = () => {
 }
 
 const mountReviewReminder = () => {
+  if (document.querySelector(".fy-review-reminder")) {
+    return
+  }
+
   readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT, SETTINGS_RATING_LINK_CLICKED], (config) => {
     if (config[SETTINGS_RATING_LINK_CLICKED]) {
       return
@@ -168,10 +172,14 @@ const mountReviewReminder = () => {
       </div>
     `
 
+    if (document.querySelector(".fy-review-reminder")) {
+      return
+    }
     const $body = document.querySelector("body")
     $body.appendChild(menu)
 
     const $closeLink = $body.querySelector(".js-fy-close-review-reminder")
+
     $closeLink.addEventListener("click", e => {
       e.preventDefault()
 
@@ -277,8 +285,6 @@ const initHomePage = () => {
   anchor.querySelector(".fy-search-form").onsubmit = search
 
   mountLogoMenu()
-
-  mountReviewReminder()
 }
 
 const nodeMatchesSelector = (node, selector) => {

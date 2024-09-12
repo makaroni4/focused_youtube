@@ -1,31 +1,14 @@
-// import { SETTINGS_COMMENTS_KEY, readStorageKey } from "@js/chrome-storage"
-
-// I can't import SETTINGS_COMMENTS_KEY and readStorageKey since
-// it'll produce a dist/chrome-storage.js file that can't be imported
-// when the dist/extension.js is injected into a page. It fails with
-// an error "Can't use import statement outside a module".
-
-const writeStorageData = (storageKey, value, callback) => {
-  chrome.storage.local.set({ [storageKey]: value }, () => {
-    if(callback) {
-      callback(value)
-    }
-  })
-}
-
-const readStorageKeys = (storageKeys, callback) => {
-  chrome.storage.local.get(storageKeys, function(result) {
-    callback(result)
-  })
-}
-
-const EXTENSION_INSTALLED_AT = "settings:extension_installed_at"
-const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
-const SETTINGS_COMMENTS_KEY = "settings:comments"
-const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
-const SETTINGS_DESCRIPTION_KEY = "settings:description"
-const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
-const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
+import {
+  SETTINGS_COMMENTS_KEY,
+  EXTENSION_INSTALLED_AT,
+  EXTENSION_ENABLED_KEY,
+  INFINITE_SCROLL_KEY,
+  SETTINGS_DESCRIPTION_KEY,
+  SETTINGS_RATING_REMINDER_DISMISSED_AT,
+  SETTINGS_RATING_LINK_CLICKED,
+  writeStorageData,
+  readStorageKeys
+} from "@js/chrome-storage"
 
 import "./style-overrides.css"
 

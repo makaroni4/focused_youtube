@@ -2,7 +2,7 @@
   "name": "focused-youtube",
   "version": "2.2.0",
   "scripts": {
-    "build": "vite build && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
+    "build": "vite build --config vite.popup.config.js && vite build --config vite.content_script.config.js && rsync -av output_popup/* dist && rsync -av output_content_script/* dist && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
     "mon": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier .  --write"

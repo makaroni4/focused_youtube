@@ -17,14 +17,11 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      input: {
-        popup: "src/popup.js",
-        extension: "src/extension.js"
-      },
+      input: "src/extension.js",
       output: {
+        dir: "output_content_script",
         entryFileNames: "assets/[name].js",
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`
+        assetFileNames: "assets/[name].[ext]"
       }
     }
   }

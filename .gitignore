@@ -3,3 +3,5 @@
 dist.zip
 node_modules
 dist
+output_popup
+output_content_script

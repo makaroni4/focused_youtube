@@ -5,16 +5,26 @@
 // when the dist/extension.js is injected into a page. It fails with
 // an error "Can't use import statement outside a module".
 
+const writeStorageData = (storageKey, value, callback) => {
+  chrome.storage.local.set({ [storageKey]: value }, () => {
+    if(callback) {
+      callback(value)
+    }
+  })
+}
+
 const readStorageKeys = (storageKeys, callback) => {
   chrome.storage.local.get(storageKeys, function(result) {
     callback(result)
   })
 }
 
+const EXTENSION_INSTALLED_AT = "settings:extension_installed_at"
 const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 const SETTINGS_COMMENTS_KEY = "settings:comments"
 const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
 const SETTINGS_DESCRIPTION_KEY = "settings:description"
+const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
 
 import "./style-overrides.css"
 
@@ -46,7 +56,17 @@ const enableTheaterMode = () => {
 
 
 const initFY = () => {
-  console.log("--> Sending message")
+  readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
+    if (config[EXTENSION_INSTALLED_AT]) {
+      return
+    } else {
+      const now = Math.floor(new Date().getTime() / 1000)
+
+      writeStorageData(EXTENSION_INSTALLED_AT, now, () => {
+        console.log("--> Set EXTENSION_INSTALLED_AT")
+      })
+    }
+  })
 
   mountReviewReminder()
 
@@ -111,17 +131,53 @@ const mountLogoMenu = () => {
 }
 
 const mountReviewReminder = () => {
-  const menu = document.createElement("div")
-  menu.classList = "fy-review-reminder"
+  readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT], (config) => {
+    const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
+    const now = Math.floor(new Date().getTime() / 1000)
+    const dismissedDaysAgo = dismissedAt ? (now - dismissedAt) / 60 / 60 / 24 : -1
 
-  menu.innerHTML = `
-    <div class="fy-review-reminder__body">
-      LEAVE A REVIEW PLEASE
-    </div>
-  `
+    console.log("--> dismissedDaysAgo: ", dismissedDaysAgo)
 
-  const $body = document.querySelector("body")
-  $body.appendChild(menu)
+    if (dismissedDaysAgo <= 90) {
+      return
+    }
+
+    const menu = document.createElement("div")
+    menu.classList = "fy-review-reminder"
+
+    menu.innerHTML = `
+      <div class="fy-review-reminder__body">
+        <div class="fy-review-reminder__close js-fy-close-review-reminder">
+          Dismiss
+        </div>
+
+        <div class="fy-review-reminder__container">
+          <div class="fy-review-reminder__logo">
+          </div>
+
+          <div class="fy-review-reminder__copy">
+            Leave Focused YouTube a review – give feedback and help spread the word!
+          </div>
+        </div>
+      </div>
+    `
+
+    const $body = document.querySelector("body")
+    $body.appendChild(menu)
+
+    const $closeLink = $body.querySelector(".js-fy-close-review-reminder")
+    $closeLink.addEventListener("click", e => {
+      e.preventDefault()
+
+      const now = Math.floor(new Date().getTime() / 1000)
+
+      writeStorageData(SETTINGS_RATING_REMINDER_DISMISSED_AT, now, () => {
+        console.log("--> Set SETTINGS_RATING_REMINDER_DISMISSED_AT")
+
+        menu.remove()
+      })
+    })
+  })
 }
 
 const initWatchPage = () => {

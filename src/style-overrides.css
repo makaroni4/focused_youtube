@@ -135,7 +135,31 @@ body {
   right: 24px;
   padding: 24px;
 
+  border: 1px dashed #222222;
+  border-radius: 4px;
+
   background-color: #FFF;
+}
+
+.fy-review-reminder__logo {
+  height: 30px;
+  width: auto;
+  margin-bottom: 24px;
+
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/logo_with_name.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fy-review-reminder__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.fy-review-reminder__copy {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 /* Do not delete the ".ytd-popup-container" class to avoid losing

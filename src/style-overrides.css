@@ -5,6 +5,46 @@
   src: url("chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf");
 }
 
+/* Shout out to Animate.css
+https://github.com/animate-css/animate.css/blob/3f8ab233dbbd9d2fe577528d2296382954be3d1a/source/fading_entrances/fadeInRightBig.css#L2 */
+@keyframes fadeInRightBig {
+  from {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes headShake {
+  0% {
+    transform: translateX(0);
+  }
+
+  6.5% {
+    transform: translateX(-6px) rotateY(-9deg);
+  }
+
+  18.5% {
+    transform: translateX(5px) rotateY(7deg);
+  }
+
+  31.5% {
+    transform: translateX(-3px) rotateY(-5deg);
+  }
+
+  43.5% {
+    transform: translateX(2px) rotateY(3deg);
+  }
+
+  50% {
+    transform: translateX(0);
+  }
+}
+
 /* Hide the whole page by default to prevent blinking when extension is being loaded. */
 body {
   display: none;
@@ -139,6 +179,10 @@ body {
   border-radius: 4px;
 
   background-color: #FFF;
+
+  animation: fadeInRightBig, headShake;
+  animation-duration: 1s, 1s;
+  animation-delay: 0s, 1s;
 }
 
 .fy-review-reminder__logo {

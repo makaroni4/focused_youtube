@@ -136,15 +136,30 @@ const mountReviewReminder = () => {
     return
   }
 
-  readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT, SETTINGS_RATING_LINK_CLICKED], (config) => {
+  readStorageKeys([
+      SETTINGS_RATING_REMINDER_DISMISSED_AT,
+      SETTINGS_RATING_LINK_CLICKED,
+      EXTENSION_INSTALLED_AT
+    ], (config) => {
+    if(!config[EXTENSION_INSTALLED_AT]) {
+      return
+    }
+
     if (config[SETTINGS_RATING_LINK_CLICKED]) {
       // return
     }
 
     const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
+    const installedAt = config[EXTENSION_INSTALLED_AT]
     const now = Math.floor(new Date().getTime() / 1000)
     const dismissedDaysAgo = dismissedAt ? (now - dismissedAt) / 60 / 60 / 24 : -1
+    const installedDaysAgo = (now - installedAt) / 60 / 60 / 24
     const RATING_REMINDER_FREQUENCY = 90 // days
+    const RATING_REMINDER_DELAY = 7 // days
+
+    if (installedDaysAgo <= RATING_REMINDER_DELAY) {
+      // return
+    }
 
     if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
       // return

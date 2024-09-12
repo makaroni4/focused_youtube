@@ -1,8 +1,3 @@
-// IMPORTANT: the SETTINGS_COMMENTS_KEY and readStorageKey are
-// duplicated in the extension.js file to avoid using modules. An extension
-// with an import statement fails with It fails with "Can't use import
-// statement outside a module".
-
 export const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 export const SETTINGS_COMMENTS_KEY = "settings:comments"
 export const INFINITE_SCROLL_KEY = "settings:infinite_scroll"

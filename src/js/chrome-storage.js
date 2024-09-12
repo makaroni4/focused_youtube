@@ -7,7 +7,7 @@ export const EXTENSION_ENABLED_KEY = "settings:extension_enabled"
 export const SETTINGS_COMMENTS_KEY = "settings:comments"
 export const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
 export const SETTINGS_DESCRIPTION_KEY = "settings:description"
-export const SETTINGS_RATING_GIVEN = "settings:rating_given"
+export const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
 export const EXTENSION_INSTALLED_AT = "settings:extension_installed_at"
 export const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
 

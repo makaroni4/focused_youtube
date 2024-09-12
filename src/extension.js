@@ -25,6 +25,7 @@ const SETTINGS_COMMENTS_KEY = "settings:comments"
 const INFINITE_SCROLL_KEY = "settings:infinite_scroll"
 const SETTINGS_DESCRIPTION_KEY = "settings:description"
 const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
+const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
 
 import "./style-overrides.css"
 
@@ -131,14 +132,17 @@ const mountLogoMenu = () => {
 }
 
 const mountReviewReminder = () => {
-  readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT], (config) => {
+  readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT, SETTINGS_RATING_LINK_CLICKED], (config) => {
+    if (config[SETTINGS_RATING_LINK_CLICKED]) {
+      return
+    }
+
     const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
     const now = Math.floor(new Date().getTime() / 1000)
     const dismissedDaysAgo = dismissedAt ? (now - dismissedAt) / 60 / 60 / 24 : -1
+    const RATING_REMINDER_FREQUENCY = 90 // days
 
-    console.log("--> dismissedDaysAgo: ", dismissedDaysAgo)
-
-    if (dismissedDaysAgo <= 90) {
+    if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
       return
     }
 
@@ -157,6 +161,8 @@ const mountReviewReminder = () => {
 
           <div class="fy-review-reminder__copy">
             Leave Focused YouTube a review – give feedback and help spread the word!
+
+            <a class="fy-review-reminder__cta js-fy-leave-review">Leave review</a>
           </div>
         </div>
       </div>
@@ -175,6 +181,17 @@ const mountReviewReminder = () => {
         console.log("--> Set SETTINGS_RATING_REMINDER_DISMISSED_AT")
 
         menu.remove()
+      })
+    })
+
+    const $reviewLink = $body.querySelector(".js-fy-leave-review")
+    $reviewLink.addEventListener("click", e => {
+      e.preventDefault()
+
+      writeStorageData(SETTINGS_RATING_LINK_CLICKED, 1, () => {
+        console.log("--> Set SETTINGS_RATING_LINK_CLICKED")
+
+        window.location.href = "https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn?hl=en"
       })
     })
   })

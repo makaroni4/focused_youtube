@@ -35,9 +35,7 @@ readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
   } else {
     const now = Math.floor(new Date().getTime() / 1000)
 
-    writeStorageData(EXTENSION_INSTALLED_AT, now, () => {
-      console.log("--> Set EXTENSION_INSTALLED_AT")
-    })
+    writeStorageData(EXTENSION_INSTALLED_AT, now, () => {})
   }
 })
 
@@ -146,7 +144,7 @@ const mountReviewReminder = () => {
     }
 
     if (config[SETTINGS_RATING_LINK_CLICKED]) {
-      // return
+      return
     }
 
     const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
@@ -158,11 +156,11 @@ const mountReviewReminder = () => {
     const RATING_REMINDER_DELAY = 7 // days
 
     if (installedDaysAgo <= RATING_REMINDER_DELAY) {
-      // return
+      return
     }
 
     if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
-      // return
+      return
     }
 
     const menu = document.createElement("div")

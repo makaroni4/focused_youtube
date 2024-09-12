@@ -157,10 +157,17 @@ body {
   right: 8px;
   z-index: 99999999;
 
+  text-decoration: underline;
+
   cursor: pointer;
 }
 
+.fy-review-reminder__close:hover {
+  opacity: 0.7;
+}
+
 .fy-review-reminder__copy {
+  display: block;
   margin-bottom: 24px;
 
   font-size: 16px;
@@ -173,13 +180,20 @@ body {
   position: relative;
   z-index: 99999999;
 
-  border-radius: 4px;
+  border-radius: 24px;
 
-  background-color: aqua;
+  background-color: #065fd4;
 
+  font-size: 16px;
+  line-height: 24px;
   text-align: center;
+  color: #FFF;
 
   cursor: pointer;
+}
+
+.fy-review-reminder__cta:hover {
+  background-color: #0556bf;
 }
 
 /* Do not delete the ".ytd-popup-container" class to avoid losing

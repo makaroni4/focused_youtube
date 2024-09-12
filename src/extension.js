@@ -69,8 +69,6 @@ const enableTheaterMode = () => {
 
 
 const initFY = () => {
-  mountReviewReminder()
-
   cleanUpFYClasses()
 
   enableTheaterMode()
@@ -90,6 +88,8 @@ const initFY = () => {
   } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }
+
+  mountReviewReminder()
 }
 
 const mountLogoMenu = () => {
@@ -138,7 +138,7 @@ const mountReviewReminder = () => {
 
   readStorageKeys([SETTINGS_RATING_REMINDER_DISMISSED_AT, SETTINGS_RATING_LINK_CLICKED], (config) => {
     if (config[SETTINGS_RATING_LINK_CLICKED]) {
-      return
+      // return
     }
 
     const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
@@ -147,7 +147,7 @@ const mountReviewReminder = () => {
     const RATING_REMINDER_FREQUENCY = 90 // days
 
     if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
-      return
+      // return
     }
 
     const menu = document.createElement("div")
@@ -165,16 +165,15 @@ const mountReviewReminder = () => {
 
           <div class="fy-review-reminder__copy">
             Leave Focused YouTube a review – give feedback and help spread the word!
-
-            <a class="fy-review-reminder__cta js-fy-leave-review">Leave review</a>
           </div>
+
+          <a class="fy-review-reminder__cta js-fy-leave-review">
+            Leave review
+          </a>
         </div>
       </div>
     `
 
-    if (document.querySelector(".fy-review-reminder")) {
-      return
-    }
     const $body = document.querySelector("body")
     $body.appendChild(menu)
 

@@ -179,11 +179,11 @@ const mountReviewReminder = () => {
           </div>
 
           <div class="fy-review-reminder__copy">
-            Leave Focused YouTube a review – give feedback and help spread the word!
+            Leave Focused YouTube a review – give feedback and help spread the word! ⭐️
           </div>
 
           <a class="fy-review-reminder__cta js-fy-leave-review">
-            Leave review
+            Leave a review
           </a>
         </div>
       </div>

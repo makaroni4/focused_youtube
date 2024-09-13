@@ -171,9 +171,9 @@ body {
 .fy-review-reminder {
   position: fixed;
   z-index: 99999999;
-  top: 24px;
-  right: 24px;
-  padding: 24px;
+  top: 16px;
+  right: 16px;
+  padding: 16px;
   max-width: 300px;
 
   border: 1px dashed #222222;
@@ -188,7 +188,7 @@ body {
 }
 
 .fy-review-reminder__logo {
-  height: 30px;
+  height: 25px;
   width: auto;
   margin-bottom: 24px;
 

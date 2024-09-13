@@ -66,6 +66,24 @@ npm install
 npm run mon
 ```
 
+### Chrome Storage
+
+Focused Youtube extension uses [`chrome.storage API`](https://developer.chrome.com/docs/extensions/reference/api/storage#property-local) for keeping track of user settings and some additional data (installation timestamp, etc).
+
+To check out current storage data, right click on the extension icon and select "Inspect pop-up". In the dev console run:
+
+```js
+chrome.storage.local.get(console.log)
+```
+
+To clear storage run the following code in the dev console:
+
+```js
+chrome.storage.local.clear(() => {
+  console.log("Cleared!")
+})
+```
+
 ## Releasing
 
 ```

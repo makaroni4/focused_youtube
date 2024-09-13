@@ -4,13 +4,21 @@ import {
   EXTENSION_ENABLED_KEY,
   INFINITE_SCROLL_KEY,
   SETTINGS_DESCRIPTION_KEY,
-  SETTINGS_RATING_REMINDER_DISMISSED_AT,
-  SETTINGS_RATING_LINK_CLICKED,
   writeStorageData,
   readStorageKeys
 } from "@helpers/chrome-storage"
 
 import "./style-overrides.css"
+
+import {
+  enableTheaterMode,
+  clearTheaterModeCookie
+} from "@helpers/youtube"
+
+import { mountReviewReminder } from "@components/review-reminder"
+import { mountLogoMenu } from "./components/logo-menu"
+
+import { nodeMatchesSelector } from "@helpers/dom"
 
 readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
   if (config[EXTENSION_INSTALLED_AT]) {
@@ -34,21 +42,6 @@ let cleanUpFYClasses = () => {
   })
 }
 
-// Since we're removing sidebar recommendations, let's make a video occupy full width
-const clearTheaterModeCookie = () => {
-  document.cookie = "wide=; Max-Age=0; path=/; domain=.youtube.com"
-}
-
-const enableTheaterMode = () => {
-  clearTheaterModeCookie()
-
-  const oneYearFromNow = new Date()
-  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1)
-
-  document.cookie = "wide=1; expires="+oneYearFromNow.toUTCString()+"; path=/; domain=.youtube.com"
-}
-
-
 const initFY = () => {
   cleanUpFYClasses()
 
@@ -71,129 +64,6 @@ const initFY = () => {
   }
 
   mountReviewReminder()
-}
-
-const mountLogoMenu = () => {
-  const logoMenu = document.querySelector(".fy-logo-menu")
-
-  if (logoMenu) {
-    return
-  }
-
-  let logo = document.querySelector("#logo")
-
-  if (!logo) {
-    logo = document.querySelector(".fy-home-page__logo")
-  }
-
-  if (!logo) {
-    return
-  }
-
-  const menu = document.createElement("div")
-  menu.classList = "fy-logo-menu"
-
-  menu.innerHTML = `
-    <div class="fy-logo-menu__body">
-      <div class="fy-logo-menu__links">
-        <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
-
-        <a href="/feed/playlists" class="fy-logo-menu__link">Playlists</a>
-
-        <a href="/playlist?list=WL" class="fy-logo-menu__link">Watch later</a>
-
-        <a href="/playlist?list=LL" class="fy-logo-menu__link">Liked videos</a>
-
-        <a href="/account" class="fy-logo-menu__link">Account</a>
-      </div>
-    </div>
-  `
-
-  logo.appendChild(menu)
-}
-
-const mountReviewReminder = () => {
-  if (document.querySelector(".fy-review-reminder")) {
-    return
-  }
-
-  readStorageKeys([
-      SETTINGS_RATING_REMINDER_DISMISSED_AT,
-      SETTINGS_RATING_LINK_CLICKED,
-      EXTENSION_INSTALLED_AT
-    ], (config) => {
-    if(!config[EXTENSION_INSTALLED_AT]) {
-      return
-    }
-
-    if (config[SETTINGS_RATING_LINK_CLICKED]) {
-      return
-    }
-
-    const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
-    const installedAt = config[EXTENSION_INSTALLED_AT]
-    const now = Math.floor(new Date().getTime() / 1000)
-    const dismissedDaysAgo = dismissedAt ? (now - dismissedAt) / 60 / 60 / 24 : -1
-    const installedDaysAgo = (now - installedAt) / 60 / 60 / 24
-    const RATING_REMINDER_FREQUENCY = 90 // days
-    const RATING_REMINDER_DELAY = 7 // days
-
-    if (installedDaysAgo <= RATING_REMINDER_DELAY) {
-      return
-    }
-
-    if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
-      return
-    }
-
-    const menu = document.createElement("div")
-    menu.classList = "fy-review-reminder"
-
-    menu.innerHTML = `
-      <div class="fy-review-reminder__body">
-        <div class="fy-review-reminder__close js-fy-close-review-reminder">
-          Dismiss
-        </div>
-
-        <div class="fy-review-reminder__container">
-          <div class="fy-review-reminder__logo">
-          </div>
-
-          <div class="fy-review-reminder__copy">
-            Leave Focused YouTube a review – give feedback and help spread the word! ⭐️
-          </div>
-
-          <a class="fy-review-reminder__cta js-fy-leave-review">
-            Leave a review
-          </a>
-        </div>
-      </div>
-    `
-
-    const $body = document.querySelector("body")
-    $body.appendChild(menu)
-
-    const $closeLink = $body.querySelector(".js-fy-close-review-reminder")
-
-    $closeLink.addEventListener("click", e => {
-      e.preventDefault()
-
-      const now = Math.floor(new Date().getTime() / 1000)
-
-      writeStorageData(SETTINGS_RATING_REMINDER_DISMISSED_AT, now, () => {
-        menu.remove()
-      })
-    })
-
-    const $reviewLink = $body.querySelector(".js-fy-leave-review")
-    $reviewLink.addEventListener("click", e => {
-      e.preventDefault()
-
-      writeStorageData(SETTINGS_RATING_LINK_CLICKED, 1, () => {
-        window.location.href = "https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn/reviews?hl=en"
-      })
-    })
-  })
 }
 
 const initWatchPage = () => {
@@ -276,20 +146,6 @@ const initHomePage = () => {
   anchor.querySelector(".fy-search-form").onsubmit = search
 
   mountLogoMenu()
-}
-
-const nodeMatchesSelector = (node, selector) => {
-  if (!node) return false
-
-  if (node.matches && node.matches(selector)) {
-    return true
-  }
-
-  if (node.querySelector && node.querySelector(selector)) {
-    return true
-  }
-
-  return false
 }
 
 const observeDOM = (function () {

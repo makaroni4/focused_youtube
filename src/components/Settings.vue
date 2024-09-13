@@ -42,7 +42,7 @@ import {
   SETTINGS_DESCRIPTION_KEY,
   writeStorageData,
   readStorageKeys
-} from "@js/chrome-storage"
+} from "@helpers/chrome-storage"
 
 export default {
   components: {

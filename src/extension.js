@@ -8,7 +8,7 @@ import {
   SETTINGS_RATING_LINK_CLICKED,
   writeStorageData,
   readStorageKeys
-} from "@js/chrome-storage"
+} from "@helpers/chrome-storage"
 
 import "./style-overrides.css"
 

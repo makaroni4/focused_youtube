@@ -16,9 +16,14 @@ import {
 } from "@helpers/youtube"
 
 import { mountReviewReminder } from "@components/review-reminder"
-import { mountLogoMenu } from "./components/logo-menu"
-
-import { nodeMatchesSelector } from "@helpers/dom"
+import { mountLogoMenu } from "@components/logo-menu"
+import { observeDOM, hideSectionByTitle } from "@helpers/dom"
+import { initHomePage } from "@helpers/pages/home-page"
+import { initVideoPage } from "@helpers/pages/video-page"
+import { initPlaylistPage } from "@helpers/pages/playlist-page"
+import { initHistoryPage } from "@helpers/pages/history-page"
+import { initChannelPage } from "@helpers/pages/channel-page"
+import { initSearchPage } from "@helpers/pages/search-page"
 
 readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
   if (config[EXTENSION_INSTALLED_AT]) {
@@ -52,9 +57,9 @@ const initFY = () => {
   if (pathname === "/") {
     initHomePage()
   } else if (pathname === "/results") {
-    initResultsPage()
+    initSearchPage()
   } else if (pathname === "/watch" || pathname.match(/\/live\/[\w-]+/)) {
-    initWatchPage()
+    initVideoPage()
   } else if (pathname === "/feed/history") {
     initHistoryPage()
   } else if (pathname === "/playlist") {
@@ -64,130 +69,6 @@ const initFY = () => {
   }
 
   mountReviewReminder()
-}
-
-const initWatchPage = () => {
-  document.body.classList.add("fy-watch-page")
-
-  readStorageKeys([SETTINGS_COMMENTS_KEY, SETTINGS_DESCRIPTION_KEY], (config) => {
-    const $body = document.querySelector("body")
-
-    if(config[SETTINGS_COMMENTS_KEY]) {
-      $body.classList.add("fy-watch-page--comments-visible")
-    } else {
-      $body.classList.remove("fy-watch-page--comments-visible")
-    }
-
-    if(config[SETTINGS_DESCRIPTION_KEY]) {
-      $body.classList.add("fy-watch-page--description-visible")
-    } else {
-      $body.classList.remove("fy-watch-page--description-visible")
-    }
-  })
-}
-
-const initHistoryPage = () => {
-  document.body.classList.add("fy-history-page")
-}
-
-const initPlaylistPage = () => {
-  document.body.classList.add("fy-playlist-page")
-}
-
-const initResultsPage = () => {
-  document.body.classList.add("fy-results-page")
-
-  readStorageKeys([INFINITE_SCROLL_KEY], (config) => {
-    const $body = document.querySelector("body")
-
-    if(config[INFINITE_SCROLL_KEY]) {
-      $body.classList.add("fy-results-page--infinite-scroll-enabled")
-    } else {
-      $body.classList.remove("fy-results-page--infinite-scroll-enabled")
-    }
-  })
-}
-
-const initChannelPage = () => {
-  document.body.classList.add("fy-channel-page")
-}
-
-const initHomePage = () => {
-  const search = (event) => {
-    event.preventDefault()
-
-    const query = anchor.querySelector(".fy-search-form__text-input").value
-    window.location.href = "https://www.youtube.com/results?search_query=" + encodeURIComponent(query)
-  }
-
-  document.body.classList.add("fy-home-page")
-
-  const body = document.querySelector("body")
-  const anchor = document.createElement("div")
-  anchor.id = "mega-app"
-
-  body.innerHTML = ""
-  document.body.appendChild(anchor)
-
-  anchor.innerHTML = `
-    <div class="fy-home-page">
-      <div id="logo" class="fy-home-page__logo">
-      </div>
-
-      <div class="fy-home-page__body">
-        <form class="fy-home-page__form fy-search-form" action="#">
-          <input class="fy-search-form__text-input" type="text" placeholder="Search" autofocus />
-          <button class="fy-search-form__submit"></button>
-        </form>
-      </div>
-    </div>
-  `
-
-  anchor.querySelector(".fy-search-form").onsubmit = search
-
-  mountLogoMenu()
-}
-
-const observeDOM = (function () {
-  const MutationObserver = window.MutationObserver || window.WebKitMutationObserver
-  const eventListenerSupported = window.addEventListener
-
-  return function (obj, selector, callback) {
-    if (MutationObserver) {
-      let obs = new MutationObserver(function (mutations) {
-        if(mutations[0].addedNodes.length &&
-          Array.from(mutations[0].addedNodes).some(node => nodeMatchesSelector(node, selector))) {
-
-          callback()
-        }
-      })
-
-      obs.observe(obj, {
-        childList: true,
-        subtree: true
-      })
-    } else if (eventListenerSupported) {
-      obj.addEventListener("DOMNodeInserted", callback, false)
-      obj.addEventListener("DOMNodeRemoved", callback, false)
-    }
-  }
-})()
-
-const hideSectionByTitle = (titleText) => {
-  const sections = document.querySelectorAll("ytd-shelf-renderer.style-scope.ytd-item-section-renderer")
-  const section = Array.from(sections).find(section => {
-    const title = section.querySelector("#title")
-
-    if (title) {
-      return title.innerText.includes(titleText)
-    } else {
-      return false
-    }
-  })
-
-  if (section) {
-    section.classList.add("fy-invisible")
-  }
 }
 
 chrome.storage.onChanged.addListener((changes) => {

@@ -82,7 +82,7 @@ export default {
         this.extensionEnabled = val
 
         // IMPORTANT
-        // The YouTube page is reloaded in the extension.js file.
+        // The YouTube page is reloaded in the content_script.js file.
         // Here we reloading the Popup page.
         window.location.reload()
       })

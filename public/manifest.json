@@ -14,10 +14,10 @@
         "https://m.youtube.com/*"
       ],
       "js": [
-        "assets/extension.js"
+        "assets/content_script.js"
       ],
       "css": [
-        "assets/extension.css"
+        "assets/content_script.css"
       ],
       "run_at": "document_end",
       "all_frames": true

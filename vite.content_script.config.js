@@ -17,7 +17,7 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      input: "src/extension.js",
+      input: "src/content_script.js",
       output: {
         dir: "output_content_script",
         entryFileNames: "assets/[name].js",

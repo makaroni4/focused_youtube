@@ -43,3 +43,11 @@ export const observeDOM = (obj, selector, callback) => {
     subtree: true
   })
 }
+
+export const cleanUpFYClasses = () => {
+  document.body.classList.forEach(className => {
+    if (className.startsWith("fy-")) {
+      document.body.classList.remove(className)
+    }
+  })
+}

@@ -1,11 +1,10 @@
 import {
   SETTINGS_COMMENTS_KEY,
-  EXTENSION_INSTALLED_AT,
   EXTENSION_ENABLED_KEY,
   INFINITE_SCROLL_KEY,
   SETTINGS_DESCRIPTION_KEY,
-  writeStorageData,
-  readStorageKeys
+  readStorageKeys,
+  recordInstalledAtTimestamp
 } from "@helpers/chrome-storage"
 
 import "./style-overrides.css"
@@ -15,9 +14,14 @@ import {
   clearTheaterModeCookie
 } from "@helpers/youtube"
 
+import {
+  observeDOM,
+  hideSectionByTitle,
+  cleanUpFYClasses
+} from "@helpers/dom"
+
 import { mountReviewReminder } from "@components/review-reminder"
 import { mountLogoMenu } from "@components/logo-menu"
-import { observeDOM, hideSectionByTitle } from "@helpers/dom"
 import { initHomePage } from "@helpers/pages/home-page"
 import { initVideoPage } from "@helpers/pages/video-page"
 import { initPlaylistPage } from "@helpers/pages/playlist-page"
@@ -25,27 +29,9 @@ import { initHistoryPage } from "@helpers/pages/history-page"
 import { initChannelPage } from "@helpers/pages/channel-page"
 import { initSearchPage } from "@helpers/pages/search-page"
 
-readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
-  if (config[EXTENSION_INSTALLED_AT]) {
-    return
-  } else {
-    const now = Math.floor(new Date().getTime() / 1000)
-
-    writeStorageData(EXTENSION_INSTALLED_AT, now, () => {})
-  }
-})
+recordInstalledAtTimestamp()
 
 document.body.style.display = "block"
-
-let currentUrl = window.location.href
-
-let cleanUpFYClasses = () => {
-  document.body.classList.forEach(className => {
-    if (className.startsWith("fy-")) {
-      document.body.classList.remove(className)
-    }
-  })
-}
 
 const initFY = () => {
   cleanUpFYClasses()
@@ -116,6 +102,8 @@ chrome.storage.onChanged.addListener((changes) => {
 })
 
 readStorageKeys([EXTENSION_ENABLED_KEY], (config) => {
+  let currentUrl = window.location.href
+
   if(config[EXTENSION_ENABLED_KEY] || typeof(config[EXTENSION_ENABLED_KEY]) === "undefined") {
     initFY()
 

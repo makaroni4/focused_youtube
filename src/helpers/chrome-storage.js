@@ -27,3 +27,15 @@ export const readStorageKeys = (storageKeys, callback) => {
     callback(result)
   })
 }
+
+export const recordInstalledAtTimestamp = () => {
+  readStorageKeys([EXTENSION_INSTALLED_AT], (config) => {
+    if (config[EXTENSION_INSTALLED_AT]) {
+      return
+    } else {
+      const now = Math.floor(new Date().getTime() / 1000)
+
+      writeStorageData(EXTENSION_INSTALLED_AT, now, () => {})
+    }
+  })
+}

@@ -25,6 +25,7 @@ import { mountLogoMenu } from "@components/logo-menu"
 import { initHomePage } from "@helpers/pages/home-page"
 import { initVideoPage } from "@helpers/pages/video-page"
 import { initPlaylistPage } from "@helpers/pages/playlist-page"
+import { initPlaylistsPage } from "@helpers/pages/playlists-page"
 import { initHistoryPage } from "@helpers/pages/history-page"
 import { initChannelPage } from "@helpers/pages/channel-page"
 import { initSearchPage } from "@helpers/pages/search-page"
@@ -50,6 +51,8 @@ const initFY = () => {
     initHistoryPage()
   } else if (pathname === "/playlist") {
     initPlaylistPage()
+  } else if (pathname === "/feed/playlists") {
+    initPlaylistsPage()
   } else if (pathname.startsWith("/@") || pathname.startsWith("/channel")) {  // channel begins with /@ or /channel
     initChannelPage()
   }

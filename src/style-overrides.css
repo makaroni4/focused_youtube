@@ -335,6 +335,7 @@ ytd-browse[page-subtype='channels'] .app-header {
 body.fy-history-page #guide-button.ytd-masthead,
 body.fy-history-page ytd-mini-guide-renderer,
 body.fy-history-page #voice-search-button,
+body.fy-history-page #guide-inner-content,
 body.fy-history-page #end #buttons {
   display: none !important;
 }
@@ -346,7 +347,16 @@ body.fy-history-page #page-header {
 body.fy-playlist-page #guide-button.ytd-masthead,
 body.fy-playlist-page ytd-mini-guide-renderer,
 body.fy-playlist-page #voice-search-button,
+body.fy-playlist-page #guide-inner-content,
 body.fy-playlist-page #end #buttons {
+  display: none !important;
+}
+
+body.fy-playlists-page #guide-button.ytd-masthead,
+body.fy-playlists-page ytd-mini-guide-renderer,
+body.fy-playlists-page #voice-search-button,
+body.fy-playlists-page #guide-inner-content,
+body.fy-playlists-page #end #buttons {
   display: none !important;
 }
 

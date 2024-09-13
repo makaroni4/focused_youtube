@@ -32,6 +32,9 @@ export const mountReviewReminder = () => {
     const RATING_REMINDER_FREQUENCY = 90 // days
     const RATING_REMINDER_DELAY = 7 // days
 
+    console.log("installedDaysAgo: ", installedDaysAgo)
+    console.log("dismissedDaysAgo: ", dismissedDaysAgo)
+
     if (installedDaysAgo <= RATING_REMINDER_DELAY) {
       return
     }

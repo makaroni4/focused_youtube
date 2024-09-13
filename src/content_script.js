@@ -57,7 +57,9 @@ const initFY = () => {
     initChannelPage()
   }
 
-  mountReviewReminder()
+  setTimeout(() => {
+    mountReviewReminder()
+  }, 5000)
 }
 
 chrome.storage.onChanged.addListener((changes) => {

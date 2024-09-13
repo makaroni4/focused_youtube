@@ -54,7 +54,7 @@ export const mountReviewReminder = () => {
           </div>
 
           <div class="fy-review-reminder__copy">
-            Leave Focused YouTube a review – give feedback and help spread the word! ⭐️
+            Focused YouTube is built with your feedback – leave a review and help spread the word! ⭐️
           </div>
 
           <a class="fy-review-reminder__cta js-fy-leave-review">

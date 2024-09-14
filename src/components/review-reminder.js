@@ -5,6 +5,10 @@ import {
   writeStorageData,
   readStorageKeys
 } from "@helpers/chrome-storage"
+import {
+  getTime,
+  timeDiffInDays
+} from "@helpers/time"
 
 export const mountReviewReminder = () => {
   if (document.querySelector(".fy-review-reminder")) {
@@ -26,14 +30,11 @@ export const mountReviewReminder = () => {
 
     const dismissedAt = config[SETTINGS_RATING_REMINDER_DISMISSED_AT]
     const installedAt = config[EXTENSION_INSTALLED_AT]
-    const now = Math.floor(new Date().getTime() / 1000)
-    const dismissedDaysAgo = dismissedAt ? (now - dismissedAt) / 60 / 60 / 24 : -1
-    const installedDaysAgo = (now - installedAt) / 60 / 60 / 24
+    const now = getTime()
+    const dismissedDaysAgo = dismissedAt ? timeDiffInDays(dismissedAt, now) : -1
+    const installedDaysAgo = timeDiffInDays(installedAt, now)
     const RATING_REMINDER_FREQUENCY = 90 // days
     const RATING_REMINDER_DELAY = 7 // days
-
-    console.log("installedDaysAgo: ", installedDaysAgo)
-    console.log("dismissedDaysAgo: ", dismissedDaysAgo)
 
     if (installedDaysAgo <= RATING_REMINDER_DELAY) {
       return
@@ -75,7 +76,7 @@ export const mountReviewReminder = () => {
     $closeLink.addEventListener("click", e => {
       e.preventDefault()
 
-      const now = Math.floor(new Date().getTime() / 1000)
+      const now = getTime()
 
       writeStorageData(SETTINGS_RATING_REMINDER_DISMISSED_AT, now, () => {
         menu.remove()

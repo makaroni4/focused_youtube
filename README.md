@@ -54,17 +54,19 @@ Just make sure to check out the [contribution guidelines](https://github.com/mak
 
 Clone FY's repo to your computer.
 
-Load the repo to [chrome://extensions/](chrome://extensions/) via "Load unpacked":
-
-<img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
-
-Install dependencies and run a command to re-build the extension on any file change. :warning: Note, that you'll need to update the extension (by clicking on the update icon) :point_up: every time you want to test the latest version.
+Install dependencies and run a command to re-build the extension on any file change:
 
 ```
 npm install
 
 npm run mon
 ```
+
+You'll notice, that a new `dist` folder appeared in the repository. Load this folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
+
+<img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
+
+:warning: Note, that you'll need to update the extension (by clicking on the update icon) :point_up: every time you want to test the latest version.
 
 ### Chrome Storage
 

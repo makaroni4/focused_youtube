@@ -45,9 +45,9 @@ export const observeDOM = (obj, selector, callback) => {
 }
 
 export const cleanUpFYClasses = () => {
-  document.body.classList.forEach(className => {
-    if (className.startsWith("fy-")) {
-      document.body.classList.remove(className)
-    }
+  const currentFYBodyClasses = Array.from(document.body.classList).filter(className => className.startsWith("fy-"))
+
+  currentFYBodyClasses.forEach(fyClassName => {
+    document.body.classList.remove(fyClassName)
   })
 }

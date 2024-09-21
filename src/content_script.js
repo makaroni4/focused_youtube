@@ -107,20 +107,10 @@ chrome.storage.onChanged.addListener((changes) => {
 })
 
 readStorageKeys([EXTENSION_ENABLED_KEY], (config) => {
-  let currentUrl = window.location.href
-
   if(config[EXTENSION_ENABLED_KEY] || typeof(config[EXTENSION_ENABLED_KEY]) === "undefined") {
     initFY()
 
     mountLogoMenu()
-
-    observeDOM(document.body, "*", function () {
-      if (currentUrl !== window.location.href) {
-        currentUrl = window.location.href
-
-        initFY()
-      }
-    })
 
     observeDOM(document.body, "ytd-shelf-renderer.style-scope.ytd-item-section-renderer", function () {
       hideSectionByTitle("For you")
@@ -131,6 +121,16 @@ readStorageKeys([EXTENSION_ENABLED_KEY], (config) => {
 
     observeDOM(document.body, "ytd-topbar-logo-renderer#logo", function () {
       mountLogoMenu()
+    })
+
+    let currentUrl = window.location.href
+
+    observeDOM(document.body, "*", function () {
+      if (currentUrl !== window.location.href) {
+        currentUrl = window.location.href
+
+        initFY()
+      }
     })
   } else {
     clearTheaterModeCookie()

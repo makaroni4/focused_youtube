@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Focused Youtube",
+  "description": "Open source extension that removes comments/recommendations from Youtube: https://github.com/makaroni4/focused_youtube",
+  "version": "1.17",
+  "author": "Anatoli Makarevich",
+  "icons": {
+    "128": "extension_icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "assets/content_script.js"
+      ],
+      "css": [
+        "assets/content_script.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://m.youtube.com/*"
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/Roboto-Regular.ttf",
+        "assets/popup.js",
+        "assets/popup.css",
+        "images/search_icon.svg",
+        "images/youtube_logo.png",
+        "images/search_icon_dark.svg",
+        "images/youtube_logo_dark.png",
+        "images/extension_icon.png",
+        "images/logo_with_name.svg"
+      ],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://m.youtube.com/*"
+      ]
+    }
+  ]
+}

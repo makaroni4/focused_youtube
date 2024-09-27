@@ -40,7 +40,7 @@ export const mountReviewReminder = () => {
       return
     }
 
-    if (dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
+    if (dismissedDaysAgo > 0 && dismissedDaysAgo <= RATING_REMINDER_FREQUENCY) {
       return
     }
 

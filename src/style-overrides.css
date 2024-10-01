@@ -246,7 +246,6 @@ body {
 + the dropdown menu on the top rigth side of the video block. */
 
 body.fy-results-page #guide-icon.ytd-masthead,
-body.fy-watch-page .button.yt-icon-button,
 body.fy-results-page #guide-content,
 body.fy-results-page #buttons.ytd-masthead,
 body.fy-results-page #guide-button,
@@ -286,7 +285,6 @@ body.fy-watch-page #buttons.ytd-masthead,
 body.fy-watch-page #sub-menu,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
-body.fy-watch-page yt-icon-button.dropdown-trigger:first-of-type,
 body.fy-watch-page ytd-sentiment-bar-renderer,
 body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */
 body.fy-watch-page .ytp-ce-element, /* Remove end-video subscribe and author recommendations */

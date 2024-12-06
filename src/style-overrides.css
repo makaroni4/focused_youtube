@@ -295,7 +295,9 @@ body.fy-watch-page ytd-live-chat-frame, /* Hide live chat and chat replay */
 body.fy-watch-page .ytd-browse .app-header,
 body.fy-watch-page #comments,
 body.fy-watch-page #description,
-body.fy-watch-page #panels-full-bleed-container {
+body.fy-watch-page #panels-full-bleed-container,
+body.fy-watch-page .ytp-autonav-endscreen-upnext-container, /* Remove autoplay video thumbnail when the video is over */
+body.fy-watch-page .ytp-autonav-endscreen-button-container {
   display: none !important;
 }
 

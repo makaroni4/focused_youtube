@@ -4,3 +4,4 @@ dist.zip
 node_modules
 output_popup
 output_content_script
+output_background_script

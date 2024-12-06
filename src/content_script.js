@@ -57,6 +57,8 @@ const initFY = () => {
     initChannelPage()
   }
 
+  document.body.classList.add("fy-page")
+
   setTimeout(() => {
     mountReviewReminder()
   }, 5000)

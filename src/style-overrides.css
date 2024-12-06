@@ -242,12 +242,17 @@ body {
   background-color: #0556bf;
 }
 
+/* Shared overrides between all pages. */
+body.fy-page #guide-icon.ytd-masthead,
+body.fy-page #buttons.ytd-masthead,
+body.fy-page #voice-search-button.ytd-masthead {
+  display: none !important;
+}
+
 /* Do not delete the ".ytd-popup-container" class to avoid losing
 + the dropdown menu on the top rigth side of the video block. */
 
-body.fy-results-page #guide-icon.ytd-masthead,
 body.fy-results-page #guide-content,
-body.fy-results-page #buttons.ytd-masthead,
 body.fy-results-page #guide-button,
 body.fy-results-page #sub-menu,
 body.fy-results-page ytd-horizontal-card-list-renderer,
@@ -277,11 +282,9 @@ body.fy-results-page.fy-results-page--infinite-scroll-enabled ytd-continuation-i
   display: block !important;
 }
 
-body.fy-watch-page #guide-icon.ytd-masthead,
 body.fy-watch-page .button.yt-icon-button,
 body.fy-watch-page #guide-content,
 body.fy-watch-page #guide-button,
-body.fy-watch-page #buttons.ytd-masthead,
 body.fy-watch-page #sub-menu,
 body.fy-watch-page #related,
 body.fy-watch-page #subscribe-button,
@@ -322,8 +325,6 @@ body.fy-watch-page ytd-video-secondary-info-renderer {
 body.fy-channel-page #guide-icon.ytd-masthead,
 body.fy-channel-page .button.yt-icon-button,
 body.fy-channel-page #guide-content,
-body.fy-channel-page #buttons.ytd-masthead,
-body.fy-channel-page #guide-button.ytd-masthead,
 body.fy-channel-page .ytd-mini-guide-entry-renderer,
 body.fy-channel-page #sub-menu,
 
@@ -332,7 +333,6 @@ ytd-browse[page-subtype='channels'] .app-header {
   display: none;
 }
 
-body.fy-history-page #guide-button.ytd-masthead,
 body.fy-history-page ytd-mini-guide-renderer,
 body.fy-history-page #voice-search-button,
 body.fy-history-page #guide-inner-content,
@@ -344,7 +344,6 @@ body.fy-history-page #page-header {
   padding-left: 0;
 }
 
-body.fy-playlist-page #guide-button.ytd-masthead,
 body.fy-playlist-page ytd-mini-guide-renderer,
 body.fy-playlist-page #voice-search-button,
 body.fy-playlist-page #guide-inner-content,
@@ -352,7 +351,6 @@ body.fy-playlist-page #end #buttons {
   display: none !important;
 }
 
-body.fy-playlists-page #guide-button.ytd-masthead,
 body.fy-playlists-page ytd-mini-guide-renderer,
 body.fy-playlists-page #voice-search-button,
 body.fy-playlists-page #guide-inner-content,

@@ -244,8 +244,8 @@ body {
 
 /* Shared overrides between all pages. */
 body.fy-page #guide-icon.ytd-masthead,
-body.fy-page #buttons.ytd-masthead,
-body.fy-page #voice-search-button.ytd-masthead {
+body.fy-page #voice-search-button.ytd-masthead,
+body.fy-page #buttons .ytd-masthead:not(:last-child) {
   display: none !important;
 }
 

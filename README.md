@@ -66,7 +66,7 @@ nvm install
 npm install
 
 # 3. Monitor file changes to re-build the extension during development.
-npm run mon
+npm run dev
 ```
 
 Load the `dist` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
@@ -98,3 +98,7 @@ chrome.storage.local.clear(() => {
 ```
 npm run build
 ```
+
+## Credits
+
+The [info icon](https://github.com/makaroni4/focused_youtube/blob/main/src/assets/info_icon.svg) was created by [@Remartwork](https://dribbble.com/remartwork?ref=svgrepo.com) and was taken [from SVG Repo](https://www.svgrepo.com/svg/356331/info-circle).

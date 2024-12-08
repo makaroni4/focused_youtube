@@ -98,3 +98,7 @@ chrome.storage.local.clear(() => {
 ```
 npm run build
 ```
+
+## Credits
+
+The [info icon] was created by [@Remartwork](https://www.svgrepo.com/author/remartwork/) and was taken [from SVG Repo](https://www.svgrepo.com/svg/356331/info-circle).

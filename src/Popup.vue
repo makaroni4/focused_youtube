@@ -17,6 +17,11 @@ export default {
       src="./assets/logo_with_name.svg"
       class="focused-youtube-popup__logo"
       alt="Focused Youtube logo" />
+
+    <img
+      src="./assets/info_icon.svg"
+      class="focused-youtube-popup__info-icon"
+      alt="Info page" />
   </header>
 
   <div class="focused-youtube-popup__settings">

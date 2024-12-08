@@ -6,6 +6,15 @@ export default {
   components: {
     Settings,
     PopupFooter
+  },
+  methods: {
+    openWelcomePage() {
+      const extensionId = chrome.runtime.id
+
+      chrome.tabs.create({
+        url: `chrome-extension://${extensionId}/welcome.html`
+      })
+    }
   }
 }
 </script>
@@ -21,7 +30,8 @@ export default {
     <img
       src="./assets/info_icon.svg"
       class="focused-youtube-popup__info-icon"
-      alt="Info page" />
+      alt="Info page"
+      @click.prevent="openWelcomePage" />
   </header>
 
   <div class="focused-youtube-popup__settings">
@@ -42,12 +52,23 @@ export default {
 
   &__header {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     margin-bottom: 36px;
   }
 
   &__logo {
     height: 25px;
+  }
+
+  &__info-icon {
+    width: 20px;
+
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__hr {

@@ -17,11 +17,9 @@ export default defineConfig({
   ],
   build: {
     rollupOptions: {
-      input: {
-        popup: "src/popup.js",
-      },
+      input: "src/welcome.js",
       output: {
-        dir: "output_popup",
+        dir: "output_welcome",
         inlineDynamicImports: true,
         entryFileNames: "assets/[name].js",
         assetFileNames: "assets/[name].[ext]"

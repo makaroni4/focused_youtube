@@ -43,6 +43,8 @@
         "fonts/Roboto-Regular.ttf",
         "assets/popup.js",
         "assets/popup.css",
+        "assets/welcome.js",
+        "assets/welcome.css",
         "images/search_icon.svg",
         "images/youtube_logo.png",
         "images/search_icon_dark.svg",

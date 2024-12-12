@@ -34,8 +34,7 @@
     "https://m.youtube.com/*"
   ],
   "permissions": [
-    "storage",
-    "tabs"
+    "storage"
   ],
   "web_accessible_resources": [
     {

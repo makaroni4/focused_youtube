@@ -19,7 +19,12 @@ export const initHomePage = () => {
 
   anchor.innerHTML = `
     <div class="fy-home-page">
-      <div id="logo" class="fy-home-page__logo">
+      <div class="fy-home-page__logo-container">
+        <div class="fy-home-page__bar-icon">
+        </div>
+
+        <div id="logo" class="fy-home-page__logo">
+        </div>
       </div>
 
       <div class="fy-home-page__body">

@@ -77,7 +77,7 @@ body {
   gap: 12px;
 }
 
-.fy-home-page__logo:hover .fy-logo-menu {
+.fy-home-page__logo-container:hover .fy-logo-menu {
   display: block;
 }
 
@@ -114,14 +114,29 @@ body {
   background-color: #F1F6F4;
 }
 
-.fy-home-page__logo {
+.fy-home-page__logo-container {
   position: absolute;
   top: 20px;
   left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.fy-home-page__bar-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fy-home-page__logo {
   width: 100px;
   height: 22px;
 
-  background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo.png");
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_short.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -370,7 +385,11 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   }
 
   .fy-home-page__logo {
-    background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark.png");
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_dark_short.png");
+  }
+
+  .fy-home-page__bar-icon {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars_dark.svg");
   }
 
   .fy-search-form__text-input {

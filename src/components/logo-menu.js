@@ -8,7 +8,7 @@ export const mountLogoMenu = () => {
   let logo = document.querySelector("#logo")
 
   if (!logo) {
-    logo = document.querySelector(".fy-home-page__logo")
+    logo = document.querySelector(".fy-home-page__logo-container")
   }
 
   if (!logo) {

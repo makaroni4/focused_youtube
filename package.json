@@ -1,6 +1,6 @@
 {
   "name": "focused-youtube",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "scripts": {
     "build": "vite build --config vite.popup.config.js && vite build --config vite.background.config.js && vite build --config vite.welcome.config.js && vite build --config vite.content_script.config.js && rsync -av output_background_script/* dist && rsync -av output_popup/* dist && rsync -av output_welcome/* dist && rsync -av output_content_script/* dist && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
     "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",

@@ -90,12 +90,51 @@ body {
 }
 
 .fy-logo-menu__link {
+  display: flex;
+  align-items: center;
   padding: 12px;
 
-  border-radius: 4px;
+  border-radius: 8px;
 
   font-size: 14px;
   color: #0F0F0F;
+  text-decoration: none;
+}
+
+.fy-logo-menu__link:before {
+  width: 22px;
+  height: 22px;
+  margin-right: 16px;
+  display: inline-flex;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  content: "";
+}
+
+.fy-logo-menu__link--sub:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/subscriptions.svg");
+}
+
+.fy-logo-menu__link--history:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/history.svg");
+}
+
+.fy-logo-menu__link--playlists:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/playlist.svg");
+}
+
+.fy-logo-menu__link--watch-later:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/watch_later.svg");
+}
+
+.fy-logo-menu__link--liked-videos:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/like.svg");
+}
+
+.fy-logo-menu__link--settings:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/settings.svg");
 }
 
 .fy-logo-menu__link:hover {
@@ -460,6 +499,11 @@ body.fy-watch-page #logo.ytd-masthead:before {
 
   .fy-logo-menu__link {
     color: rgba(255, 255, 255, 0.918);
+  }
+
+  .fy-logo-menu__link:before {
+    /* Turning black bg image SVG-s into white. */
+    filter: invert(1) brightness(2);
   }
 }
 

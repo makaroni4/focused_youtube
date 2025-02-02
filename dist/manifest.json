@@ -53,7 +53,13 @@
         "images/extension_icon.png",
         "images/logo_with_name.svg",
         "images/bars.svg",
-        "images/bars_dark.svg"
+        "images/bars_dark.svg",
+        "images/subscriptions.svg",
+        "images/history.svg",
+        "images/settings.svg",
+        "images/playlist.svg",
+        "images/like.svg",
+        "images/watch_later.svg"
       ],
       "matches": [
         "https://www.youtube.com/*",

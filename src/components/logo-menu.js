@@ -21,6 +21,8 @@ export const mountLogoMenu = () => {
   menu.innerHTML = `
     <div class="fy-logo-menu__body">
       <div class="fy-logo-menu__links">
+        <a href="/feed/subscriptions" class="fy-logo-menu__link">Subscriptions</a>
+
         <a href="/feed/history" class="fy-logo-menu__link">Watch history</a>
 
         <a href="/feed/playlists" class="fy-logo-menu__link">Playlists</a>

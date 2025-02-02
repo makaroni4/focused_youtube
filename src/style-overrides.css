@@ -123,9 +123,9 @@ body {
 }
 
 .fy-home-page__bar-icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 8px;
+  width: 22px;
+  height: 22px;
+  margin-right: 16px;
 
   background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars.svg");
   background-size: contain;
@@ -134,7 +134,7 @@ body {
 
 .fy-home-page__logo {
   width: 100px;
-  height: 22px;
+  height: 20px;
 
   background-image: url("chrome-extension://__MSG_@@extension_id__/images/youtube_logo_short.png");
   background-size: contain;
@@ -374,8 +374,35 @@ body.fy-playlists-page #end #buttons {
 }
 
 /* Hides notification bell-icon from header menu */
-ytd-notification-topbar-button-renderer.notification-button-style-type-default {
+ytd-notification-topbar-button-renderer.notification-button-style-type-default,
+#country-code.ytd-topbar-logo-renderer,
+#logo-icon.ytd-logo svg g:last-child,
+yt-icon-button#guide-button.ytd-masthead,
+yt-interaction#interaction {
   display: none !important;
+}
+
+ytd-topbar-logo-renderer#logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo.ytd-masthead:before {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  flex-shrink: 0;
+
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  content: "";
+}
+
+body.fy-watch-page #logo.ytd-masthead:before {
+  background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars_dark.svg");
 }
 
 /* Settings for Dark Mode */
@@ -389,6 +416,10 @@ ytd-notification-topbar-button-renderer.notification-button-style-type-default {
   }
 
   .fy-home-page__bar-icon {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars_dark.svg");
+  }
+
+  #logo.ytd-masthead:before {
     background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars_dark.svg");
   }
 

@@ -401,6 +401,10 @@ ytd-topbar-logo-renderer#logo {
   content: "";
 }
 
+#logo.ytd-topbar-logo-renderer:focus-visible {
+  outline: none !important;
+}
+
 body.fy-watch-page #logo.ytd-masthead:before {
   background-image: url("chrome-extension://__MSG_@@extension_id__/images/bars_dark.svg");
 }

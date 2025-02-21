@@ -2,12 +2,12 @@
   "name": "focused-youtube",
   "version": "2.7.0",
   "scripts": {
-    "build": "vite build --config vite.popup.config.js && vite build --config vite.background.config.js && vite build --config vite.welcome.config.js && vite build --config vite.content_script.config.js && rsync -av output_background_script/* dist && rsync -av output_popup/* dist && rsync -av output_welcome/* dist && rsync -av output_content_script/* dist && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
+    "build": "mode=${npm_config_mode:-chromium} && vite build --config vite.popup.config.js --mode $mode && vite build --config vite.background.config.js --mode $mode && vite build --config vite.welcome.config.js --mode $mode && vite build --config vite.content_script.config.js --mode $mode && mkdir -p dist_$mode && rsync -av output_background_script/* dist_$mode && rsync -av output_popup/* dist_$mode && rsync -av output_welcome/* dist_$mode && rsync -av output_content_script/* dist_$mode && rm dist_$mode/index.html && node scripts/build.js --mode $mode",
     "build:all": "npm run build:chromium && npm run build:firefox && npm run zip:all",
-    "build:chromium": "npm run build --mode chromium && node scripts/build.js",
-    "build:firefox": "npm run build --mode firefox && node scripts/build.js",
-    "zip:all": "cd dist && zip -r \"focused-youtube-chromium.zip\" \"chromium\" && zip -r \"focused-youtube-firefox.zip\" \"firefox\"",
-    "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",
+    "build:chromium": "npm run build --mode=chromium",
+    "build:firefox": "npm run build --mode=firefox",
+    "zip:all": "zip -r \"focused-youtube-chromium.zip\" dist_chromium && zip -r \"focused-youtube-firefox.zip\" dist_firefox",
+    "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build && node scripts/build.js --mode chromium'",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
     "format": "prettier .  --write"
   },
@@ -23,5 +23,6 @@
     "sass": "^1.78.0",
     "vite": "^5.4.14",
     "vite-plugin-eslint": "^1.8.1"
-  }
+  },
+  "type": "module"
 }

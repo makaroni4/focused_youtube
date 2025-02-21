@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: "src/content_script.js",
       output: {
-        dir: `dist/${mode}`,
+        dir: "output_content_script",
         entryFileNames: "assets/[name].js",
         assetFileNames: "assets/[name].[ext]"
       }

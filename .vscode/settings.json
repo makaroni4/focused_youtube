@@ -2,8 +2,12 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
+    "**/dist_chromium": true,
+    "**/dist_firefox": true,
     "**/output_content_script": true,
+    "**/output_background_script": true,
     "**/output_popup": true,
+    "**/output_welcome": true,
     "**/public": false
   }
 }

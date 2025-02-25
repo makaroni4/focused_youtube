@@ -1,6 +1,7 @@
 <script>
 import Settings from "@components/Settings.vue"
 import PopupFooter from "@components/PopupFooter.vue"
+import browserAPI from "@helpers/browser-api.js"
 
 export default {
   components: {
@@ -9,9 +10,9 @@ export default {
   },
   methods: {
     openWelcomePage() {
-      const extensionId = chrome.runtime.id
+      const extensionId = browserAPI.runtime.id
 
-      chrome.tabs.create({
+      browserAPI.tabs.create({
         url: `chrome-extension://${extensionId}/welcome.html`
       })
     }
@@ -23,7 +24,7 @@ export default {
 <div class="focused-youtube-popup">
   <header class="focused-youtube-popup__header">
     <img
-      src="./assets/logo_with_name.svg"
+      src="./assets/logo.svg"
       class="focused-youtube-popup__logo"
       alt="Focused Youtube logo" />
 

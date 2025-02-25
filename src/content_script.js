@@ -20,6 +20,8 @@ import {
   cleanUpFYClasses
 } from "@helpers/dom"
 
+import browserAPI from "@helpers/browser-api.js"
+
 import { mountReviewReminder } from "@components/review-reminder"
 import { mountLogoMenu } from "@components/logo-menu"
 import { initHomePage } from "@helpers/pages/home-page"
@@ -64,7 +66,7 @@ const initFY = () => {
   }, 5000)
 }
 
-chrome.storage.onChanged.addListener((changes) => {
+browserAPI.storage.onChanged.addListener((changes) => {
   for (let [key, { newValue }] of Object.entries(changes)) {
     if(key === SETTINGS_COMMENTS_KEY) {
       const $body = document.querySelector("body")

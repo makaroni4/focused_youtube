@@ -5,9 +5,10 @@ export const SETTINGS_DESCRIPTION_KEY = "settings:description"
 export const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
 export const EXTENSION_INSTALLED_AT = "settings:extension_installed_at"
 export const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
+import browserAPI from "@helpers/browser-api.js"
 
 export const writeStorageData = (storageKey, value, callback) => {
-  chrome.storage.local.set({ [storageKey]: value }, () => {
+  browserAPI.storage.local.set({ [storageKey]: value }, () => {
     if(callback) {
       callback(value)
     }
@@ -15,7 +16,7 @@ export const writeStorageData = (storageKey, value, callback) => {
 }
 
 export const readStorageKey = (storageKey, callback) => {
-  chrome.storage.local.get([storageKey], function(result) {
+  browserAPI.storage.local.get([storageKey], function(result) {
     const value = result[storageKey]
 
     callback(value)
@@ -23,7 +24,7 @@ export const readStorageKey = (storageKey, callback) => {
 }
 
 export const readStorageKeys = (storageKeys, callback) => {
-  chrome.storage.local.get(storageKeys, function(result) {
+  browserAPI.storage.local.get(storageKeys, function(result) {
     callback(result)
   })
 }

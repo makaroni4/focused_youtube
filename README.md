@@ -66,7 +66,7 @@ nvm install
 npm install
 
 # 3. Monitor file changes to re-build the extension during development.
-npm run dev
+npm run dev --mode=chromium
 ```
 
 Load the `dist_chromium` or `dist_firefox` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":

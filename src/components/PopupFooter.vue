@@ -46,6 +46,8 @@ export default {
   justify-content: space-between;
 
   &__link {
+    font-size: 12px;
+    line-height: 1;
     color: #5F6368;
   }
 }

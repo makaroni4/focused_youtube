@@ -8,7 +8,7 @@
     "build:firefox": "npm run build --mode=firefox",
     "zip:all": "zip -r \"focused-youtube-chromium.zip\" dist_chromium && cd dist_firefox && zip -r \"../focused-youtube-firefox.zip\" .",
     "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --watch 'platforms/**' --exec 'npm run build && node scripts/build.js --mode chromium'",
-    "lint": "web-ext lint -s dist_firefox && eslint src --ext=.js,.vue --ignore-path .gitignore --fix",
+    "lint": "web-ext lint -s dist_firefox && eslint --ext .js,.vue --ignore-pattern .gitignore --fix src",
     "format": "prettier .  --write"
   },
   "dependencies": {
@@ -16,12 +16,12 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.3",
-    "eslint": "^9.10.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-vue": "^9.28.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-vue": "^9.32.0",
     "nodemon": "^3.1.4",
     "sass": "^1.78.0",
-    "vite": "^5.4.14",
+    "vite": "^6.2.0",
     "vite-plugin-eslint": "^1.8.1"
   },
   "type": "module"

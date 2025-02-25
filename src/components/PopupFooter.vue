@@ -3,7 +3,7 @@
     <a
       class="focused-youtube-footer__link"
       target="_blank"
-      href="https://chrome.google.com/webstore/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn?hl=en">
+      :href="storeUrl">
       <strong>Rate it</strong>
     </a>
 
@@ -29,6 +29,16 @@
     </a>
   </footer>
 </template>
+
+<script>
+import { storeUrl }from "@helpers/store-urls"
+
+export default {
+  data() {
+    return { storeUrl }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .focused-youtube-footer {

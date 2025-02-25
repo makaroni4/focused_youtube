@@ -6,9 +6,9 @@
     "build:all": "npm run build:chromium && npm run build:firefox && npm run zip:all",
     "build:chromium": "npm run build --mode=chromium",
     "build:firefox": "npm run build --mode=firefox",
-    "zip:all": "zip -r \"focused-youtube-chromium.zip\" dist_chromium && zip -r \"focused-youtube-firefox.zip\" dist_firefox",
+    "zip:all": "zip -r \"focused-youtube-chromium.zip\" dist_chromium && cd dist_firefox && zip -r \"../focused-youtube-firefox.zip\" .",
     "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --watch 'platforms/**' --exec 'npm run build && node scripts/build.js --mode chromium'",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "lint": "web-ext lint -s dist_firefox && eslint src --ext=.js,.vue --ignore-path .gitignore --fix",
     "format": "prettier .  --write"
   },
   "dependencies": {

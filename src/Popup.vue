@@ -24,7 +24,7 @@ export default {
 <div class="focused-youtube-popup">
   <header class="focused-youtube-popup__header">
     <img
-      src="./assets/logo_with_name.svg"
+      src="./assets/logo.svg"
       class="focused-youtube-popup__logo"
       alt="Focused Youtube logo" />
 

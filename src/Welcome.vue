@@ -9,7 +9,7 @@ export default {
 <div class="fy-welcome-page">
   <header class="fy-welcome-page__header">
     <img
-      src="./assets/logo_with_name.svg"
+      src="./assets/logo.svg"
       class="fy-welcome-page__logo"
       alt="Focused Youtube logo" />
   </header>

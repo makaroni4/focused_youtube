@@ -105,8 +105,26 @@ browserAPI.storage.onChanged.addListener((changes) => {
         clearTheaterModeCookie()
       }
 
-      window.location.reload()
+      // When changing the extension state, we need to reload the page to properly
+      // apply UI changes. That works terribly when we refresh 5 open YouTube tabs —
+      // they start playing all at once. To mitigate that, we only reload
+      // the current page and set the session flag to reload the page we can check
+      // when opening another tab.
+      if (document.visibilityState === "visible") {
+        window.location.reload()
+      } else {
+        sessionStorage.setItem("fy_pending_reload", "true")
+      }
     }
+  }
+})
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" &&
+    sessionStorage.getItem("fy_pending_reload") === "true") {
+
+    sessionStorage.removeItem("fy_pending_reload")
+    window.location.reload()
   }
 })
 

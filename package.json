@@ -1,6 +1,6 @@
 {
   "name": "focused-youtube",
-  "version": "3.1",
+  "version": "3.2",
   "scripts": {
     "build": "mode=${npm_config_mode:-chrome} && vite build --config vite.popup.config.js --mode $mode && vite build --config vite.background.config.js --mode $mode && vite build --config vite.welcome.config.js --mode $mode && vite build --config vite.content_script.config.js --mode $mode && mkdir -p dist_$mode && rsync -av output_background_script/* dist_$mode && rsync -av output_popup/* dist_$mode && rsync -av output_welcome/* dist_$mode && rsync -av output_content_script/* dist_$mode && rm dist_$mode/index.html && node scripts/post-build.js --mode $mode",
     "build:all": "npm run build:chrome && npm run build:firefox && npm run build:edge && npm run zip:all",

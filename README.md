@@ -1,8 +1,15 @@
 # Focused YouTube <a href="https://chrome.google.com/webstore/detail/focused-YouTube/nfghbmabdoakhobmimnjkamfdnpfammn"><img width="124" alt="Add to Chrome" src="https://user-images.githubusercontent.com/768070/113516074-a1513500-9578-11eb-9eb9-06326003cf66.png"></a>
 
-:mag: **Focused YouTube** (FY) is a Chrome Extension that helps you stay focused by blocking recommendations and other elements on YouTube.
+:mag: **Focused YouTube** (FY) is a browser extension that helps you stay focused by blocking recommendations and other elements on YouTube.
 
-:heart: FY **does not track any user data**. It's a simple Vanilla JS application made with only one purpose – to help you avoid YouTube's rabbit hole.
+:computer: **Focused YouTube** is available for
+
+* [Chrome](https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn)
+* [Brave](https://chromewebstore.google.com/detail/focused-youtube/nfghbmabdoakhobmimnjkamfdnpfammn)
+* [Firefox](https://addons.mozilla.org/en-US/firefox/addon/focused-for-youtube)
+* [Edge](https://microsoftedge.microsoft.com/addons/detail/fkipbhecgloafeodihbhahjnhmainlil)
+
+:cookie: FY **does not track any user data**. It's a simple Vanilla JS application made with only one purpose – to help you avoid YouTube's rabbit hole.
 
 ## Screenshots
 
@@ -24,7 +31,7 @@
 
 Big shout out to [@jakubkloc](https://github.com/jakubkloc) for introducing Dark Mode! :raised_hands:
 
-Make sure to enable Dark Mode in your Chrome before testing it:
+Make sure to enable Dark Mode in your browser before testing it:
 
 https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDesktop
 
@@ -66,18 +73,34 @@ nvm install
 npm install
 
 # 3. Monitor file changes to re-build the extension during development.
-npm run dev --mode=chrome
+npm run dev --mode=chrome|firefox|edge
 ```
 
-Load the `dist_chrome` or `dist_firefox` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
+### Loading locally built extension
+
+The `npm run dev` command will generate a build folder: `dist_chrome`, `dist_firefox` or `dist_edge`. Browser differ slightly in how they load local extensions.
+
+#### Chrome
+
+For Chrome, load the `dist_chrome` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
 
 <img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
 
 :warning: Note, that you'll need to update the extension (by clicking on the update icon) :point_up: every time you want to test the latest version.
 
-### Chrome Storage
+#### Firefox
 
-Focused Youtube extension uses [`chrome.storage API`](https://developer.chrome.com/docs/extensions/reference/api/storage#property-local) for keeping track of user settings and some additional data (installation timestamp, etc).
+In Firefox, head over to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox) and click on the "Load Temporary Add-on..." button on top of the page. :warning: For Firefox, you'll need to select the `focused-youtube-firefox.zip` file instead of the `dist_firefox` folder.
+
+#### Edge
+
+With Edge, open the [edge://extensions/](edge://extensions/) page and click on the "Load unpacked" button on top of the page. :warning: Select the `dist_edge` folder instead.
+
+### Storage
+
+Focused Youtube extension uses Storage API (see [Storage API for Chrome](https://developer.chrome.com/docs/extensions/reference/api/storage) or [Storage API for Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage)) for keeping track of user settings and some additional data (installation timestamp, etc).
+
+#### For Chromium browsers (Chrome, Edge, Brave)
 
 To check out current storage data, right click on the extension icon and select "Inspect pop-up". In the dev console run:
 
@@ -93,10 +116,26 @@ chrome.storage.local.clear(() => {
 })
 ```
 
+#### For Firefox
+
+Head over to the [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox) page and click on the "Inspect" button next to the "Focused for YouTube" extension.
+
+```js
+browser.storage.local.get(console.log)
+```
+
+To clear storage run the following code in the dev console:
+
+```js
+browser.storage.local.clear(() => {
+  console.log("Cleared!")
+})
+```
+
 ## Releasing
 
 ```
-npm run build
+npm run build:all
 ```
 
 ## Credits

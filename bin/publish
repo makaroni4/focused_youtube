@@ -1,0 +1,5 @@
+#! /bin/bash
+
+open -a "Google Chrome" "https://chrome.google.com/webstore/devconsole/6bdfd801-ebcb-4b66-b1fc-264c7fb8c0f9/nfghbmabdoakhobmimnjkamfdnpfammn/edit/package" && \
+open -a "Microsoft Edge" "https://partner.microsoft.com/en-us/dashboard/microsoftedge/bf02e47a-7c98-41ef-8da7-1db58de63910/packages/dashboard" && \
+open -a "Firefox" "https://addons.mozilla.org/en-US/developers/addon/focused-for-youtube/versions/submit/"

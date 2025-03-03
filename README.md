@@ -152,8 +152,18 @@ browser.storage.local.clear(() => {
 
 ## Releasing
 
+1. Bump version in `package.json`.
+
+2. Build extension for all browser platforms:
+
 ```
 npm run build:all
+```
+
+3. Upload zip files to all stores:
+
+```
+bin/publish
 ```
 
 ## Contributing

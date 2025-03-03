@@ -9,7 +9,7 @@ import {
   getTime,
   timeDiffInDays
 } from "@helpers/time"
-import { reviewsUrl } from "@helpers/store-urls"
+import { reviewsUrl } from "@helpers/browser"
 
 export const mountReviewReminder = () => {
   if (document.querySelector(".fy-review-reminder")) {

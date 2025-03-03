@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { storeUrl }from "@helpers/store-urls"
+import { storeUrl }from "@helpers/browser"
 
 export default {
   data() {

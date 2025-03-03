@@ -2,8 +2,11 @@ import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import eslint from "vite-plugin-eslint"
 import path from "path"
+import { fileURLToPath } from "url"
 
-export default defineConfig({
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -15,6 +18,9 @@ export default defineConfig({
     vue(),
     eslint()
   ],
+  define: {
+    "__BROWSER_PLATFORM__": JSON.stringify(mode)
+  },
   build: {
     rollupOptions: {
       input: "src/background.js",
@@ -25,4 +31,4 @@ export default defineConfig({
       }
     }
   }
-})
+}))

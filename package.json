@@ -1,10 +1,15 @@
 {
   "name": "focused-youtube",
-  "version": "2.7.0",
+  "version": "3.1",
   "scripts": {
-    "build": "vite build --config vite.popup.config.js && vite build --config vite.background.config.js && vite build --config vite.welcome.config.js && vite build --config vite.content_script.config.js && rsync -av output_background_script/* dist && rsync -av output_popup/* dist && rsync -av output_welcome/* dist && rsync -av output_content_script/* dist && rm dist/index.html && rm -f dist.zip && zip -vr dist.zip dist",
-    "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --exec 'npm run build'",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "build": "mode=${npm_config_mode:-chrome} && vite build --config vite.popup.config.js --mode $mode && vite build --config vite.background.config.js --mode $mode && vite build --config vite.welcome.config.js --mode $mode && vite build --config vite.content_script.config.js --mode $mode && mkdir -p dist_$mode && rsync -av output_background_script/* dist_$mode && rsync -av output_popup/* dist_$mode && rsync -av output_welcome/* dist_$mode && rsync -av output_content_script/* dist_$mode && rm dist_$mode/index.html && node scripts/post-build.js --mode $mode",
+    "build:all": "npm run build:chrome && npm run build:firefox && npm run build:edge && npm run zip:all",
+    "build:chrome": "npm run build --mode=chrome",
+    "build:firefox": "npm run build --mode=firefox",
+    "build:edge": "npm run build --mode=edge",
+    "zip:all": "zip -r \"focused-youtube-chrome.zip\" dist_chrome && zip -r \"focused-youtube-edge.zip\" dist_edge && cd dist_firefox && zip -r \"../focused-youtube-firefox.zip\" .",
+    "dev": "nodemon --ext js,vue,css,json,svg,png,html,ttf --watch 'src/**' --watch 'public/**' --watch 'platforms/**' --exec 'npm run build && npm run zip:all'",
+    "lint": "web-ext lint -s dist_firefox && eslint --ext .js,.vue --ignore-pattern .gitignore --fix src",
     "format": "prettier .  --write"
   },
   "dependencies": {
@@ -12,12 +17,13 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.3",
-    "eslint": "^9.10.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-vue": "^9.28.0",
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-vue": "^9.32.0",
     "nodemon": "^3.1.4",
     "sass": "^1.78.0",
-    "vite": "^5.4.14",
+    "vite": "^6.2.0",
     "vite-plugin-eslint": "^1.8.1"
-  }
+  },
+  "type": "module"
 }

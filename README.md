@@ -11,7 +11,31 @@
 
 :cookie: FY **does not track any user data**. It's a simple Vanilla JS application made with only one purpose – to help you avoid YouTube's rabbit hole.
 
-## Screenshots
+## Table of Contents
+
+- [Focused YouTube ](#focused-youtube-)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+    - [🏠 Distraction-free YouTube homepage](#-distraction-free-youtube-homepage)
+    - [🔍 Clean search page](#-clean-search-page)
+    - [📺 Noise-free video page](#-noise-free-video-page)
+    - [🌚 Dark mode (depends of your system settings)](#-dark-mode-depends-of-your-system-settings)
+    - [💬 Options to show/hide comments/description](#-options-to-showhide-commentsdescription)
+    - [🔗 Hover over YouTube logo to see the navigation menu](#-hover-over-youtube-logo-to-see-the-navigation-menu)
+    - [📱 Works in mobile browser as well](#-works-in-mobile-browser-as-well)
+  - [Development](#development)
+    - [How to load the extension locally](#how-to-load-the-extension-locally)
+      - [Chrome](#chrome)
+      - [Firefox](#firefox)
+      - [Edge](#edge)
+    - [Debugging storage API](#debugging-storage-api)
+      - [For Chromium browsers (Chrome, Edge, Brave)](#for-chromium-browsers-chrome-edge-brave)
+      - [For Firefox](#for-firefox)
+  - [Releasing](#releasing)
+  - [Contributing](#contributing)
+  - [Credits](#credits)
+
+## Features
 
 ### 🏠 Distraction-free YouTube homepage
 
@@ -25,7 +49,7 @@
 
 <img width="800" alt="video_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/video_page.png">
 
-### 	:last_quarter_moon_with_face: Dark mode (depends of your system settings)
+### 🌚 Dark mode (depends of your system settings)
 
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/home_page_dark.png">
 
@@ -51,12 +75,6 @@ Big thank you to [@KParthSingh](https://github.com/KParthSingh) and [@Ohnoimded]
 
 Big shout out to [@fauzanabrar](https://github.com/fauzanabrar) for making Focused Youtube work in mobile browsers! :raised_hands:
 
-## Contributing
-
-You're more than welcome to contribute. In fact, I'm really looking forward to it! :rocket:
-
-Just make sure to check out the [contribution guidelines](https://github.com/makaroni4/focused_youtube/blob/main/CONTRIBUTING.md). :pray:
-
 ## Development
 
 Clone FY's repo to your computer.
@@ -76,7 +94,7 @@ npm install
 npm run dev --mode=chrome|firefox|edge
 ```
 
-### Loading locally built extension
+### How to load the extension locally
 
 The `npm run dev` command will generate a build folder: `dist_chrome`, `dist_firefox` or `dist_edge`. Browser differ slightly in how they load local extensions.
 
@@ -96,7 +114,7 @@ In Firefox, head over to [about:debugging#/runtime/this-firefox](about:debugging
 
 With Edge, open the [edge://extensions/](edge://extensions/) page and click on the "Load unpacked" button on top of the page. :warning: Select the `dist_edge` folder instead.
 
-### Storage
+### Debugging storage API
 
 Focused Youtube extension uses Storage API (see [Storage API for Chrome](https://developer.chrome.com/docs/extensions/reference/api/storage) or [Storage API for Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage)) for keeping track of user settings and some additional data (installation timestamp, etc).
 
@@ -137,6 +155,12 @@ browser.storage.local.clear(() => {
 ```
 npm run build:all
 ```
+
+## Contributing
+
+You're more than welcome to contribute. In fact, I'm really looking forward to it! :rocket:
+
+Just make sure to check out the [contribution guidelines](https://github.com/makaroni4/focused_youtube/blob/main/CONTRIBUTING.md). :pray:
 
 ## Credits
 

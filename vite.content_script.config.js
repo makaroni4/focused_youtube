@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
     eslint()
   ],
   define: {
-    'process.env.MODE': JSON.stringify(mode)
+    "__BROWSER_PLATFORM__": JSON.stringify(mode)
   },
   build: {
     rollupOptions: {

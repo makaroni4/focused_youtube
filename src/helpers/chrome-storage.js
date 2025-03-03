@@ -5,7 +5,7 @@ export const SETTINGS_DESCRIPTION_KEY = "settings:description"
 export const SETTINGS_RATING_LINK_CLICKED = "settings:rating_link_clicked"
 export const EXTENSION_INSTALLED_AT = "settings:extension_installed_at"
 export const SETTINGS_RATING_REMINDER_DISMISSED_AT = "settings:rating_reminder_dismissed_at"
-import browserAPI from "@helpers/browser-api.js"
+import { browserAPI } from "@helpers/browser.js"
 
 export const writeStorageData = (storageKey, value, callback) => {
   browserAPI.storage.local.set({ [storageKey]: value }, () => {

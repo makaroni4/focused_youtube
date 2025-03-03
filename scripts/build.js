@@ -7,14 +7,14 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 async function build() {
-  const platforms = ["chromium", "firefox"]
+  const platforms = ["chrome", "firefox", "edge"]
 
   // Parse command line arguments
   const args = process.argv.slice(2)
   const modeIndex = args.indexOf("--mode")
 
   if (modeIndex === -1 || !args[modeIndex + 1]) {
-    console.error("Please specify platform with --mode [chromium|firefox]")
+    console.error("Please specify platform with --mode [chrome|firefox|edge]")
     process.exit(1)
   }
 

@@ -1,4 +1,4 @@
-import browserAPI from "@helpers/browser-api.js"
+import { browserAPI } from "@helpers/browser.js"
 
 browserAPI.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {

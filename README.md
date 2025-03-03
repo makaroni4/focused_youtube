@@ -56,7 +56,7 @@ Clone FY's repo to your computer.
 
 You need to have [`nvm`](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) installed in order to have [a correct Node version for this project](https://github.com/makaroni4/focused_youtube/blob/main/.nvmrc).
 
-Install dependencies and run a command to re-build the extension (update files in the `dist_chromium` or `dist_firefox` folder) on any file change:
+Install dependencies and run a command to re-build the extension (update files in the `dist_chrome` or `dist_firefox` folder) on any file change:
 
 ```bash
 # 1. Install the correct node version.
@@ -66,10 +66,10 @@ nvm install
 npm install
 
 # 3. Monitor file changes to re-build the extension during development.
-npm run dev --mode=chromium
+npm run dev --mode=chrome
 ```
 
-Load the `dist_chromium` or `dist_firefox` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
+Load the `dist_chrome` or `dist_firefox` folder as a local extension at [chrome://extensions/](chrome://extensions/) via "Load unpacked":
 
 <img width="611" alt="update_extension" src="https://user-images.githubusercontent.com/768070/134963200-aaf3241a-522a-4079-a416-a1b58811a97c.png">
 

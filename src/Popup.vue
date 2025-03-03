@@ -1,7 +1,7 @@
 <script>
 import Settings from "@components/Settings.vue"
 import PopupFooter from "@components/PopupFooter.vue"
-import browserAPI from "@helpers/browser-api.js"
+import { browserAPI } from "@helpers/browser.js"
 
 export default {
   components: {

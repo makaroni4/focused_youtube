@@ -20,7 +20,7 @@ import {
   cleanUpFYClasses
 } from "@helpers/dom"
 
-import browserAPI from "@helpers/browser-api.js"
+import { browserAPI } from "@helpers/browser.js"
 
 import { mountReviewReminder } from "@components/review-reminder"
 import { mountLogoMenu } from "@components/logo-menu"

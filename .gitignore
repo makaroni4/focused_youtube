@@ -6,6 +6,6 @@ output_popup
 output_content_script
 output_background_script
 output_welcome
-dist_chromium
+dist_chrome
 dist_firefox
 dist

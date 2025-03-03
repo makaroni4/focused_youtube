@@ -2,7 +2,7 @@
   "search.exclude": {
     "**/node_modules": true,
     "**/dist": true,
-    "**/dist_chromium": true,
+    "**/dist_chrome": true,
     "**/dist_firefox": true,
     "**/output_content_script": true,
     "**/output_background_script": true,

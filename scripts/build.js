@@ -1,3 +1,4 @@
+/* global process */
 import fs from "fs"
 import path from "path"
 import { fileURLToPath } from "url"
@@ -6,10 +7,12 @@ import { dirname } from "path"
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+const packageJson = JSON.parse(fs.readFileSync("./package.json", "utf8"))
+const version = packageJson.version
+
 async function build() {
   const platforms = ["chrome", "firefox", "edge"]
 
-  // Parse command line arguments
   const args = process.argv.slice(2)
   const modeIndex = args.indexOf("--mode")
 
@@ -34,11 +37,12 @@ async function build() {
   }
 
   const manifestPath = path.join(__dirname, "..", "platforms", targetPlatform, "manifest.json")
-  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+  const manifestData = JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+  manifestData.version = version
 
   fs.writeFileSync(
     path.join(targetDir, "manifest.json"),
-    JSON.stringify(manifest, null, 2)
+    JSON.stringify(manifestData, null, 2)
   )
 }
 

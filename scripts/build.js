@@ -28,8 +28,6 @@ async function build() {
     process.exit(1)
   }
 
-  console.log("targetPlatform", targetPlatform)
-
   const targetDir = `dist_${targetPlatform}`
 
   if (!fs.existsSync(targetDir)) {
@@ -44,6 +42,39 @@ async function build() {
     path.join(targetDir, "manifest.json"),
     JSON.stringify(manifestData, null, 2)
   )
+
+  if (targetPlatform === "firefox") {
+    const cssFiles = getAllCssFiles(targetDir)
+
+    cssFiles.forEach(file => {
+      let cssContent = fs.readFileSync(file, "utf8")
+
+      const chromeResourcePrefix = /chrome-extension:\/\/__MSG_@@extension_id__\//g
+      const firefoxResourcePrefix = "moz-extension://__MSG_@@extension_id__/"
+
+      cssContent = cssContent.replace(chromeResourcePrefix, firefoxResourcePrefix)
+
+      fs.writeFileSync(file, cssContent)
+    })
+  }
+}
+
+function getAllCssFiles(dir) {
+  let results = []
+  const files = fs.readdirSync(dir)
+
+  for (const file of files) {
+    const filePath = path.join(dir, file)
+    const stat = fs.statSync(filePath)
+
+    if (stat.isDirectory()) {
+      results = results.concat(getAllCssFiles(filePath))
+    } else if (path.extname(file) === ".css") {
+      results.push(filePath)
+    }
+  }
+
+  return results
 }
 
 build()

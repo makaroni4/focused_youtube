@@ -8,4 +8,5 @@ output_background_script
 output_welcome
 dist_chrome
 dist_firefox
+dist_edge
 dist

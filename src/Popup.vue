@@ -73,6 +73,8 @@ export default {
   &__hr {
     margin: 16px 0;
 
+    border-left: 0;
+    border-right: 0;
     border-top: 1px solid #e5e5e5;
     border-bottom: 0;
   }

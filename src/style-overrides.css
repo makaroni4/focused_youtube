@@ -435,6 +435,11 @@ body.fy-playlists-page #end #buttons {
   display: none !important;
 }
 
+/* Hide shorts in subscriptions when toggle is off */
+body.fy-subscriptions-page:not(.fy-subscriptions-page--shorts-visible) [data-fy-shorts-container="true"] {
+  display: none !important;
+}
+
 /* Hides notification bell-icon from header menu */
 ytd-notification-topbar-button-renderer.notification-button-style-type-default,
 #country-code.ytd-topbar-logo-renderer,
@@ -568,6 +573,11 @@ body.fy-watch-page #logo.ytd-masthead:before {
   body.fy-results-page ytm-compact-channel-renderer, /* Hides "Subscribe" channel widget */
   body.fy-results-page ytm-pivot-bar-renderer[role="tablist"], /* Hides bottom menu with Home/Shorts/Library icons */
   body.fy-results-page .ytm-info-panel-content-wrapper /* Hides "About these results" block on top of the search page */ {
+    display: none !important;
+  }
+
+  /* Hide shorts in subscriptions when toggle is off */
+  body.fy-subscriptions-page:not(.fy-subscriptions-page--shorts-visible) [data-fy-shorts-container="true"] {
     display: none !important;
   }
 }

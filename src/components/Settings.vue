@@ -29,6 +29,14 @@
         :toggled="infiniteScrollEnabled"
         @toggle="handleInfiniteScrollToggle"
       />
+
+      <Toggle
+        v-if="extensionEnabled"
+        name="Shorts in subscriptions"
+        class="focused-youtube-settings__toggle"
+        :toggled="shortsInSubscriptionsEnabled"
+        @toggle="handleShortsInSubscriptionsToggle"
+      />
     </div>
   </div>
 </template>
@@ -40,6 +48,7 @@ import {
   SETTINGS_COMMENTS_KEY,
   EXTENSION_ENABLED_KEY,
   SETTINGS_DESCRIPTION_KEY,
+  SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY,
   writeStorageData,
   readStorageKeys
 } from "@helpers/chrome-storage"
@@ -53,7 +62,8 @@ export default {
       extensionEnabled: false,
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
-      videoDescriptionEnabled: false
+      videoDescriptionEnabled: false,
+      shortsInSubscriptionsEnabled: false
     }
   },
   mounted() {
@@ -61,7 +71,8 @@ export default {
       EXTENSION_ENABLED_KEY,
       SETTINGS_DESCRIPTION_KEY,
       SETTINGS_COMMENTS_KEY,
-      INFINITE_SCROLL_KEY
+      INFINITE_SCROLL_KEY,
+      SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY
     ], (keys) => {
       this.extensionEnabled = keys[EXTENSION_ENABLED_KEY] !== undefined ?
         keys[EXTENSION_ENABLED_KEY] : true
@@ -74,6 +85,9 @@ export default {
 
       this.infiniteScrollEnabled = keys[INFINITE_SCROLL_KEY] !== undefined ?
         keys[INFINITE_SCROLL_KEY] : true
+
+      this.shortsInSubscriptionsEnabled = keys[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY] !== undefined ?
+        keys[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY] : true
     })
   },
   methods: {
@@ -100,6 +114,11 @@ export default {
     handleVideoDescriptionToggle(val) {
       writeStorageData(SETTINGS_DESCRIPTION_KEY, val, () => {
         this.videoDescriptionEnabled = val
+      })
+    },
+    handleShortsInSubscriptionsToggle(val) {
+      writeStorageData(SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY, val, () => {
+        this.shortsInSubscriptionsEnabled = val
       })
     }
   }

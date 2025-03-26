@@ -32,10 +32,10 @@
 
       <Toggle
         v-if="extensionEnabled"
-        name="Shorts in subscriptions"
+        name="Shorts"
         class="focused-youtube-settings__toggle"
-        :toggled="shortsInSubscriptionsEnabled"
-        @toggle="handleShortsInSubscriptionsToggle"
+        :toggled="shortsEnabled"
+        @toggle="handleShortsToggle"
       />
     </div>
   </div>
@@ -48,7 +48,7 @@ import {
   SETTINGS_COMMENTS_KEY,
   EXTENSION_ENABLED_KEY,
   SETTINGS_DESCRIPTION_KEY,
-  SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY,
+  SETTINGS_SHORTS_KEY,
   writeStorageData,
   readStorageKeys
 } from "@helpers/chrome-storage"
@@ -63,7 +63,7 @@ export default {
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
       videoDescriptionEnabled: false,
-      shortsInSubscriptionsEnabled: false
+      shortsEnabled: false
     }
   },
   mounted() {
@@ -72,7 +72,7 @@ export default {
       SETTINGS_DESCRIPTION_KEY,
       SETTINGS_COMMENTS_KEY,
       INFINITE_SCROLL_KEY,
-      SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY
+      SETTINGS_SHORTS_KEY
     ], (keys) => {
       this.extensionEnabled = keys[EXTENSION_ENABLED_KEY] !== undefined ?
         keys[EXTENSION_ENABLED_KEY] : true
@@ -86,8 +86,8 @@ export default {
       this.infiniteScrollEnabled = keys[INFINITE_SCROLL_KEY] !== undefined ?
         keys[INFINITE_SCROLL_KEY] : true
 
-      this.shortsInSubscriptionsEnabled = keys[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY] !== undefined ?
-        keys[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY] : true
+      this.shortsEnabled = keys[SETTINGS_SHORTS_KEY] !== undefined ?
+        keys[SETTINGS_SHORTS_KEY] : true
     })
   },
   methods: {
@@ -116,9 +116,9 @@ export default {
         this.videoDescriptionEnabled = val
       })
     },
-    handleShortsInSubscriptionsToggle(val) {
-      writeStorageData(SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY, val, () => {
-        this.shortsInSubscriptionsEnabled = val
+    handleShortsToggle(val) {
+      writeStorageData(SETTINGS_SHORTS_KEY, val, () => {
+        this.shortsEnabled = val
       })
     }
   }

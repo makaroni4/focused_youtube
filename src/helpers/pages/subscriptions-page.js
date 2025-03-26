@@ -1,16 +1,15 @@
-import { readStorageKeys, SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY } from "@helpers/chrome-storage"
+import { readStorageKeys, SETTINGS_SHORTS_KEY } from "@helpers/chrome-storage"
 import { observeDOM } from "@helpers/dom"
 
 export const initSubscriptionsPage = () => {
   const $body = document.querySelector("body")
   $body.classList.add("fy-subscriptions-page")
 
-  readStorageKeys([SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY], (config) => {
-    if (typeof(config[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY]) === "undefined" || 
-        config[SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY]) {
-      $body.classList.add("fy-subscriptions-page--shorts-visible")
+  readStorageKeys([SETTINGS_SHORTS_KEY], (config) => {
+    if (typeof(config[SETTINGS_SHORTS_KEY]) === "undefined" || config[SETTINGS_SHORTS_KEY]) {
+      $body.classList.add("fy--shorts-visible")
     } else {
-      $body.classList.remove("fy-subscriptions-page--shorts-visible")
+      $body.classList.remove("fy--shorts-visible")
     }
   })
 

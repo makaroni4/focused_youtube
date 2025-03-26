@@ -3,7 +3,7 @@ import {
   EXTENSION_ENABLED_KEY,
   INFINITE_SCROLL_KEY,
   SETTINGS_DESCRIPTION_KEY,
-  SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY,
+  SETTINGS_SHORTS_KEY,
   readStorageKeys,
   recordInstalledAtTimestamp
 } from "@helpers/chrome-storage"
@@ -102,13 +102,13 @@ browserAPI.storage.onChanged.addListener((changes) => {
       }
     }
 
-    if(key === SETTINGS_SHORTS_IN_SUBSCRIPTIONS_KEY) {
+    if(key === SETTINGS_SHORTS_KEY) {
       const $body = document.querySelector("body")
 
       if(newValue) {
-        $body.classList.add("fy-subscriptions-page--shorts-visible")
+        $body.classList.add("fy--shorts-visible")
       } else {
-        $body.classList.remove("fy-subscriptions-page--shorts-visible")
+        $body.classList.remove("fy--shorts-visible")
       }
     }
 

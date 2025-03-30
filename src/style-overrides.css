@@ -315,7 +315,6 @@ body.fy-results-page ytd-mini-guide-renderer,
 body.fy-results-page yt-showing-results-for-renderer,
 body.fy-results-page ytd-continuation-item-renderer, /* Remove infinite scroll */
 body.fy-results-page #secondary.style-scope.ytd-two-column-search-results-renderer,
-body.fy-results-page ytd-reel-shelf-renderer /* Hide "Shorts" sections */,
 body.fy-results-page .ytd-ad-slot-renderer /* Hide "Sponsored" search results */,
 body.fy-results-page #header #chip-bar /* Hide search chip suggestions */,
 body.fy-results-page #header #about-these-results,
@@ -432,6 +431,12 @@ body.fy-playlists-page ytd-mini-guide-renderer,
 body.fy-playlists-page #voice-search-button,
 body.fy-playlists-page #guide-inner-content,
 body.fy-playlists-page #end #buttons {
+  display: none !important;
+}
+
+/* Hide shorts when toggle is off */
+body.fy-subscriptions-page:not(.fy--shorts-visible) [data-fy-shorts-container="true"],
+body.fy-results-page:not(.fy--shorts-visible) ytd-reel-shelf-renderer /* Hide "Shorts" sections */ {
   display: none !important;
 }
 
@@ -568,6 +573,11 @@ body.fy-watch-page #logo.ytd-masthead:before {
   body.fy-results-page ytm-compact-channel-renderer, /* Hides "Subscribe" channel widget */
   body.fy-results-page ytm-pivot-bar-renderer[role="tablist"], /* Hides bottom menu with Home/Shorts/Library icons */
   body.fy-results-page .ytm-info-panel-content-wrapper /* Hides "About these results" block on top of the search page */ {
+    display: none !important;
+  }
+
+  /* Hide shorts in subscriptions when toggle is off */
+  body.fy-subscriptions-page:not(.fy-subscriptions-page--shorts-visible) [data-fy-shorts-container="true"] {
     display: none !important;
   }
 }

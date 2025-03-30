@@ -3,6 +3,7 @@ import {
   EXTENSION_ENABLED_KEY,
   INFINITE_SCROLL_KEY,
   SETTINGS_DESCRIPTION_KEY,
+  SETTINGS_SHORTS_KEY,
   readStorageKeys,
   recordInstalledAtTimestamp
 } from "@helpers/chrome-storage"
@@ -31,6 +32,7 @@ import { initPlaylistsPage } from "@helpers/pages/playlists-page"
 import { initHistoryPage } from "@helpers/pages/history-page"
 import { initChannelPage } from "@helpers/pages/channel-page"
 import { initSearchPage } from "@helpers/pages/search-page"
+import { initSubscriptionsPage } from "@helpers/pages/subscriptions-page"
 
 recordInstalledAtTimestamp()
 
@@ -51,6 +53,8 @@ const initFY = () => {
     initVideoPage()
   } else if (pathname === "/feed/history") {
     initHistoryPage()
+  } else if (pathname === "/feed/subscriptions") {
+    initSubscriptionsPage()
   } else if (pathname === "/playlist") {
     initPlaylistPage()
   } else if (pathname === "/feed/playlists") {
@@ -95,6 +99,16 @@ browserAPI.storage.onChanged.addListener((changes) => {
         $body.classList.add("fy-results-page--infinite-scroll-enabled")
       } else {
         $body.classList.remove("fy-results-page--infinite-scroll-enabled")
+      }
+    }
+
+    if(key === SETTINGS_SHORTS_KEY) {
+      const $body = document.querySelector("body")
+
+      if(newValue) {
+        $body.classList.add("fy--shorts-visible")
+      } else {
+        $body.classList.remove("fy--shorts-visible")
       }
     }
 

@@ -362,7 +362,7 @@ body.fy-watch-page .button.yt-icon-button,
 body.fy-watch-page #guide-content,
 body.fy-watch-page #guide-button,
 body.fy-watch-page #sub-menu,
-body.fy-watch-page #related,
+body.fy-watch-page #related ytd-watch-next-secondary-results-renderer, /* Remove sidebar recommendations, but keep the container for other extensions like Clarify AI to mount */
 body.fy-watch-page #subscribe-button,
 body.fy-watch-page ytd-sentiment-bar-renderer,
 body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */

@@ -31,6 +31,7 @@
     - [Debugging storage API](#debugging-storage-api)
       - [For Chromium browsers (Chrome, Edge, Brave)](#for-chromium-browsers-chrome-edge-brave)
       - [For Firefox](#for-firefox)
+  - [Testing](#testing)
   - [Releasing](#releasing)
   - [Contributing](#contributing)
   - [Credits](#credits)
@@ -149,6 +150,19 @@ browser.storage.local.clear(() => {
   console.log("Cleared!")
 })
 ```
+
+## Testing
+
+When adding a new PR or releasing a new version, make sure the extension works (menu is shown, all distracting sections are hidden + dark mode) on the following pages:
+
+1. [Home page](https://www.youtube.com/).
+2. [Video page](https://www.youtube.com/watch?v=dQw4w9WgXcQ).
+3. [Search results page](https://www.youtube.com/results?search_query=never+gonna+give+you+up).
+4. [Channel page](https://www.youtube.com/@veritasium).
+5. [History page](https://www.youtube.com/feed/history).
+6. [Playlist page](https://www.youtube.com/playlist?list=LL).
+7. [Playlists page](https://www.youtube.com/feed/playlists).
+8. [Subscriptions page](https://www.youtube.com/feed/subscriptions).
 
 ## Releasing
 

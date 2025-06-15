@@ -362,11 +362,16 @@ body.fy-results-page.fy-results-page--infinite-scroll-enabled ytd-continuation-i
   display: block !important;
 }
 
+/* Remove recommend sidebar. Don't target body.fy-watch-page because recommendations can flash onscreen when navigating to channel page */
+#related > *:not(ytd-watch-next-secondary-results-renderer):not(#summaryApp),
+#related ytd-watch-next-secondary-results-renderer > * {
+  display: none !important;
+}
+
 body.fy-watch-page .button.yt-icon-button,
 body.fy-watch-page #guide-content,
 body.fy-watch-page #guide-button,
 body.fy-watch-page #sub-menu,
-body.fy-watch-page #related *:not(#summaryApp), /* Remove sidebar recommendations, but keep the container for other extensions like Clarify AI to mount */
 body.fy-watch-page #subscribe-button,
 body.fy-watch-page ytd-sentiment-bar-renderer,
 body.fy-watch-page .html5-endscreen, /* Remove suggested video endscreen */

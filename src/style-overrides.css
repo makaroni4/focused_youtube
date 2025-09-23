@@ -61,6 +61,11 @@ body {
   padding-top: 8px;
 }
 
+body[dir='rtl'] .fy-logo-menu {
+  left: unset;
+  right: 16px;
+}
+
 .fy-home-page .fy-logo-menu {
   left: 0;
   bottom: 0;

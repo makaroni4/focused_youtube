@@ -331,6 +331,11 @@ body.fy-results-page #primary #header /* Hides empty div before search results *
   display: none !important;
 }
 
+/* Remove invisible div that prevents the logo menu from staying open.  */
+tp-yt-app-drawer {
+  display: none !important;
+}
+
 /* START Position search bar filters on the right side from search results. */
 body.fy-results-page ytd-search #header {
   max-width: 800px !important; /* Align search result width with header */

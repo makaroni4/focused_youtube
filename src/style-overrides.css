@@ -395,7 +395,8 @@ body.fy-watch-page #comments,
 body.fy-watch-page #description,
 body.fy-watch-page #panels-full-bleed-container,
 body.fy-watch-page .ytp-autonav-endscreen-upnext-container, /* Remove autoplay video thumbnail when the video is over */
-body.fy-watch-page .ytp-autonav-endscreen-button-container {
+body.fy-watch-page .ytp-autonav-endscreen-button-container,
+body.fy-watch-page ytd-player [title*="More videos"] /* Hides recommendations when video is over */ {
   display: none !important;
 }
 

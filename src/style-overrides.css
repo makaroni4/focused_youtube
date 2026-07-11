@@ -417,6 +417,31 @@ body.fy-watch-page ytd-video-secondary-info-renderer {
   border: 0;
 }
 
+/* Thumbnail mode: static cover injected into #movie_player (image set in JS). Sits below the controls (z 58/59) and passes clicks through. */
+#fy-thumbnail-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+
+  background-color: #000;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+}
+
+/* Keep ads skippable in thumbnail mode: lift the ad overlay (Skip button, ad badge) above the cover. The ad video plays in the hidden video element, so it stays covered. */
+body.fy-video-display--thumbnail #movie_player .video-ads {
+  position: relative !important;
+  z-index: 31 !important;
+}
+
+/* Black mode: hide the video container to reveal the player's black background while audio keeps playing. */
+body.fy-watch-page.fy-video-display--black .html5-video-container {
+  visibility: hidden !important;
+}
+
 body.fy-channel-page #guide-icon.ytd-masthead,
 body.fy-channel-page .button.yt-icon-button,
 body.fy-channel-page #guide-content,

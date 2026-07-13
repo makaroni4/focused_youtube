@@ -4,6 +4,8 @@ import {
   INFINITE_SCROLL_KEY,
   SETTINGS_DESCRIPTION_KEY,
   SETTINGS_SHORTS_KEY,
+  SETTINGS_VIDEO_DISPLAY_KEY,
+  VIDEO_DISPLAY_DEFAULT,
   readStorageKeys,
   recordInstalledAtTimestamp
 } from "@helpers/chrome-storage"
@@ -12,13 +14,17 @@ import "./style-overrides.css"
 
 import {
   enableTheaterMode,
-  clearTheaterModeCookie
+  clearTheaterModeCookie,
+  saveOriginalQuality,
+  restoreSavedQuality,
+  reloadPreservingPosition
 } from "@helpers/youtube"
 
 import {
   observeDOM,
   hideSectionByTitle,
-  cleanUpFYClasses
+  cleanUpFYClasses,
+  applyVideoDisplayMode
 } from "@helpers/dom"
 
 import { browserAPI } from "@helpers/browser.js"
@@ -99,6 +105,34 @@ browserAPI.storage.onChanged.addListener((changes) => {
         $body.classList.add("fy-results-page--infinite-scroll-enabled")
       } else {
         $body.classList.remove("fy-results-page--infinite-scroll-enabled")
+      }
+    }
+
+    if(key === SETTINGS_VIDEO_DISPLAY_KEY) {
+      const mode = newValue || VIDEO_DISPLAY_DEFAULT
+      const previousMode = changes[key].oldValue || VIDEO_DISPLAY_DEFAULT
+
+      const enteringHidden = mode !== "video" && previousMode === "video"
+      const returningToVideo = mode === "video" && previousMode !== "video"
+
+      if (enteringHidden) {
+        saveOriginalQuality()
+      } else if (returningToVideo) {
+        restoreSavedQuality()
+      }
+
+      applyVideoDisplayMode(mode)
+
+      // YouTube only applies a quality change on load, so reload when toggling
+      // between video and a hidden mode (keeping the playback position).
+      // Thumbnail and black share the same quality, so switching between them
+      // needs no reload.
+      if (enteringHidden || returningToVideo) {
+        if (document.visibilityState === "visible") {
+          reloadPreservingPosition()
+        } else {
+          sessionStorage.setItem("fy_pending_reload", "true")
+        }
       }
     }
 

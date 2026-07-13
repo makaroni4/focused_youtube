@@ -37,25 +37,38 @@
         :toggled="shortsEnabled"
         @toggle="handleShortsToggle"
       />
+
+      <SegmentedControl
+        v-if="extensionEnabled"
+        name="Video display"
+        class="focused-youtube-settings__toggle"
+        :value="videoDisplay"
+        :options="videoDisplayOptions"
+        @select="handleVideoDisplaySelect"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Toggle from "@components/Toggle.vue"
+import SegmentedControl from "@components/SegmentedControl.vue"
 import {
   INFINITE_SCROLL_KEY,
   SETTINGS_COMMENTS_KEY,
   EXTENSION_ENABLED_KEY,
   SETTINGS_DESCRIPTION_KEY,
   SETTINGS_SHORTS_KEY,
+  SETTINGS_VIDEO_DISPLAY_KEY,
+  VIDEO_DISPLAY_DEFAULT,
   writeStorageData,
   readStorageKeys
 } from "@helpers/chrome-storage"
 
 export default {
   components: {
-    Toggle
+    Toggle,
+    SegmentedControl
   },
   data() {
     return {
@@ -63,7 +76,13 @@ export default {
       commentsSectionEnabled: false,
       infiniteScrollEnabled: false,
       videoDescriptionEnabled: false,
-      shortsEnabled: false
+      shortsEnabled: false,
+      videoDisplay: VIDEO_DISPLAY_DEFAULT,
+      videoDisplayOptions: [
+        { label: "Video", value: "video" },
+        { label: "Thumbnail", value: "thumbnail" },
+        { label: "Black", value: "black" }
+      ]
     }
   },
   mounted() {
@@ -72,7 +91,8 @@ export default {
       SETTINGS_DESCRIPTION_KEY,
       SETTINGS_COMMENTS_KEY,
       INFINITE_SCROLL_KEY,
-      SETTINGS_SHORTS_KEY
+      SETTINGS_SHORTS_KEY,
+      SETTINGS_VIDEO_DISPLAY_KEY
     ], (keys) => {
       this.extensionEnabled = keys[EXTENSION_ENABLED_KEY] !== undefined ?
         keys[EXTENSION_ENABLED_KEY] : true
@@ -88,6 +108,9 @@ export default {
 
       this.shortsEnabled = keys[SETTINGS_SHORTS_KEY] !== undefined ?
         keys[SETTINGS_SHORTS_KEY] : true
+
+      this.videoDisplay = keys[SETTINGS_VIDEO_DISPLAY_KEY] !== undefined ?
+        keys[SETTINGS_VIDEO_DISPLAY_KEY] : VIDEO_DISPLAY_DEFAULT
     })
   },
   methods: {
@@ -119,6 +142,11 @@ export default {
     handleShortsToggle(val) {
       writeStorageData(SETTINGS_SHORTS_KEY, val, () => {
         this.shortsEnabled = val
+      })
+    },
+    handleVideoDisplaySelect(val) {
+      writeStorageData(SETTINGS_VIDEO_DISPLAY_KEY, val, () => {
+        this.videoDisplay = val
       })
     }
   }

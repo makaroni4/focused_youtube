@@ -21,6 +21,7 @@
     - [📺 Noise-free video page](#-noise-free-video-page)
     - [🌚 Dark mode (depends of your system settings)](#-dark-mode-depends-of-your-system-settings)
     - [💬 Options to show/hide comments/description](#-options-to-showhide-commentsdescription)
+    - [🖤 Video display: video, thumbnail or black](#-video-display-video-thumbnail-or-black)
     - [🔗 Hover over YouTube logo to see the navigation menu](#-hover-over-youtube-logo-to-see-the-navigation-menu)
     - [📱 Works in mobile browser as well](#-works-in-mobile-browser-as-well)
   - [Development](#development)
@@ -65,6 +66,18 @@ https://support.google.com/chrome/answer/9275525?hl=en&co=GENIE.Platform%3DDeskt
 <img width="800" alt="search_page" src="https://raw.githubusercontent.com/makaroni4/focused_youtube/main/readme/popup.png">
 
 Big thank you to [@KParthSingh](https://github.com/KParthSingh) and [@Ohnoimded](https://github.com/Ohnoimded) for adding an option to temporarily disable the extension! :raised_hands:
+
+### 🖤 Video display: video, thumbnail or black
+
+On the video page you can choose how the player looks while it plays. Some videos are distracting to watch even when everything else is hidden, so you can keep only the audio:
+
+- **Video** – the default, plays the video normally.
+- **Thumbnail** – freezes the player on the video's thumbnail while the audio keeps playing.
+- **Black** – blanks the player to black while the audio keeps playing.
+
+Player controls (play/pause, seek, volume) keep working in all three modes.
+
+In **Thumbnail** and **Black** the video is hidden, so its resolution doesn't matter. To save data (handy on mobile), these modes pin YouTube to its lowest video resolution (144p). Audio is a separate stream, so its quality is unaffected. Because YouTube only applies a quality change on load, switching between **Video** and a hidden mode reloads the page so the change takes effect on the current video. The reload keeps your playback position, and your original quality is remembered and restored when you return to **Video**. Switching directly between **Thumbnail** and **Black** doesn't reload.
 
 ### 🔗 Hover over YouTube logo to see the navigation menu
 

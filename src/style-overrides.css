@@ -437,9 +437,9 @@ body.fy-video-display--thumbnail #movie_player .video-ads {
   z-index: 31 !important;
 }
 
-/* Black mode: hide the video container to reveal the player's black background while audio keeps playing. */
+/* Black mode: make the video transparent to reveal the player's black background while audio keeps playing. Uses opacity (not visibility/display) so the video area stays clickable for play/pause. */
 body.fy-watch-page.fy-video-display--black .html5-video-container {
-  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 body.fy-channel-page #guide-icon.ytd-masthead,
